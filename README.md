@@ -1,8 +1,11 @@
 # Robot Art
-"Robot Art" Assessment for Mondo Robot, November '17
+
+### Acceptance Criteria
+
+* TBD
 
 - - - -
 
-### Criteria
+### Build and Launch the Application
 
 * TBD
