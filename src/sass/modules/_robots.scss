@@ -1,0 +1,37 @@
+.robot-art {
+    .robots-container {
+        .robot-card {
+            background-color: #fff;
+            display: inline-block;
+            height: 350px;
+            padding: 30px 0 20px;
+            text-align: center;
+            @media (min-width: $breakpoint-phone + 1) {
+                margin: 0 15px 30px;
+            }
+            @media (min-width: $breakpoint-tablet + 1) {
+                width: 280px;
+            }
+            @media (max-width: $breakpoint-tablet) {
+                margin: 0 10px 20px;
+                width: 220px;
+            }
+            @media (max-width: $breakpoint-phone) {
+                width: 100%;
+                &:not(:last-child) {
+                    margin: 0 0 30px 0;
+                }
+                &:last-child {
+                    margin: 0;
+                }
+            }
+            .robot-avatar {
+                height: 200px;
+            }
+            .robot-name {
+                font-size: 18px;
+                margin: 25px 0;
+            }
+        }
+    }
+}

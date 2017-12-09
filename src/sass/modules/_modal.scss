@@ -1,0 +1,45 @@
+.robot-art {
+    .modal-container {
+        background: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: all 0.4s;
+        visibility: hidden;
+        width: 100%;
+        z-index: 3;
+        &.open {
+            opacity: 1;
+            visibility: visible;
+            .modal-content {
+                top: 50%;
+            }
+        }
+        .modal-content {
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+            margin: -155px auto;
+            max-width: 600px;
+            min-height: 280px;
+            padding-bottom: 30px;
+            position: relative;
+            top: 40%;
+            transition: all 0.4s;
+            width: 90%;
+            .modal-header {
+                font: {
+                    size: 32px;
+                    weight: 400;
+                }
+                padding: 50px 20px 30px;
+            }
+            .modal-text {
+                font-size: 18px;
+                padding: 0 20px 60px;
+            }
+        }
+    }
+}

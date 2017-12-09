@@ -1,0 +1,27 @@
+[
+    {
+        "image": "/images/robots/contenders/Voltron.jpg",
+        "name": "Voltron",
+        "votes": 5
+    },
+    {
+        "image": "/images/robots/contenders/Rosie.jpg",
+        "name": "Rosie",
+        "votes": 8
+    },
+    {
+        "image": "/images/robots/contenders/Megazord.jpg",
+        "name": "Megazord",
+        "votes": 2
+    },
+    {
+        "image": "/images/robots/contenders/Wall-E.jpg",
+        "name": "Wall-E",
+        "votes": 4
+    },
+    {
+        "image": "/images/robots/contenders/Bender.jpg",
+        "name": "Bender",
+        "votes": 7
+    }
+]

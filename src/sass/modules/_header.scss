@@ -1,0 +1,131 @@
+.robot-art {
+    .header {
+        background-color: #fff;
+        border-bottom: $border-common;
+        @media (min-width: $breakpoint-phone + 1) {
+            padding: 40px;
+        }
+        @media (max-width: $breakpoint-phone) {
+            padding: 20px;
+        }
+        .logo {
+            margin-right: 100px;
+            @media (min-width: $breakpoint-phone + 1) {
+                width: 154px;
+            }
+            @media (max-width: $breakpoint-phone) {
+                width: 140px;
+            }
+        }
+        .navigation {
+            @media (min-width: $breakpoint-phone + 1) {
+                display: inline;
+            }
+            @media (max-width: $breakpoint-phone) {
+                background-color: #fff;
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                transition: all 0.2s;
+                visibility: hidden;
+                width: 100%;
+                z-index: 1;
+            }
+            &.open {
+                @media (max-width: $breakpoint-phone) {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .menu {
+                @media (min-width: $breakpoint-phone + 1) {
+                    display: inline-block;
+                }
+                @media (max-width: $breakpoint-phone) {
+                    display: block;
+                    margin-top: -25%;
+                    position: relative;
+                    text-align: center;
+                    top: 50%;
+                }
+                list-style: none;
+                vertical-align: top;
+                li {
+                    @media (min-width: $breakpoint-phone + 1) {
+                        display: inline-block;
+                        line-height: 64px;
+                    }
+                    @media (max-width: $breakpoint-phone) {
+                        margin-bottom: 25px;
+                    }
+                    &:not(:first-child) {
+                        @media (min-width: $breakpoint-phone + 1) {
+                            margin-left: 50px;
+                        }
+                    }
+                    a {
+                        color: $color-gray-dark;
+                        @media (max-width: $breakpoint-phone) {
+                            font-size: 32px;
+                        }
+                        text-decoration: none;
+                        transition: color 0.2s;
+                        &.active,
+                        &:hover {
+                            color: $color-red;
+                        }
+                    }
+                }
+            }
+        }
+        .responsive-menu-button {
+            background: none;
+            border: none;
+            border-radius: 0;
+            @media (min-width: $breakpoint-phone + 1) {
+                display: none;
+            }
+            @media (max-width: $breakpoint-phone) {
+                display: block;
+            }
+            float: right;
+            height: 24px;
+            margin-top: 12px;
+            overflow: visible;
+            position: relative;
+            right: 5px;
+            top: 5px;
+            width: 30px;
+            z-index: 2;
+            .bar {
+                background: $color-gray-dark;
+                display: table;
+                height: 3px;
+                vertical-align: middle;
+                width: 28px;
+                &:not(:nth-of-type(2)) {
+                    margin: 0 auto;
+                    transition: all 0.2s;
+                }
+                &:nth-of-type(2) {
+                    margin: 6px auto;
+                    transition: opacity 0.2s;
+                }
+            }
+            &.selected .bar {
+                &:first-of-type {
+                    transform: rotate(45deg);
+                }
+                &:nth-of-type(2) {
+                    margin: -3px 0;
+                    opacity: 0;
+                }
+                &:last-of-type {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

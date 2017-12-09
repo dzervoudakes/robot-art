@@ -1,12 +1,18 @@
 // colors
-// $color-blue-primary: #007bff;
-// $color-gray-common: #333;
-// $color-gray-dark: #343a40;
-// $color-super-light-gray: #e1e1e1;
+$color-gray-dark: #666;
+$color-gray-light: #edeff1;
+$color-gray-lighter: #f4f6f8;
+$color-red: #ec2624;
 
-// border radius
-// $border-radius-common: 5px;
+// borders
+$border-common: 1px solid $color-gray-light;
+
+// fonts
+$font-roboto: 'Roboto', Helvetica, Arial, sans-serif;
+
+// font-sizes
+// 32, 24, 18, 16, 14
 
 // breakpoints
-// $breakpoint-max: 590px;
-// $breakpoint-min: 591px;
+$breakpoint-tablet: 768px;
+$breakpoint-phone: 480px;

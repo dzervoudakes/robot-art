@@ -1,112 +1,80 @@
-// * {
-//     font-family: 'Questrial', sans-serif;
-//     margin: 0;
-//     padding: 0;
-// }
+* {
+    font-family: $font-roboto;
+    margin: 0;
+    padding: 0;
+}
 
-// body, html, .app {
-//     height: 100%;
-// }
+body {
+    background-color: $color-gray-lighter;
+    color: $color-gray-dark;
+}
 
-// .phone-visible {
-//     @media (min-width: $breakpoint-min) {
-//         display: none;
-//     }
-// }
-
-// .phone-hidden {
-//     @media (max-width: $breakpoint-max) {
-//         display: none;
-//     }
-// }
-
-// h1 {
-//     @media (min-width: $breakpoint-min) {
-//         font-size: 38px;
-//     }
-//     @media (max-width: $breakpoint-max) {
-//         font-size: 28px;
-//     }
-// }
-
-// h3 {
-//     color: $color-gray-common;
-//     @media (min-width: $breakpoint-min) {
-//         font-size: 26px;
-//     }
-//     @media (max-width: $breakpoint-max) {
-//         font-size: 24px;
-//     }
-// }
-
-// p, li {
-//     color: $color-gray-common;
-//     font-size: 20px;
-//     @media (min-width: $breakpoint-min) {
-//         font-size: 20px;
-//     }
-//     @media (max-width: $breakpoint-max) {
-//         font-size: 18px;
-//     }
-//     margin-bottom: 15px;
-// }
-
-// li {
-//     list-style: none;
-// }
-
-// a {
-//     color: $color-blue-primary;
-//     text-decoration: none;
-//     transition: opacity 0.2s;
-//     &:hover {
-//         opacity: 0.6;
-//     }
-// }
-
-// label, input {
-//     color: $color-gray-common;
-//     font-size: 20px;
-// }
-
-// input {
-//     font-size: 16px;
-// }
-
-// .t-heavy {
-//     font-weight: 700;
-// }
-
-// .gray-rule {
-//     background: $color-super-light-gray;
-//     border: none;
-//     border-radius: $border-radius-common;
-//     height: 3px;
-//     margin: 25px 0;
-//     width: 50%;
-// }
-
-// .hidden {
-//     display: none;
-// }
-
-// .wrapper {
-//     min-height: 100%;
-//     position: relative;
-// }
-
-// .gray-bar {
-//     background: #343a40;
-//     padding: 18px;
-// }
-
-// .panel {
-//     margin: 0 auto;
-//     max-width: 600px;
-//     @media (min-width: $breakpoint-min) {
-//         padding: 50px 18px 115px;
-//     }
-//     @media (max-width: $breakpoint-max) {
-//         padding: 30px 18px 95px;
-//     }
-// }
+.robot-art {
+    &.overlay-open {
+        height: 100vh;
+        overflow: hidden;
+    }
+    a, p, li {
+        font-size: 16px;
+    }
+    button {
+        cursor: pointer;
+        outline: none;
+        -webkit-appearance: none;
+    }
+    .button-standard {
+        background-color: #fff;
+        border: {
+            radius: 0;
+            style: solid;
+            width: 2px;
+        }
+        font: {
+            size: 16px;
+            weight: 700;
+        }
+        letter-spacing: 1px;
+        line-height: 1;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        transition: all 0.2s;
+        &.primary {
+            color: $color-red;
+            border-color: $color-red;
+            &:hover {
+                background-color: $color-red;
+                color: #fff;
+            }
+        }
+        &.secondary {
+            border-color: $color-gray-dark;
+            color: $color-gray-dark;
+            &:hover {
+                background-color: $color-gray-dark;
+                color: #fff;
+            }
+        }
+        &.disabled {
+            border-color: $color-gray-dark;
+            color: $color-gray-dark;
+            cursor: default;
+            opacity: 0.5;
+        }
+    }
+    .error-image {
+        border: $border-common;
+        display: block;
+        margin: 0 auto;
+    }
+    .main-content {
+        @media (min-width: $breakpoint-phone + 1) {
+            padding: 100px 40px;
+        }
+        @media (max-width: $breakpoint-phone) {
+            padding: 80px 20px;
+        }
+        @media (max-width: $breakpoint-tablet) {
+            padding: 50px 20px;
+        }
+    }
+}
