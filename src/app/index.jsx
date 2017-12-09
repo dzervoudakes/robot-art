@@ -84,7 +84,6 @@ class RobotArt extends React.Component {
                 title: 'Oh no!'
             };
             this.openModal(opts);
-            console.log(this.state);
         });
     }
 
