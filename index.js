@@ -7,6 +7,7 @@ const jsonfile = require('jsonfile');
 
 // @TODO: REDIRECT USERS WHO ARE LOGGED IN AWAY FROM THE LOGIN SCREEN
 // (assumes manually changing the URL back to root)
+// (there are also oddities with the back button... sigh)
 
 // @TODO: MODULARIZE THIS FILE SOMEHOW!
 
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.get(['/', '/admin', '/create-account', '/results', '/robots'], (req, res) => {
     const sessData = req.session;
-    if (sessData.userLoggedIn !== true) return res.redirect('/');
+    if (sessData.userLoggedIn !== true && req.url !== '/create-account') return res.redirect('/');
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
@@ -41,8 +42,22 @@ app.get('/account/logout', (req, res) => {
 
 app.all('/api/user', (req, res) => {
     if (req.method === 'POST') {
-        req.session.userLoggedIn = req.body.loggedIn;
-        res.sendStatus(200);
+        if (req.body.action === 'login') {
+            req.session.userLoggedIn = req.body.loggedIn;
+            res.sendStatus(200);
+        } else if (req.body.action === 'create_account') {
+            const file = `${__dirname}/public/data/users.json`;
+            jsonfile.writeFile(file, req.body.users, err => {
+                if (!err) {
+                    req.session.userLoggedIn = true;
+                    res.redirect('/robots');
+                    res.sendStatus(200);
+                } else{
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+            });
+        }
     } else if (req.method === 'GET') {
         res.send({ userLoggedIn: req.session.userLoggedIn });
     }

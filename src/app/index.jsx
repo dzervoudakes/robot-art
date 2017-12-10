@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import { Header, Login, Modal, Robots, Results } from './components';
+import { CreateAccount, Header, Login, Modal, Robots, Results } from './components';
 require('../sass/style.scss');
 
 const axios = require('axios');
@@ -28,7 +28,7 @@ class RobotArt extends React.Component {
         this.openModal = this.openModal.bind(this);
         this.toggleOverlay = this.toggleOverlay.bind(this);
         this.updateRobotState = this.updateRobotState.bind(this);
-    }
+    };
 
     closeModal() {
         let modalProps = this.state.modal;
@@ -124,9 +124,9 @@ class RobotArt extends React.Component {
                                     userLoggedIn={userLoggedIn}
                                 />
                             </Route>
-                            {/* <Route path="/create-account">
+                            <Route path="/create-account">
                                 <CreateAccount openModal={this.openModal} />
-                            </Route> */}
+                            </Route>
                             <Route path="/robots">
                                 <Robots
                                     errors={errors}

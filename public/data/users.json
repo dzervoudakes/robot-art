@@ -1,8 +1,1 @@
-[
-    {
-        "userId": "1",
-        "name": "Dan Zervoudakes",
-        "email": "dan@mondorobot.com",
-        "password": "welcome2"
-    }
-]
+[{"userId":"1","name":"Dan Zervoudakes","email":"dan@mondorobot.com","password":"welcome2"},{"email":"chuck@norris.com","id":2,"name":"Chuck Norris","password":"welcome2"}]

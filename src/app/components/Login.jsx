@@ -6,15 +6,16 @@ const axios = require('axios');
 export class Login extends React.Component {
     constructor() {
         super();
-        this.state = { formErrors: false, loginAttempts: 0, unauthorized: false, users: [] }
+        this.state = { formErrors: false, loginAttempts: 0, unauthorized: false, users: [] };
         this.submitForm = this.submitForm.bind(this);
     }
 
     getUsers() {
-        return axios.get('/data/users.json');
+        return axios.get('/data/users.json'); // @TODO: MOVE THIS TO INDEX AND PASS AS PROP??
     }
 
     // @TODO: MODULARIZE THE FORM SUBMISSION STUFF SO YOU CAN ALSO USE WITH CREATE ACCOUNT
+    // @TODO ... ALSO MODULARIZE THE FORM ITSELF ;)
 
     submitForm(e) {
         e.preventDefault();
@@ -24,17 +25,18 @@ export class Login extends React.Component {
             const { email, password } = document.forms.loginForm;
             this.validateAndSend(email, password);
         } else {
-            console.log('poop');
+            // @TODO: ERROR HANDLING
         }
     }
 
     submitUserLogin() {
-        return axios.post('/api/user', { loggedIn: true });
+        const opts = { action: 'login', loggedIn: true };
+        return axios.post('/api/user', opts);
     }
 
     validateAndSend(...inputs) {
         const { openModal } = this.props;
-        const { email, password } = document.forms.loginForm;
+        const { email, password } = document.forms.loginForm; // @TODO: JANK
         let hasErrors = false;
         inputs.forEach(item => {
             const regx = item === email ? /^\S+@\S+\.\S+$/ : /^\s*\S/;
@@ -65,16 +67,19 @@ export class Login extends React.Component {
                 let { loginAttempts } = this.state;
                 loginAttempts++;
                 this.setState({ loginAttempts: loginAttempts });
-                const opts = {
-                    errors: {},
-                    message: 'We don\'t recognize your email/password combination, O.o',
-                    title: 'Howdy, stranger!'
-                };
-                openModal(opts);
+                if (loginAttempts < 3) {
+                    const opts = {
+                        errors: {},
+                        message: 'We don\'t recognize your email/password combination, O.o',
+                        title: 'Howdy, stranger!'
+                    };
+                    openModal(opts);
+                }
             }
         }
     }
 
+    // @TODO: JANKKKKKK
     componentWillMount() {
         return this.getUsers().then(resp => {
             const users = resp.data;
@@ -98,7 +103,7 @@ export class Login extends React.Component {
                 <h2 className="page-title">Login</h2>
                 <p id="loginAttemptsErrorMessage" className={`t-form-error-message${loginAttempts === 3 ? '' : ' hidden'}`}>You hackin'? You've attempted to login too many times.</p>
                 <p id="formErrorMessage" className={`t-form-error-message${formErrors ? '' : ' hidden'}`}>Please correct the highlighted errors below.</p>
-                <form id="loginForm" className="login-form">
+                <form id="loginForm" className="form">
                     <div className="form-row">
                         <label className="form-label">Email</label>
                         <input className="form-input" maxLength="50" name="email" placeholder="jane.smith@email.com" type="text" />

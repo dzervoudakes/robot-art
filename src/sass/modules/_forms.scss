@@ -1,5 +1,5 @@
 .robot-art {
-    .login-form {
+    .form {
         margin: 0 auto;
         max-width: 320px;
         width: 90%;
@@ -39,10 +39,10 @@
         margin-top: 30px;
         padding: 0 20px;
         text-align: center;
-        transition: color 0.2s;
         .t-signup-link {
             color: $color-red;
             text-decoration: none;
+            transition: color 0.2s;
             &:hover {
                 color: $color-gray-dark;
             }
