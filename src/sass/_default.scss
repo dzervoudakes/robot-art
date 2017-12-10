@@ -17,10 +17,19 @@ body {
     a, p, li {
         font-size: 16px;
     }
-    button {
+    button,
+    input[type='submit'] {
         cursor: pointer;
         outline: none;
         -webkit-appearance: none;
+    }
+    .page-title {
+        font: {
+            size: 32px;
+            weight: 400;
+        }
+        margin-bottom: 50px;
+        text-align: center;
     }
     .button-standard {
         background-color: #fff;

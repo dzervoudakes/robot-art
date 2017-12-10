@@ -1,16 +1,51 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const jsonfile = require('jsonfile');
+
+// @TODO: REDIRECT USERS WHO ARE LOGGED IN AWAY FROM THE LOGIN SCREEN
+// (assumes manually changing the URL back to root)
+
+// @TODO: MODULARIZE THIS FILE SOMEHOW!
+
+// @TODO: EITHER...
+// 1) FIGURE OUT ACTUAL SESSION, AUTH, SECURITY, ETC. FOR LOGINS
+//    OR
+// 2) ADD IN SOME COMMENT, SOMETHING IN THE README, ETC. ABOUT HOW
+//    THIS WEB SECURITY IS JANK AND THAT YOU KNOW THIS WON'T FLY IN REAL LIFE
+
+app.use(session({
+    cookie: { maxAge: 3600000 },
+    resave: false,
+    saveUninitialized: true,
+    secret: 'mondo-robot-secret-token',
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.get(['/robots', '/results'], (req, res) => {
+app.get(['/', '/admin', '/create-account', '/results', '/robots'], (req, res) => {
+    const sessData = req.session;
+    if (sessData.userLoggedIn !== true) return res.redirect('/');
     res.sendFile(path.join(__dirname, '/public/index.html'));
+});
+
+app.get('/account/logout', (req, res) => {
+    req.session.userLoggedIn = false;
+    res.redirect('/');
+});
+
+app.all('/api/user', (req, res) => {
+    if (req.method === 'POST') {
+        req.session.userLoggedIn = req.body.loggedIn;
+        res.sendStatus(200);
+    } else if (req.method === 'GET') {
+        res.send({ userLoggedIn: req.session.userLoggedIn });
+    }
 });
 
 app.post('/api/update-robots', (req, res) => {

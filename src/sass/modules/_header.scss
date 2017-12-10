@@ -2,26 +2,27 @@
     .header {
         background-color: #fff;
         border-bottom: $border-common;
-        @media (min-width: $breakpoint-phone + 1) {
+        @media (min-width: $breakpoint-tablet-sm + 1) {
             padding: 40px;
         }
-        @media (max-width: $breakpoint-phone) {
+        @media (max-width: $breakpoint-tablet-sm) {
             padding: 20px;
         }
         .logo {
-            margin-right: 100px;
-            @media (min-width: $breakpoint-phone + 1) {
+            @media (min-width: $breakpoint-tablet-sm + 1) {
+                float: left;
+                margin-right: 100px;
                 width: 154px;
             }
-            @media (max-width: $breakpoint-phone) {
+            @media (max-width: $breakpoint-tablet-sm) {
                 width: 140px;
             }
         }
         .navigation {
-            @media (min-width: $breakpoint-phone + 1) {
-                display: inline;
+            @media (min-width: $breakpoint-tablet-sm + 1) {
+                height: 64px;
             }
-            @media (max-width: $breakpoint-phone) {
+            @media (max-width: $breakpoint-tablet-sm) {
                 background-color: #fff;
                 height: 100%;
                 left: 0;
@@ -34,16 +35,13 @@
                 z-index: 1;
             }
             &.open {
-                @media (max-width: $breakpoint-phone) {
+                @media (max-width: $breakpoint-tablet-sm) {
                     opacity: 1;
                     visibility: visible;
                 }
             }
             .menu {
-                @media (min-width: $breakpoint-phone + 1) {
-                    display: inline-block;
-                }
-                @media (max-width: $breakpoint-phone) {
+                @media (max-width: $breakpoint-tablet-sm) {
                     display: block;
                     margin-top: -25%;
                     position: relative;
@@ -51,25 +49,43 @@
                     top: 50%;
                 }
                 list-style: none;
-                vertical-align: top;
-                li {
-                    @media (min-width: $breakpoint-phone + 1) {
+                .list-item {
+                    @media (min-width: $breakpoint-tablet-sm + 1) {
                         display: inline-block;
                         line-height: 64px;
+                        vertical-align: top;
                     }
-                    @media (max-width: $breakpoint-phone) {
-                        margin-bottom: 25px;
+                    @media (max-width: $breakpoint-tablet-sm) {
+                        margin-bottom: 20px;
                     }
-                    &:not(:first-child) {
-                        @media (min-width: $breakpoint-phone + 1) {
-                            margin-left: 50px;
+                    &.primary {
+                        &:not(:first-child) {
+                            @media (min-width: $breakpoint-tablet-sm + 1) {
+                                margin-left: 50px;
+                            }
+                        }
+                        a {
+                            @media (max-width: $breakpoint-tablet-sm) {
+                                font-size: 32px;
+                            }
+                        }
+                    }
+                    &.secondary {
+                        @media (min-width: $breakpoint-tablet-sm + 1) {
+                            // float: right;
+                            margin-left: 25px;
+                        }
+                        a {
+                            @media (min-width: $breakpoint-tablet-sm + 1) {
+                                font-size: 14px;
+                            }
+                            @media (max-width: $breakpoint-tablet-sm) {
+                                font-size: 18px;
+                            }
                         }
                     }
                     a {
                         color: $color-gray-dark;
-                        @media (max-width: $breakpoint-phone) {
-                            font-size: 32px;
-                        }
                         text-decoration: none;
                         transition: color 0.2s;
                         &.active,
@@ -78,16 +94,22 @@
                         }
                     }
                 }
+                .secondary-list-item-container {
+                    @media (min-width: $breakpoint-tablet-sm + 1) {
+                        display: inline-block;
+                        float: right;
+                    }
+                }
             }
         }
         .responsive-menu-button {
             background: none;
             border: none;
             border-radius: 0;
-            @media (min-width: $breakpoint-phone + 1) {
+            @media (min-width: $breakpoint-tablet-sm + 1) {
                 display: none;
             }
-            @media (max-width: $breakpoint-phone) {
+            @media (max-width: $breakpoint-tablet-sm) {
                 display: block;
             }
             float: right;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import { Header, Modal, Robots, Results } from './components';
+import { Header, Login, Modal, Robots, Results } from './components';
 require('../sass/style.scss');
 
 const axios = require('axios');
@@ -21,6 +21,7 @@ class RobotArt extends React.Component {
             },
             overlayOpen: false,
             robots: [],
+            userLoggedIn: false,
             voteCounts: [0]
         };
         this.closeModal = this.closeModal.bind(this);
@@ -36,14 +37,30 @@ class RobotArt extends React.Component {
     };
 
     getRobotData() {
-        return axios.get('/data/robots.json');
+        return axios.get('/data/robots.json').then(resp => {
+            const bots = resp.data;
+            const votes = this.updateVoteCounts(bots);
+            this.setState({ robots: bots, voteCounts: votes });
+        }).catch(err => {
+            console.log(err);
+            const opts = {
+                errors: { get: true },
+                message: 'There was an error grabbing the robot data from Express, :sadrobot:',
+                title: 'Oh no!'
+            };
+            this.openModal(opts);
+        });
+    }
+
+    getUserSession() {
+        return axios.get('/api/user');
     }
 
     openModal(opts) {
-        const { get, post } = opts.errors;
+        const { get = false, post = false } = opts.errors;
         const errors = {
-            get: get ? get : false,
-            post: post ? post : false
+            get: get,
+            post: post
         };
         const modalProps = {
             open: true,
@@ -72,23 +89,22 @@ class RobotArt extends React.Component {
     }
 
     componentWillMount() {
-        return this.getRobotData().then(resp => {
-            const bots = resp.data;
-            const votes = this.updateVoteCounts(bots);
-            this.setState({ robots: bots, voteCounts: votes });
+        this.getUserSession().then(resp => {
+            const userLoggedIn = resp.data.userLoggedIn;
+            this.setState({ userLoggedIn: userLoggedIn });
+            if (userLoggedIn) return this.getRobotData();
         }).catch(err => {
-            console.log(err);
             const opts = {
                 errors: { get: true },
-                message: 'There was an error grabbing the robot data from Express, :sadrobot:',
-                title: 'Oh no!'
+                message: 'We were unable to fetch your user info from the Express server, :whyohwhy:',
+                title: 'Who am I? How did I get here?'
             };
             this.openModal(opts);
         });
     }
 
     render() {
-        const { errors, overlayOpen, robots, voteCounts } = this.state;
+        const { errors, overlayOpen, robots, userLoggedIn, voteCounts } = this.state;
         const { message, open, title } = this.state.modal;
         const winner = voteCounts.reduce((prev, curr) => {
             return Math.max(prev, curr);
@@ -96,21 +112,35 @@ class RobotArt extends React.Component {
         return (
             <BrowserRouter basename="/">
                 <div className={`robot-art${overlayOpen ? ' overlay-open' : ''}`}>
-                    <Header toggleOverlay={this.toggleOverlay} />
+                    <Header
+                        toggleOverlay={this.toggleOverlay}
+                        userLoggedIn={userLoggedIn}
+                    />
                     <main className="main-content">
                         <Switch>
+                            <Route exact path="/">
+                                <Login
+                                    openModal={this.openModal}
+                                    userLoggedIn={userLoggedIn}
+                                />
+                            </Route>
+                            {/* <Route path="/create-account">
+                                <CreateAccount openModal={this.openModal} />
+                            </Route> */}
                             <Route path="/robots">
                                 <Robots
                                     errors={errors}
                                     openModal={this.openModal}
                                     robots={robots}
                                     updateRobots={this.updateRobotState}
+                                    userLoggedIn={userLoggedIn}
                                 />
                             </Route>
                             <Route path="/results">
                                 <Results
                                     errors={errors}
                                     robots={robots}
+                                    userLoggedIn={userLoggedIn}
                                     winner={winner}
                                 />
                             </Route>

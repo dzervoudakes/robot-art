@@ -14,25 +14,42 @@ export class Header extends React.Component {
     }
     
     render() {
+        const { toggleOverlay, userLoggedIn } = this.props;
         const { isMobileMenuOpen:open } = this.state;
         const handleMobileMenuState = () => {
             if (window.innerWidth <= 480) {
                 this.toggleMobileMenu();
-                this.props.toggleOverlay();
+                toggleOverlay();
             }
         };
         return (
             <header className="header">
-                <NavLink to="/robots">
+                <a href="/robots">
                     <img alt="Mondo Robot" className="logo" src="images/logo.svg" />
-                </NavLink>
+                </a>
                 <nav className={`navigation${open ? ' open' : ''}`}>
                     <ul className="menu">
-                        <li className="primary">
-                            <NavLink to="/robots" exact activeClassName="active" onClick={handleMobileMenuState}>Robots</NavLink>
-                        </li>
-                        <li className="primary">
-                            <NavLink to="/results" activeClassName="active" onClick={handleMobileMenuState}>Results</NavLink>
+                        {userLoggedIn &&
+                            <li className="list-item primary">
+                                <NavLink activeClassName="active" onClick={handleMobileMenuState} to="/robots">Robots</NavLink>
+                            </li>
+                        }
+                        {userLoggedIn &&
+                            <li className="list-item primary">
+                                <NavLink activeClassName="active" onClick={handleMobileMenuState} to="/results">Results</NavLink>
+                            </li>
+                        }
+                        <li className="secondary-list-item-container">
+                            <ul>
+                                {userLoggedIn &&
+                                    <li className="list-item secondary">
+                                        <NavLink activeClassName="active" onClick={handleMobileMenuState} to="/admin">Admin</NavLink>
+                                    </li>
+                                }
+                                <li className="list-item secondary">
+                                    <a href={userLoggedIn ? '/account/logout' : '/'} onClick={handleMobileMenuState}>{userLoggedIn ? 'Logout' : 'Login'}</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
