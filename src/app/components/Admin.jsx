@@ -113,8 +113,9 @@ export class Admin extends React.Component {
                 name: name.value,
                 votes: robots[index].votes
             };
+            const newRobotsArray = robots.slice(0);
             const data = new FormData();
-            data.append('robots', JSON.stringify(robots));
+            data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
             return this.addRobot(data).then(resp => {
                 updateRobots(robots);
