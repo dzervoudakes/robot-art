@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const jsonfile = require('jsonfile');
 const formidable = require('express-formidable');
-
 const fs = require('fs');
 
 router.get('/', (req, res) => {
