@@ -75,3 +75,4 @@
 
 * I am storing all Robot data and user information in local .json files for the purposes of this app...
 * In a perfect world, I would store this info in a database and I would be a bit more serious about encryption and general web security :badpokerface:
+* I recommend using `Node v9.x.x`
