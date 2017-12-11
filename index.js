@@ -14,6 +14,13 @@ app.use(session({
     secret: 'mondo-robot-secret-token',
 }));
 
+app.get('*/app.min.js', (req, res, next) => {
+    req.url = `${req.url}.gz`;
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'text/javascript');
+    next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));

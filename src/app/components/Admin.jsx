@@ -39,12 +39,14 @@ export class Admin extends React.Component {
                 name: name.value,
                 votes: 0
             };
-            robots.push(newRobot);
+            const newRobotsArray = robots.slice(0);
+            newRobotsArray.push(newRobot);
             const data = new FormData();
-            data.append('robots', JSON.stringify(robots));
+            data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
             return this.addRobot(data).then(resp => {
                 updateRobots(robots);
+                robots.push(newRobot);
                 name.value = '';
                 upload.value = '';
                 const { openModal } = this.props;
