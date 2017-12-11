@@ -2,7 +2,12 @@
     .form {
         margin: 0 auto;
         max-width: 320px;
-        width: 90%;
+        &:not(.add-robot-form) {
+            width: 90%;
+        }
+        &.add-robot-form {
+            width: 80%;
+        }
         input {
             outline: none;
         }

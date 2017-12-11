@@ -1,18 +1,13 @@
 import React from 'react';
+import { Form } from './modules/Form.jsx';
 
 const axios = require('axios');
-
-// @TODO: FOR EVENTUAL CLEANUP BRANCH, HANDLE VALIDATION AND USER ACCOUNT CHECKING ON THE BACK END?
 
 export class CreateAccount extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false, users: [] };
         this.submitForm = this.submitForm.bind(this);
-    }
-
-    getUsers() {
-        return axios.get('/data/users.json'); // @TODO: MOVE THIS TO INDEX AND PASS AS PROP??
     }
 
     createAccount(email, name, password) {
@@ -25,7 +20,7 @@ export class CreateAccount extends React.Component {
         };
         users.push(newUser);
         const opts = { action: 'create_account', users: users };
-        return axios.post('/api/user', opts);
+        return axios.post('/api/users', opts);
     }
 
     submitForm(e) {
@@ -36,7 +31,7 @@ export class CreateAccount extends React.Component {
 
     validateAndSend(...inputs) {
         const { openModal } = this.props;
-        const { email, name, password } = document.forms.createAccountForm; // @TODO: JANK
+        const { email, name, password } = document.forms.createAccountForm;
         let hasErrors = false;
         inputs.forEach(item => {
             const regx = item === email ? /^\S+@\S+\.\S+$/ : /^\s*\S/;
@@ -62,36 +57,24 @@ export class CreateAccount extends React.Component {
                 }
             });
             if (!isEmailTaken) {
-                // handling redirect in Express
-                this.createAccount(email.value, name.value, password.value)
-                    .then()
-                    .catch(err => {
-                        const opts = {
-                            errors: {},
-                            message: 'There was a server error when trying to create your new account.',
-                            title: 'Whoops...'
-                        };
-                        openModal(opts);
+                this.createAccount(email.value, name.value, password.value).then(resp => {
+                    if (resp.status === 200) window.location.href = '/robots';
+                })
+                .catch(err => {
+                    const opts = {
+                        errors: {},
+                        message: 'There was a server error when trying to create your new account.',
+                        title: 'Whoops...'
+                    };
+                    openModal(opts);
                 });
             }
         }
     }
 
-    // @TODO: JANKKKKKK
     componentWillMount() {
-        return this.getUsers().then(resp => {
-            const users = resp.data;
-            this.setState({ users: users });
-        }).catch(err => {
-            console.log(err);
-            const { openModal } = this.props;
-            const opts = {
-                errors: {},
-                message: 'There was an error grabbing the user info. New users will be unable to create an account until this is fixed.',
-                title: 'No bueno.'
-            };
-            openModal(opts);
-        });
+        const { getAllUsers } = this.props;
+        return getAllUsers(this);
     }
 
     render() {
@@ -100,23 +83,11 @@ export class CreateAccount extends React.Component {
             <div className="login-container">
                 <h2 className="page-title">Create Account</h2>
                 <p id="formErrorMessage" className={`t-form-error-message${formErrors ? '' : ' hidden'}`}>Please correct the highlighted errors below.</p>
-                <form id="createAccountForm" className="form">
-                    <div className="form-row">
-                        <label className="form-label">Name</label>
-                        <input className="form-input" maxLength="50" name="name" placeholder="Jane Smith" type="text" />
-                    </div>
-                    <div className="form-row">
-                        <label className="form-label">Email</label>
-                        <input className="form-input" maxLength="50" name="email" placeholder="jane.smith@email.com" type="text" />
-                    </div>
-                    <div className="form-row">
-                        <label className="form-label">Password</label>
-                        <input className="form-input" maxLength="50" name="password" type="password" />
-                    </div>
-                    <div className="form-row">
-                        <input className='button-standard primary submit-button' onClick={this.submitForm} type="submit" value="Submit" />
-                    </div>
-                </form>
+                <Form
+                    formId="createAccountForm"
+                    includeName={true}
+                    submitForm={this.submitForm}
+                />
             </div>
         );
     }

@@ -28,8 +28,13 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "express-formidable": "^1.0.0",
     "express-session": "^1.15.6",
+    "http": "0.0.0",
     "jsonfile": "^4.0.0",
     "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "nodemon ./bin/www --ignore 'public/**/*'"
   }
 }

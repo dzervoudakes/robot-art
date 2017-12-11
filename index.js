@@ -3,19 +3,17 @@ const app = express();
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const jsonfile = require('jsonfile');
+const apiRoutes = require('./routes/api');
 
-// @TODO: REDIRECT USERS WHO ARE LOGGED IN AWAY FROM THE LOGIN SCREEN
-// (assumes manually changing the URL back to root)
-// (there are also oddities with the back button... sigh)
-
-// @TODO: MODULARIZE THIS FILE SOMEHOW!
+// @TODO: MAKE SURE YOU'RE HAPPY WITH README INFO; MAYBE PROVIDE A LITTLE EXTRA INFO ON THE IMPLEMENTATION
 
 // @TODO: EITHER...
 // 1) FIGURE OUT ACTUAL SESSION, AUTH, SECURITY, ETC. FOR LOGINS
 //    OR
 // 2) ADD IN SOME COMMENT, SOMETHING IN THE README, ETC. ABOUT HOW
 //    THIS WEB SECURITY IS JANK AND THAT YOU KNOW THIS WON'T FLY IN REAL LIFE
+
+global.__dirname = __dirname;
 
 app.use(session({
     cookie: { maxAge: 3600000 },
@@ -25,8 +23,7 @@ app.use(session({
 }));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get(['/', '/admin', '/create-account', '/results', '/robots'], (req, res) => {
@@ -40,39 +37,7 @@ app.get('/account/logout', (req, res) => {
     res.redirect('/');
 });
 
-app.all('/api/user', (req, res) => {
-    if (req.method === 'POST') {
-        if (req.body.action === 'login') {
-            req.session.userLoggedIn = req.body.loggedIn;
-            res.sendStatus(200);
-        } else if (req.body.action === 'create_account') {
-            const file = `${__dirname}/public/data/users.json`;
-            jsonfile.writeFile(file, req.body.users, err => {
-                if (!err) {
-                    req.session.userLoggedIn = true;
-                    res.redirect('/robots');
-                    res.sendStatus(200);
-                } else{
-                    console.log(err);
-                    res.sendStatus(500);
-                }
-            });
-        }
-    } else if (req.method === 'GET') {
-        res.send({ userLoggedIn: req.session.userLoggedIn });
-    }
-});
-
-app.post('/api/update-robots', (req, res) => {
-    const file = `${__dirname}/public/data/robots.json`;
-    jsonfile.writeFile(file, req.body, err => {
-        if (!err) res.sendStatus(200);
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        }
-    });
-});
+app.use('/api', apiRoutes);
 
 app.use((req, res) => {
     res.status(404);

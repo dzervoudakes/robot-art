@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import { CreateAccount, Header, Login, Modal, Robots, Results } from './components';
+import { Admin, CreateAccount, Header, Login, Modal, Robots, Results } from './components';
 require('../sass/style.scss');
 
 const axios = require('axios');
@@ -25,6 +25,7 @@ class RobotArt extends React.Component {
             voteCounts: [0]
         };
         this.closeModal = this.closeModal.bind(this);
+        this.getAllUsers = this.getAllUsers.bind(this);
         this.openModal = this.openModal.bind(this);
         this.toggleOverlay = this.toggleOverlay.bind(this);
         this.updateRobotState = this.updateRobotState.bind(this);
@@ -33,11 +34,11 @@ class RobotArt extends React.Component {
     closeModal() {
         let modalProps = this.state.modal;
         modalProps.open = false;
-        this.setState({ modal: modalProps });
+        this.setState({ modal: modalProps, overlayOpen: false });
     };
 
     getRobotData() {
-        return axios.get('/data/robots.json').then(resp => {
+        return axios.get('/api/robots').then(resp => {
             const bots = resp.data;
             const votes = this.updateVoteCounts(bots);
             this.setState({ robots: bots, voteCounts: votes });
@@ -52,8 +53,25 @@ class RobotArt extends React.Component {
         });
     }
 
+    getAllUsers(context) {
+        return axios.get('/api/users?full=true')
+            .then(resp => {
+                const users = resp.data;
+                context.setState({ users: users });
+            }).catch(err => {
+                console.log(err);
+                const { openModal } = context.props;
+                const opts = {
+                    errors: {},
+                    message: 'There was an error grabbing the user info. New users will be unable to login or create new accounts until this is fixed.',
+                    title: 'No bueno.'
+                };
+                openModal(opts);
+            });
+    }
+
     getUserSession() {
-        return axios.get('/api/user');
+        return axios.get('/api/users');
     }
 
     openModal(opts) {
@@ -118,14 +136,32 @@ class RobotArt extends React.Component {
                     />
                     <main className="main-content">
                         <Switch>
-                            <Route exact path="/">
-                                <Login
+                            <Route path="/admin">
+                                <Admin
+                                    errors={errors}
                                     openModal={this.openModal}
-                                    userLoggedIn={userLoggedIn}
+                                    robots={robots}
+                                    updateRobots={this.updateRobotState}
                                 />
                             </Route>
                             <Route path="/create-account">
-                                <CreateAccount openModal={this.openModal} />
+                                <CreateAccount
+                                    getAllUsers={this.getAllUsers}
+                                    openModal={this.openModal}
+                                />
+                            </Route>
+                            <Route exact path="/">
+                                <Login
+                                    getAllUsers={this.getAllUsers}
+                                    openModal={this.openModal}
+                                />
+                            </Route>
+                            <Route path="/results">
+                                <Results
+                                    errors={errors}
+                                    robots={robots}
+                                    winner={winner}
+                                />
                             </Route>
                             <Route path="/robots">
                                 <Robots
@@ -133,15 +169,6 @@ class RobotArt extends React.Component {
                                     openModal={this.openModal}
                                     robots={robots}
                                     updateRobots={this.updateRobotState}
-                                    userLoggedIn={userLoggedIn}
-                                />
-                            </Route>
-                            <Route path="/results">
-                                <Results
-                                    errors={errors}
-                                    robots={robots}
-                                    userLoggedIn={userLoggedIn}
-                                    winner={winner}
                                 />
                             </Route>
                         </Switch>

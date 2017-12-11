@@ -10,7 +10,8 @@ export class Robots extends React.Component {
     }
 
     postRobotData() {
-        return axios.post('/api/update-robots', this.props.robots);
+        const opts = { robots: this.props.robots };
+        return axios.post('/api/robots', opts);
     }
 
     updateVotes(e) {
@@ -20,7 +21,7 @@ export class Robots extends React.Component {
             const index = e.target.getAttribute('data-index');
             robots[index].votes++;
             updateRobots(robots);
-            this.postRobotData().then(resp => {
+            return this.postRobotData().then(resp => {
                 target.classList.remove('primary');
                 target.classList.add('disabled');
                 target.innerHTML = 'Vote Cast';
@@ -42,10 +43,12 @@ export class Robots extends React.Component {
         const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-primary.jpg" />
         const bots = robots.map((bot, index) =>
             <RobotCard
+                action="display"
                 index={index}
+                isAdmin={false}
                 key={index}
                 name={bot.name}
-                onClick={this.updateVotes}
+                updateVotes={this.updateVotes}
                 image={bot.image}
             />
         );

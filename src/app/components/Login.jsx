@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Form } from './modules/Form.jsx';
 
 const axios = require('axios');
 
@@ -10,13 +11,6 @@ export class Login extends React.Component {
         this.submitForm = this.submitForm.bind(this);
     }
 
-    getUsers() {
-        return axios.get('/data/users.json'); // @TODO: MOVE THIS TO INDEX AND PASS AS PROP??
-    }
-
-    // @TODO: MODULARIZE THE FORM SUBMISSION STUFF SO YOU CAN ALSO USE WITH CREATE ACCOUNT
-    // @TODO ... ALSO MODULARIZE THE FORM ITSELF ;)
-
     submitForm(e) {
         e.preventDefault();
         const { loginAttempts } = this.state;
@@ -24,19 +18,17 @@ export class Login extends React.Component {
             this.setState({ formErrors: false });
             const { email, password } = document.forms.loginForm;
             this.validateAndSend(email, password);
-        } else {
-            // @TODO: ERROR HANDLING
         }
     }
 
     submitUserLogin() {
         const opts = { action: 'login', loggedIn: true };
-        return axios.post('/api/user', opts);
+        return axios.post('/api/users', opts);
     }
 
     validateAndSend(...inputs) {
         const { openModal } = this.props;
-        const { email, password } = document.forms.loginForm; // @TODO: JANK
+        const { email, password } = document.forms.loginForm;
         let hasErrors = false;
         inputs.forEach(item => {
             const regx = item === email ? /^\S+@\S+\.\S+$/ : /^\s*\S/;
@@ -54,7 +46,7 @@ export class Login extends React.Component {
             });
             if (authorized) {
                 this.submitUserLogin().then(resp => {
-                    window.location.href = '/robots';
+                    if (resp.status === 200) window.location.href = '/robots';
                 }).catch(err => {
                     const opts = {
                         errors: {},
@@ -79,21 +71,9 @@ export class Login extends React.Component {
         }
     }
 
-    // @TODO: JANKKKKKK
     componentWillMount() {
-        return this.getUsers().then(resp => {
-            const users = resp.data;
-            this.setState({ users: users });
-        }).catch(err => {
-            console.log(err);
-            const { openModal } = this.props;
-            const opts = {
-                errors: {},
-                message: 'There was an error grabbing the user info. Existing users will be unable to log in until this is fixed.',
-                title: 'Well, that\'s embarrassing.'
-            };
-            openModal(opts);
-        });
+        const { getAllUsers } = this.props;
+        return getAllUsers(this);
     }
 
     render() {
@@ -103,19 +83,11 @@ export class Login extends React.Component {
                 <h2 className="page-title">Login</h2>
                 <p id="loginAttemptsErrorMessage" className={`t-form-error-message${loginAttempts === 3 ? '' : ' hidden'}`}>You hackin'? You've attempted to login too many times.</p>
                 <p id="formErrorMessage" className={`t-form-error-message${formErrors ? '' : ' hidden'}`}>Please correct the highlighted errors below.</p>
-                <form id="loginForm" className="form">
-                    <div className="form-row">
-                        <label className="form-label">Email</label>
-                        <input className="form-input" maxLength="50" name="email" placeholder="jane.smith@email.com" type="text" />
-                    </div>
-                    <div className="form-row">
-                        <label className="form-label">Password</label>
-                        <input className="form-input" maxLength="50" name="password" type="password" />
-                    </div>
-                    <div className="form-row">
-                        <input className={`button-standard ${loginAttempts === 3 ? 'disabled' : 'primary'} submit-button`} onClick={this.submitForm} type="submit" value="Submit" />
-                    </div>
-                </form>
+                <Form
+                    formId="loginForm"
+                    loginAttempts={loginAttempts}
+                    submitForm={this.submitForm}
+                />
                 <p className="t-signup">Need an account? <NavLink className="t-signup-link" to="/create-account">Sign Up</NavLink>.</p>
             </div>
         );
