@@ -108,17 +108,17 @@ export class Admin extends React.Component {
         this.setState({ formErrors: hasErrors });
         if (!hasErrors) {
             const { robots, updateRobots } = this.props;
-            robots[index] = {
+            const newRobotsArray = robots.slice(0);
+            newRobotsArray[index] = {
                 image: `/images/robots/contenders/${upload.files[0].name}`,
                 name: name.value,
-                votes: robots[index].votes
+                votes: newRobotsArray[index].votes
             };
-            const newRobotsArray = robots.slice(0);
             const data = new FormData();
             data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
             return this.addRobot(data).then(resp => {
-                updateRobots(robots);
+                updateRobots(newRobotsArray);
                 name.value = '';
                 upload.value = '';
                 const { openModal } = this.props;
