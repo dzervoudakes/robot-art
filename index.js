@@ -5,14 +5,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const apiRoutes = require('./routes/api');
 
-// @TODO: MAKE SURE YOU'RE HAPPY WITH README INFO; MAYBE PROVIDE A LITTLE EXTRA INFO ON THE IMPLEMENTATION
-
-// @TODO: EITHER...
-// 1) FIGURE OUT ACTUAL SESSION, AUTH, SECURITY, ETC. FOR LOGINS
-//    OR
-// 2) ADD IN SOME COMMENT, SOMETHING IN THE README, ETC. ABOUT HOW
-//    THIS WEB SECURITY IS JANK AND THAT YOU KNOW THIS WON'T FLY IN REAL LIFE
-
 global.__dirname = __dirname;
 
 app.use(session({

@@ -46,6 +46,16 @@
                     margin: 0 2px;
                 }
             }
+            .t-edit-cancel {
+                color: $color-red;
+                cursor: pointer;
+                display: inline-block;
+                margin-top: 20px;
+                transition: color 0.2s;
+                &:hover {
+                    color: $color-gray-dark;
+                }
+            }
         }
     }
 }

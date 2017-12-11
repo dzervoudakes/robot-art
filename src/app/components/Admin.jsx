@@ -34,13 +34,17 @@ export class Admin extends React.Component {
         this.setState({ formErrors: hasErrors });
         if (!hasErrors) {
             const { robots, updateRobots } = this.props;
-            const newRobot = { image: `/images/robots/contenders/${upload.files[0].name}`, name: name.value, votes: 0 };
+            const newRobot = {
+                image: `/images/robots/contenders/${upload.files[0].name}`,
+                name: name.value,
+                votes: 0
+            };
             robots.push(newRobot);
-            updateRobots(robots);
             const data = new FormData();
             data.append('robots', JSON.stringify(robots));
             data.append('uploadFile', upload.files[0]);
             return this.addRobot(data).then(resp => {
+                updateRobots(robots);
                 name.value = '';
                 upload.value = '';
                 const { openModal } = this.props;
@@ -67,8 +71,8 @@ export class Admin extends React.Component {
         const { robots, updateRobots } = this.props;
         const index = e.target.getAttribute('data-index');
         robots.splice(index, 1);
-        updateRobots(robots);
         return this.postRobotData().then(resp => {
+            updateRobots(robots);
             const { openModal } = this.props;
             const opts = {
                 errors: {},
@@ -91,7 +95,46 @@ export class Admin extends React.Component {
         e.preventDefault();
         const { robots } = this.props;
         const index = e.target.getAttribute('data-index');
-        // @TODO: FINISH MEEEEE!!!!!
+        let hasErrors = false;
+        const { name, upload } = document.forms.editRobotForm;
+        const regx = /^\s*\S/;
+        const isNameValid = name.value.match(regx);
+        const isUploadValid = upload.value !== '';
+        name.classList[!isNameValid ? 'add' : 'remove']('invalid');
+        upload.classList[!isUploadValid ? 'add' : 'remove']('invalid');
+        if (!hasErrors) hasErrors = !isNameValid || !isUploadValid ? true : false;
+        this.setState({ formErrors: hasErrors });
+        if (!hasErrors) {
+            const { robots, updateRobots } = this.props;
+            robots[index] = {
+                image: `/images/robots/contenders/${upload.files[0].name}`,
+                name: name.value,
+                votes: robots[index].votes
+            };
+            const data = new FormData();
+            data.append('robots', JSON.stringify(robots));
+            data.append('uploadFile', upload.files[0]);
+            return this.addRobot(data).then(resp => {
+                updateRobots(robots);
+                name.value = '';
+                upload.value = '';
+                const { openModal } = this.props;
+                const opts = {
+                    errors: {},
+                    message: 'You have successfully edited the robot, :happyrobot:',
+                    title: 'Nice!'
+                };
+                openModal(opts);
+            }).catch(err => {
+                const { openModal } = this.props;
+                const opts = {
+                    errors: {},
+                    message: 'There was a server error while trying to edit the robot.',
+                    title: 'Does... Not... Compute...'
+                };
+                openModal(opts);
+            });
+        }
     }
 
     render() {

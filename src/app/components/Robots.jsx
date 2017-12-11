@@ -20,8 +20,8 @@ export class Robots extends React.Component {
             const { robots, updateRobots } = this.props;
             const index = e.target.getAttribute('data-index');
             robots[index].votes++;
-            updateRobots(robots);
             return this.postRobotData().then(resp => {
+                updateRobots(robots);
                 target.classList.remove('primary');
                 target.classList.add('disabled');
                 target.innerHTML = 'Vote Cast';

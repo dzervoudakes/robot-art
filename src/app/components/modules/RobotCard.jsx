@@ -1,8 +1,20 @@
 import React from 'react';
+import { RobotCardForm } from './includes/RobotCardForm.jsx';
 
 export class RobotCard extends React.Component {
+    constructor(props) {
+        super();
+        this.state = { action: props.action };
+        this.updateAction = this.updateAction.bind(this);
+    }
+
+    updateAction(action) {
+        this.setState({ action: action });
+    }
+
     render() {
-        const { action, handleAdd, handleEdit, handleDelete, image, index, isAdmin, name, updateVotes } = this.props;
+        const { action } = this.state;
+        const { handleAdd, handleEdit, handleDelete, image, index, isAdmin, name, updateaction, updateVotes } = this.props;
         if (action === 'display') {
             return (
                 <div className="robot-card">
@@ -13,31 +25,35 @@ export class RobotCard extends React.Component {
                     }
                     {isAdmin && 
                         <div className="button-container">
-                            <button className="button-standard secondary" data-index={index} onClick={handleEdit}>Edit</button>
+                            <button className="button-standard secondary" data-index={index} onClick={() => { this.updateAction('edit'); }}>Edit</button>
                             <button className="button-standard primary" data-index={index} onClick={handleDelete}>Delete</button>
                         </div>
                     }
                 </div>
             );
-        } else if (action === 'add') {
-            return (
-                <div className="robot-card">
-                    <h3 className="card-title">Add Robot</h3>
-                    <form id="addRobotForm" className="add-robot-form form">
-                        <div className="form-row">
-                            <label className="form-label">Robot Name</label>
-                            <input className="form-input" maxLength="50" name="name" type="text" />
-                        </div>
-                        <div className="form-row">
-                            <label className="form-label">Robot Image</label>
-                            <input accept="image/*" className="form-input" name="upload" type="file" />
-                        </div>
-                        <div className="form-row">
-                            <input className="button-standard primary submit-button" onClick={handleAdd} type="submit" value="Add Robot" />
-                        </div>
-                    </form>
-                </div>
-            );
+        } else if (action === 'add' || action === 'edit') {
+            if (action === 'add') {
+                return (
+                    <RobotCardForm
+                        formId="addRobotForm"
+                        index={index}
+                        onClick={handleAdd}
+                        text="Add"
+                    />
+                );
+            } else if (action === 'edit') {
+                return (
+                    <RobotCardForm
+                        cancel={() => { this.updateAction('display'); }}
+                        formId="editRobotForm"
+                        index={index}
+                        name={name}
+                        onClick={handleEdit}
+                        text="Edit"
+                        updateAction={this.updateAction}
+                    />
+                );
+            }
         }
     }
 }

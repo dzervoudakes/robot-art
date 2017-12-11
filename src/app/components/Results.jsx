@@ -5,6 +5,7 @@ export class Results extends React.Component {
     render() {
         const { errors, robots, winner } = this.props;
         const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-secondary.jpg" />
+        robots.sort((a, b) => b.votes - a.votes);
         const results = robots.map((bot, index) =>
             <Result
                 key={index}
