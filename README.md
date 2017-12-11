@@ -40,7 +40,7 @@
 ### Run the Application
 
 * Within your terminal or command prompt, cd into the 'robot-art' directory
-* Ensure you have the correct dependencies installed: `npm install --production` (this assumes you have built the application in dev per the 'build' instructions above)
+* Ensure you have the correct dependencies installed: `npm install --production` (the production flag here assumes you have built the application in dev per the 'build' instructions above)
 * Run `node index.js`, and the app should boot up for you ... view it in your browser with the URL `http://localhost:3000`
 * If you would like the Express app to watch for changes, you may install `nodemon` globally on your machine and then run `nodemon index.js` ... it's just lovely, but bewarned!
   * When the server resets, your session will reset and you will need to log back in
