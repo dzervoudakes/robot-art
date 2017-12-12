@@ -16,7 +16,7 @@ export class RobotCardForm extends React.Component {
                         <input accept="image/*" className="form-input" name="upload" type="file" />
                     </div>
                     <div className="form-row">
-                        <input className="button-standard primary submit-button" data-index={index} onClick={e => { onClick(e); if (text === 'Edit') updateAction('display'); }} type="submit" value={`${text} Robot`} />
+                        <input className="button-standard primary submit-button" data-index={index} onClick={e => { const success = onClick(e); if (success && updateAction) updateAction('display'); }} type="submit" value={`${text} Robot`} />
                         {text === 'Edit' && <a className="t-edit-cancel" onClick={cancel}>Cancel</a>}
                     </div>
                 </form>

@@ -32,6 +32,7 @@ export class Admin extends React.Component {
         upload.classList[!isUploadValid ? 'add' : 'remove']('invalid');
         if (!hasErrors) hasErrors = !isNameValid || !isUploadValid ? true : false;
         this.setState({ formErrors: hasErrors });
+        if (hasErrors) return false;
         if (!hasErrors) {
             const { robots, updateRobots } = this.props;
             const newRobot = {
@@ -44,7 +45,7 @@ export class Admin extends React.Component {
             const data = new FormData();
             data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
-            return this.addRobot(data).then(resp => {
+            this.addRobot(data).then(resp => {
                 updateRobots(robots);
                 robots.push(newRobot);
                 name.value = '';
@@ -65,6 +66,7 @@ export class Admin extends React.Component {
                 };
                 openModal(opts);
             });
+            return true;
         }
     }
 
@@ -106,6 +108,7 @@ export class Admin extends React.Component {
         upload.classList[!isUploadValid ? 'add' : 'remove']('invalid');
         if (!hasErrors) hasErrors = !isNameValid || !isUploadValid ? true : false;
         this.setState({ formErrors: hasErrors });
+        if (hasErrors) return false;
         if (!hasErrors) {
             const { robots, updateRobots } = this.props;
             const newRobotsArray = robots.slice(0);
@@ -117,7 +120,7 @@ export class Admin extends React.Component {
             const data = new FormData();
             data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
-            return this.addRobot(data).then(resp => {
+            this.addRobot(data).then(resp => {
                 updateRobots(newRobotsArray);
                 name.value = '';
                 upload.value = '';
@@ -137,6 +140,7 @@ export class Admin extends React.Component {
                 };
                 openModal(opts);
             });
+            return true;
         }
     }
 
