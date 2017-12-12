@@ -22,6 +22,13 @@ export class Header extends React.Component {
                 toggleOverlay();
             }
         };
+        const createMenuItem = (liClass, label) => {
+            return (
+                <li className={`list-item ${liClass}`}>
+                    <NavLink activeClassName="active" onClick={handleMobileMenuState} to={`/${label.toLowerCase()}`}>{label}</NavLink>
+                </li>
+            );
+        };
         return (
             <header className="header">
                 <a href="/robots">
@@ -29,23 +36,11 @@ export class Header extends React.Component {
                 </a>
                 <nav className={`navigation${open ? ' open' : ''}`}>
                     <ul className="menu">
-                        {userLoggedIn &&
-                            <li className="list-item primary">
-                                <NavLink activeClassName="active" onClick={handleMobileMenuState} to="/robots">Robots</NavLink>
-                            </li>
-                        }
-                        {userLoggedIn &&
-                            <li className="list-item primary">
-                                <NavLink activeClassName="active" onClick={handleMobileMenuState} to="/results">Results</NavLink>
-                            </li>
-                        }
+                        {userLoggedIn && createMenuItem('primary', 'Robots')}
+                        {userLoggedIn && createMenuItem('primary', 'Results')}
                         <li className="secondary-list-item-container">
                             <ul>
-                                {userLoggedIn &&
-                                    <li className="list-item secondary">
-                                        <NavLink activeClassName="active" onClick={handleMobileMenuState} to="/admin">Admin</NavLink>
-                                    </li>
-                                }
+                                {userLoggedIn && createMenuItem('secondary', 'Admin')}
                                 <li className="list-item secondary">
                                     <a href={userLoggedIn ? '/account/logout' : '/'} onClick={handleMobileMenuState}>{userLoggedIn ? 'Logout' : 'Login'}</a>
                                 </li>
