@@ -45,16 +45,17 @@ export class Login extends React.Component {
                 if (email.value === user.email && password.value === user.password) return authorized = true;
             });
             if (authorized) {
-                this.submitUserLogin().then(resp => {
-                    if (resp.status === 200) window.location.href = '/robots';
-                }).catch(err => {
-                    const opts = {
-                        errors: {},
-                        message: 'We were unable to log you in due to server difficulties :(',
-                        title: 'We\'re sorry...'
-                    };
-                    openModal(opts);
-                });
+                return this.submitUserLogin()
+                    .then(resp => {
+                        if (resp.status === 200) window.location.href = '/robots';
+                    }).catch(err => {
+                        const opts = {
+                            errors: {},
+                            message: 'We were unable to log you in due to server difficulties :(',
+                            title: 'We\'re sorry...'
+                        };
+                        openModal(opts);
+                    });
             } else {
                 let { loginAttempts } = this.state;
                 loginAttempts++;

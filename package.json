@@ -36,6 +36,10 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "start": "nodemon ./bin/www --ignore 'public/**/*'"
+    "dev": "./node_modules/.bin/webpack -d",
+    "prod": "./node_modules/.bin/webpack -p",
+    "start": "nodemon ./bin/www --ignore 'public/**/*'",
+    "watch-dev": "./node_modules/.bin/webpack -d --watch",
+    "watch-prod": "./node_modules/.bin/webpack -p --watch"
   }
 }

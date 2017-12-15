@@ -30,8 +30,9 @@
 * Ensure you have Node and NPM installed globally on your computer of choice
 * Within your terminal or command prompt, cd into the 'robot-art' directory
 * Run `npm install` ... all dev and prod dependencies for this application will be handled for you in package.json
-* To apply any changes in the jsx or scss files, run `./node_modules/.bin/webpack -p` (alternatively you may apply the `-d` flag for debugging and source mapping)
-* To watch for front end changes on the fly, run `./node_modules/.bin/webpack [-p|-d] --watch`
+* To apply any changes in the jsx or scss files and compile via Webpack, run `npm run prod`
+  * Alternatively you may run `npm run dev` for debugging and source mapping
+* To watch for front end changes on the fly, run `npm run watch-dev` or `npm run watch-prod`
 * All source code is contained within the `src` directory
 * Any and all changes will output into the `public` directory
 
@@ -45,6 +46,7 @@
 * If you would like the Express app to watch for changes, you may install `nodemon` globally on your machine and then run `nodemon index.js` ... it's just lovely, but bewarned!
   * When the server resets, your session will reset and you will need to log back in
   * Sessions expire after one hour
+  * To run nodemon but ignore changes in the 'public' directory (especially updates to the Robots and Users json data), run `npm start`
 
 - - - -
 

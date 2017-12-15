@@ -3,6 +3,8 @@ import { RobotCard } from './modules/RobotCard.jsx';
 
 const axios = require('axios');
 
+// @TODO: MODULARIZE ALL THE FORM VALIDATION LOGIC ... TOO MUCH REPETITIVE CODE, DUDE
+
 export class Admin extends React.Component {
     constructor() {
         super();
@@ -45,27 +47,28 @@ export class Admin extends React.Component {
             const data = new FormData();
             data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
-            this.addRobot(data).then(resp => {
-                updateRobots(robots);
-                robots.push(newRobot);
-                name.value = '';
-                upload.value = '';
-                const { openModal } = this.props;
-                const opts = {
-                    errors: {},
-                    message: 'You have successfully added a new competitor, :happyrobot:',
-                    title: 'Success!'
-                };
-                openModal(opts);
-            }).catch(err => {
-                const { openModal } = this.props;
-                const opts = {
-                    errors: {},
-                    message: 'There was a server error while trying to upload the new robot.',
-                    title: 'Danger, Will Robinson, Danger!'
-                };
-                openModal(opts);
-            });
+            this.addRobot(data)
+                .then(resp => {
+                    robots.push(newRobot);
+                    updateRobots(robots);
+                    name.value = '';
+                    upload.value = '';
+                    const { openModal } = this.props;
+                    const opts = {
+                        errors: {},
+                        message: 'You have successfully added a new competitor, :happyrobot:',
+                        title: 'Success!'
+                    };
+                    openModal(opts);
+                }).catch(err => {
+                    const { openModal } = this.props;
+                    const opts = {
+                        errors: {},
+                        message: 'There was a server error while trying to upload the new robot.',
+                        title: 'Danger, Will Robinson, Danger!'
+                    };
+                    openModal(opts);
+                });
             return true;
         }
     }
@@ -75,24 +78,25 @@ export class Admin extends React.Component {
         const { robots, updateRobots } = this.props;
         const index = e.target.getAttribute('data-index');
         robots.splice(index, 1);
-        return this.postRobotData().then(resp => {
-            updateRobots(robots);
-            const { openModal } = this.props;
-            const opts = {
-                errors: {},
-                message: 'The contender was removed.',
-                title: 'Success!'
-            };
-            openModal(opts);
-        }).catch(err => {
-            const { openModal } = this.props;
-            const opts = {
-                errors: {},
-                message: 'There was a server error while trying to delete the contender.',
-                title: 'Darn...'
-            };
-            openModal(opts);
-        });
+        return this.postRobotData()
+            .then(resp => {
+                updateRobots(robots);
+                const { openModal } = this.props;
+                const opts = {
+                    errors: {},
+                    message: 'The contender was removed.',
+                    title: 'Success!'
+                };
+                openModal(opts);
+            }).catch(err => {
+                const { openModal } = this.props;
+                const opts = {
+                    errors: {},
+                    message: 'There was a server error while trying to delete the contender.',
+                    title: 'Darn...'
+                };
+                openModal(opts);
+            });
     }
 
     handleEdit(e) {
@@ -120,26 +124,27 @@ export class Admin extends React.Component {
             const data = new FormData();
             data.append('robots', JSON.stringify(newRobotsArray));
             data.append('uploadFile', upload.files[0]);
-            this.addRobot(data).then(resp => {
-                updateRobots(newRobotsArray);
-                name.value = '';
-                upload.value = '';
-                const { openModal } = this.props;
-                const opts = {
-                    errors: {},
-                    message: 'You have successfully edited the robot, :happyrobot:',
-                    title: 'Nice!'
-                };
-                openModal(opts);
-            }).catch(err => {
-                const { openModal } = this.props;
-                const opts = {
-                    errors: {},
-                    message: 'There was a server error while trying to edit the robot.',
-                    title: 'Does... Not... Compute...'
-                };
-                openModal(opts);
-            });
+            this.addRobot(data)
+                .then(resp => {
+                    updateRobots(newRobotsArray);
+                    name.value = '';
+                    upload.value = '';
+                    const { openModal } = this.props;
+                    const opts = {
+                        errors: {},
+                        message: 'You have successfully edited the robot, :happyrobot:',
+                        title: 'Nice!'
+                    };
+                    openModal(opts);
+                }).catch(err => {
+                    const { openModal } = this.props;
+                    const opts = {
+                        errors: {},
+                        message: 'There was a server error while trying to edit the robot.',
+                        title: 'Does... Not... Compute...'
+                    };
+                    openModal(opts);
+                });
             return true;
         }
     }
@@ -147,18 +152,21 @@ export class Admin extends React.Component {
     render() {
         const { errors, robots } = this.props;
         const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-tertiary.jpg" />
-        const bots = robots.map((bot, index) =>
-            <RobotCard
-                action="display"
-                handleDelete={this.handleDelete}
-                handleEdit={this.handleEdit}
-                index={index}
-                isAdmin={true}
-                key={index}
-                name={bot.name}
-                image={bot.image}
-            />
-        );
+        let bots = [];
+        if (robots.length !== 0) {
+            bots = robots.map((bot, index) =>
+                <RobotCard
+                    action="display"
+                    handleDelete={this.handleDelete}
+                    handleEdit={this.handleEdit}
+                    index={index}
+                    isAdmin={true}
+                    key={index}
+                    name={bot.name}
+                    image={bot.image}
+                />
+            );
+        }
         bots.push(
             <RobotCard
                 action="add"

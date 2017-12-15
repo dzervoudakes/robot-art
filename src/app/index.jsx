@@ -6,12 +6,15 @@ require('../sass/style.scss');
 
 const axios = require('axios');
 
+// @TODO: TRY TO CUT DOWN ON THE MODAL CALLS, THAT'S 5 LINES OF CODE FOR EACH 'OPTS' INSTANCE
+
 class RobotArt extends React.Component {
     constructor() {
         super();
         this.state = {
             errors: {
                 get: false,
+                noRobots: false,
                 post: false
             },
             modal: {
@@ -31,26 +34,29 @@ class RobotArt extends React.Component {
         this.updateRobotState = this.updateRobotState.bind(this);
     };
 
-    closeModal() {
-        let modalProps = this.state.modal;
-        modalProps.open = false;
-        this.setState({ modal: modalProps, overlayOpen: false });
+    closeModal(e) {
+        const isClickable = e.target.classList.contains('clickable');
+        if (isClickable) {
+            let modalProps = this.state.modal;
+            modalProps.open = false;
+            this.setState({ modal: modalProps, overlayOpen: false });
+        }
     };
 
     getRobotData() {
-        return axios.get('/api/robots').then(resp => {
-            const bots = resp.data;
-            const votes = this.updateVoteCounts(bots);
-            this.setState({ robots: bots, voteCounts: votes });
-        }).catch(err => {
-            console.log(err);
-            const opts = {
-                errors: { get: true },
-                message: 'There was an error grabbing the robot data from Express, :sadrobot:',
-                title: 'Oh no!'
-            };
-            this.openModal(opts);
-        });
+        return axios.get('/api/robots')
+            .then(resp => {
+                const bots = resp.data;
+                this.updateRobotState(bots);
+            }).catch(err => {
+                console.log(err);
+                const opts = {
+                    errors: { get: true },
+                    message: 'There was an error grabbing the robot data from Express, :sadrobot:',
+                    title: 'Oh no!'
+                };
+                this.openModal(opts);
+            });
     }
 
     getAllUsers(context) {
@@ -75,9 +81,11 @@ class RobotArt extends React.Component {
     }
 
     openModal(opts) {
+        const { robots } = this.state;
         const { get = false, post = false } = opts.errors;
         const errors = {
             get: get,
+            noRobots: robots.length > 0 ? false : true,
             post: post
         };
         const modalProps = {
@@ -95,7 +103,9 @@ class RobotArt extends React.Component {
 
     updateRobotState(bots) {
         const votes = this.updateVoteCounts(bots);
-        this.setState({ robots: bots, voteCounts: votes });
+        const { errors } = this.state;
+        errors.noRobots = bots.length > 0 ? false : true;
+        this.setState({ errors: errors, robots: bots, voteCounts: votes });
     }
 
     updateVoteCounts(bots) {
@@ -107,26 +117,25 @@ class RobotArt extends React.Component {
     }
 
     componentWillMount() {
-        this.getUserSession().then(resp => {
-            const userLoggedIn = resp.data.userLoggedIn;
-            this.setState({ userLoggedIn: userLoggedIn });
-            if (userLoggedIn) return this.getRobotData();
-        }).catch(err => {
-            const opts = {
-                errors: { get: true },
-                message: 'We were unable to fetch your user info from the Express server, :whyohwhy:',
-                title: 'Who am I? How did I get here?'
-            };
-            this.openModal(opts);
-        });
+        return this.getUserSession()
+            .then(resp => {
+                const userLoggedIn = resp.data.userLoggedIn;
+                this.setState({ userLoggedIn: userLoggedIn });
+                if (userLoggedIn) return this.getRobotData();
+            }).catch(err => {
+                const opts = {
+                    errors: { get: true },
+                    message: 'We were unable to fetch your user info from the Express server, :whyohwhy:',
+                    title: 'Who am I? How did I get here?'
+                };
+                this.openModal(opts);
+            });
     }
 
     render() {
         const { errors, overlayOpen, robots, userLoggedIn, voteCounts } = this.state;
         const { message, open, title } = this.state.modal;
-        const winner = voteCounts.reduce((prev, curr) => {
-            return Math.max(prev, curr);
-        });
+        const winner = voteCounts.length > 0 ? voteCounts.reduce((prev, curr) => Math.max(prev, curr)) : 0;
         return (
             <BrowserRouter basename="/">
                 <div className={`robot-art${overlayOpen ? ' overlay-open' : ''}`}>

@@ -8,11 +8,11 @@ export class RobotCardForm extends React.Component {
                 <h3 className="card-title">{text} Robot</h3>
                 <form id={formId} className="add-robot-form form">
                     <div className="form-row">
-                        <label className="form-label">Robot Name</label>
+                        <label className="form-label" htmlFor="name">Robot Name</label>
                         <input className="form-input" maxLength="50" name="name" placeholder={name} type="text" />
                     </div>
                     <div className="form-row">
-                        <label className="form-label">Robot Image</label>
+                        <label className="form-label" htmlFor="upload">Robot Image</label>
                         <input accept="image/*" className="form-input" name="upload" type="file" />
                     </div>
                     <div className="form-row">

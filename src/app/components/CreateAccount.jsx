@@ -57,17 +57,18 @@ export class CreateAccount extends React.Component {
                 }
             });
             if (!isEmailTaken) {
-                this.createAccount(email.value, name.value, password.value).then(resp => {
-                    if (resp.status === 200) window.location.href = '/robots';
-                })
-                .catch(err => {
-                    const opts = {
-                        errors: {},
-                        message: 'There was a server error when trying to create your new account.',
-                        title: 'Whoops...'
-                    };
-                    openModal(opts);
-                });
+                return this.createAccount(email.value, name.value, password.value)
+                    .then(resp => {
+                        if (resp.status === 200) window.location.href = '/robots';
+                    })
+                    .catch(err => {
+                        const opts = {
+                            errors: {},
+                            message: 'There was a server error when trying to create your new account.',
+                            title: 'Whoops...'
+                        };
+                        openModal(opts);
+                    });
             }
         }
     }
