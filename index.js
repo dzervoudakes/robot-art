@@ -1,9 +1,11 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const apiRoutes = require('./routes/api');
+
+const app = express();
+const port = process.env.port || 3000;
 
 global.__dirname = __dirname;
 
@@ -43,6 +45,6 @@ app.use((req, res) => {
     res.sendFile(path.join(__dirname, '/public/404.html'));
 });
 
-app.listen(3000, () => {
-    console.log('robot-art booted up on port 3000');
+app.listen(port, () => {
+    console.log(`robot-art booted up on port ${port}`);
 });

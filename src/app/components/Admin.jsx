@@ -3,8 +3,6 @@ import { RobotCard } from './modules/RobotCard.jsx';
 
 const axios = require('axios');
 
-// @TODO: MODULARIZE ALL THE FORM VALIDATION LOGIC ... TOO MUCH REPETITIVE CODE, DUDE
-
 export class Admin extends React.Component {
     constructor() {
         super();

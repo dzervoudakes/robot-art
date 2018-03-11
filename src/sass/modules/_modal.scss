@@ -18,7 +18,6 @@
             }
         }
         .modal-content {
-            text-align: center;
             background-color: #fff;
             box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
             margin: -155px auto;
@@ -26,6 +25,7 @@
             min-height: 280px;
             padding-bottom: 30px;
             position: relative;
+            text-align: center;
             top: 40%;
             transition: all 0.4s;
             width: 90%;

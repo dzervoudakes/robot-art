@@ -14,7 +14,7 @@ const config = {
         filename: 'js/app.min.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?/,
                 include: APP_DIR,
@@ -33,11 +33,6 @@ const config = {
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.min\.css$/,
             cssProcessorOptions: { discardComments: { removeAll: true } }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            cache: true,
-            compress: { warnings: false },
-            output: { comments: false }
         }),
         new webpack.optimize.AggressiveMergingPlugin(),
         new CompressionPlugin({

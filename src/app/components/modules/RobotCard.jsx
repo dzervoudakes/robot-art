@@ -31,29 +31,27 @@ export class RobotCard extends React.Component {
                     }
                 </div>
             );
-        } else if (action === 'add' || action === 'edit') {
-            if (action === 'add') {
-                return (
-                    <RobotCardForm
-                        formId="addRobotForm"
-                        index={index}
-                        onClick={handleAdd}
-                        text="Add"
-                    />
-                );
-            } else if (action === 'edit') {
-                return (
-                    <RobotCardForm
-                        cancel={() => { this.updateAction('display'); }}
-                        formId="editRobotForm"
-                        index={index}
-                        name={name}
-                        onClick={handleEdit}
-                        text="Edit"
-                        updateAction={this.updateAction}
-                    />
-                );
-            }
+        } else if (action === 'add') {
+            return (
+                <RobotCardForm
+                    formId="addRobotForm"
+                    index={index}
+                    onClick={handleAdd}
+                    text="Add"
+                />
+            );
+        } else if (action === 'edit') {
+            return (
+                <RobotCardForm
+                    cancel={() => { this.updateAction('display'); }}
+                    formId="editRobotForm"
+                    index={index}
+                    name={name}
+                    onClick={handleEdit}
+                    text="Edit"
+                    updateAction={this.updateAction}
+                />
+            );
         }
     }
 }

@@ -83,7 +83,7 @@ export class CreateAccount extends React.Component {
         return (
             <div className="login-container">
                 <h2 className="page-title">Create Account</h2>
-                <p id="formErrorMessage" className={`t-form-error-message${formErrors ? '' : ' hidden'}`}>Please correct the highlighted errors below.</p>
+                {formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p>}
                 <Form
                     formId="createAccountForm"
                     includeName={true}

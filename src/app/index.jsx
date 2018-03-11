@@ -6,8 +6,6 @@ require('../sass/style.scss');
 
 const axios = require('axios');
 
-// @TODO: TRY TO CUT DOWN ON THE MODAL CALLS, THAT'S 5 LINES OF CODE FOR EACH 'OPTS' INSTANCE
-
 class RobotArt extends React.Component {
     constructor() {
         super();

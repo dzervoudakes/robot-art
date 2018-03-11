@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const jsonfile = require('jsonfile');
 const formidable = require('express-formidable');
 const fs = require('fs');
+
+const router = express.Router();
 
 router.get('/', (req, res) => {
     const file = `${global.__dirname}/public/data/robots.json`;
