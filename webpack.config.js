@@ -29,7 +29,7 @@ const config = {
         ]
     },
     plugins: [
-	    new ExtractTextPlugin('css/styles.min.css', {
+        new ExtractTextPlugin('css/styles.min.css', {
             allChunks: true
         }),
         new OptimizeCssAssetsPlugin({
