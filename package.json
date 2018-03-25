@@ -3,6 +3,12 @@
 	"version": "1.0.0",
 	"description": "\"Robot Art\" Assessment for Mondo Robot, December '17",
 	"main": "index.js",
+	"scripts": {
+		"build:dev": "webpack --config ./conf/webpack.dev.js -d",
+		"build:prod": "node conf/build.js",
+		"start": "nodemon ./bin/www --ignore 'public/**/*'",
+		"watch": "webpack --config ./conf/webpack.dev.js -d --watch"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/dzervoudakes/robot-art.git"
@@ -14,11 +20,15 @@
 		"babel-loader": "^7.1.2",
 		"babel-preset-env": "^1.6.1",
 		"babel-preset-react": "^6.24.1",
-		"compression-webpack-plugin": "^1.0.1",
+		"chalk": "^2.3.2",
+		"clean-webpack-plugin": "^0.1.19",
+		"copy-webpack-plugin": "^4.5.1",
 		"css-loader": "^0.28.7",
 		"extract-text-webpack-plugin": "^3.0.0",
+		"html-webpack-plugin": "^3.1.0",
 		"node-sass": "^4.5.3",
 		"optimize-css-assets-webpack-plugin": "^3.2.0",
+		"ora": "^2.0.0",
 		"react": "^15.6.1",
 		"react-dom": "^15.6.1",
 		"react-router-dom": "^4.2.2",
@@ -36,11 +46,5 @@
 		"http": "0.0.0",
 		"jsonfile": "^4.0.0",
 		"path": "^0.12.7"
-	},
-	"scripts": {
-		"build:dev": "webpack --config ./conf/webpack.dev.js -d",
-		"build:prod": "webpack --config ./conf/webpack.prod.js -p",
-		"start": "nodemon ./bin/www --ignore 'public/**/*'",
-		"watch": "webpack --config ./conf/webpack.dev.js -d --watch"
 	}
 }
