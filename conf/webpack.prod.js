@@ -72,7 +72,11 @@ module.exports = merge(common, {
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
 			template: `${ROOT_DIR}/conf/templates/template.html`,
-			title: 'Robot Art'
+			title: 'Robot Art',
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true
+			}
 		})
 	],
 	output: {
