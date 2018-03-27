@@ -16,10 +16,17 @@ app.use(session({
 	secret: 'robot-art-secret-token',
 }));
 
-app.get(['*main.*.min.js', '*vendor.*.min.js'], (req, res, next) => {
+app.get('*.min.js', (req, res, next) => {
 	req.url = `${req.url}.gz`;
 	res.set('Content-Encoding', 'gzip');
 	res.set('Content-Type', 'text/javascript');
+	next();
+});
+
+app.get('*.min.css', (req, res, next) => {
+	req.url = `${req.url}.gz`;
+	res.set('Content-Encoding', 'gzip');
+	res.set('Content-Type', 'text/css');
 	next();
 });
 
