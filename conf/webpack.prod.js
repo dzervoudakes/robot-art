@@ -5,6 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const path = require('path');
@@ -77,6 +78,13 @@ module.exports = merge(common, {
 				removeComments: true,
 				collapseWhitespace: true
 			}
+		}),
+		new CompressionPlugin({
+			asset: '[path].gz[query]',
+			algorithm: 'gzip',
+			test: /\.js$/,
+			threshold: 10240,
+			minRatio: 0.8
 		})
 	],
 	output: {

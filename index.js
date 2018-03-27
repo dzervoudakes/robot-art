@@ -13,8 +13,15 @@ app.use(session({
 	cookie: { maxAge: 3600000 },
 	resave: false,
 	saveUninitialized: true,
-	secret: 'mondo-robot-secret-token',
+	secret: 'robot-art-secret-token',
 }));
+
+app.get(['*main.*.min.js', '*vendor.*.min.js'], (req, res, next) => {
+	req.url = `${req.url}.gz` || req.url;
+	res.set('Content-Encoding', 'gzip');
+	res.set('Content-Type', 'text/javascript');
+	next();
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
