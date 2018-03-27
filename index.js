@@ -17,7 +17,7 @@ app.use(session({
 }));
 
 app.get(['*main.*.min.js', '*vendor.*.min.js'], (req, res, next) => {
-	req.url = `${req.url}.gz` || req.url;
+	req.url = `${req.url}.gz`;
 	res.set('Content-Encoding', 'gzip');
 	res.set('Content-Type', 'text/javascript');
 	next();
