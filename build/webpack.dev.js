@@ -15,7 +15,7 @@ module.exports = merge(common, {
 		new HtmlWebpackPlugin({
 			favicon: `${BUILD_DIR}/favicon.ico`,
 			filename: 'index.html',
-			template: `${ROOT_DIR}/conf/templates/template.html`,
+			template: `${ROOT_DIR}/build/templates/template.html`,
 			title: 'Robot Art'
 		})
 	],

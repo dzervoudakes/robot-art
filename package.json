@@ -4,10 +4,10 @@
 	"description": "\"Robot Art\" Assessment for Mondo Robot, December '17",
 	"main": "index.js",
 	"scripts": {
-		"build:dev": "webpack --config ./conf/webpack.dev.js -d",
-		"build:prod": "node conf/build.js",
+		"build:dev": "webpack --config ./build/webpack.dev.js -d",
+		"build:prod": "node build/build.js",
 		"start": "nodemon ./bin/www --ignore 'public/**/*'",
-		"watch": "webpack --config ./conf/webpack.dev.js -d --watch"
+		"watch": "webpack --config ./build/webpack.dev.js -d --watch"
 	},
 	"repository": {
 		"type": "git",
