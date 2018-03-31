@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Form extends React.Component {
+class Form extends React.PureComponent {
     render() {
         const { formId, includeName, loginAttempts, submitForm } = this.props;
         return (
@@ -26,3 +26,5 @@ export class Form extends React.Component {
         );
     }
 }
+
+export default Form;

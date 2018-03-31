@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Form } from './modules/Form.jsx';
+import { Form } from '@/components';
 
 const axios = require('axios');
 
-export class Login extends React.Component {
+class Login extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false, loginAttempts: 0, unauthorized: false, users: [] };
@@ -94,3 +94,5 @@ export class Login extends React.Component {
         );
     }
 }
+
+export default Login;

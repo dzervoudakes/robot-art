@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export class Header extends React.Component {
+class Header extends React.Component {
     constructor() {
         super();
         this.state = { isMobileMenuOpen: false };
@@ -22,13 +22,11 @@ export class Header extends React.Component {
                 toggleOverlay();
             }
         };
-        const createMenuItem = (liClass, label) => {
-            return (
-                <li className={`list-item ${liClass}`}>
-                    <NavLink activeClassName="active" onClick={handleMobileMenuState} to={`/${label.toLowerCase()}`}>{label}</NavLink>
-                </li>
-            );
-        };
+        const createMenuItem = (liClass, label) => (
+			<li className={`list-item ${liClass}`}>
+				<NavLink activeClassName="active" onClick={handleMobileMenuState} to={`/${label.toLowerCase()}`}>{label}</NavLink>
+			</li>
+		);
         return (
             <header className="header">
                 <a href="/robots">
@@ -57,3 +55,5 @@ export class Header extends React.Component {
         );
     }
 }
+
+export default Header;

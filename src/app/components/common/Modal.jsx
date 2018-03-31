@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Modal extends React.Component {
+class Modal extends React.PureComponent {
     render() {
         const { onClick, open, message, title } = this.props;
         return (
@@ -14,3 +14,5 @@ export class Modal extends React.Component {
         );
     }
 }
+
+export default Modal;

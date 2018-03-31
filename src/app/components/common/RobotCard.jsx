@@ -1,7 +1,7 @@
 import React from 'react';
-import { RobotCardForm } from './includes/RobotCardForm.jsx';
+import RobotCardForm from './modules';
 
-export class RobotCard extends React.Component {
+class RobotCard extends React.Component {
     constructor(props) {
         super();
         this.state = { action: props.action };
@@ -14,7 +14,17 @@ export class RobotCard extends React.Component {
 
     render() {
         const { action } = this.state;
-        const { handleAdd, handleEdit, handleDelete, image, index, isAdmin, name, updateaction, updateVotes } = this.props;
+        const {
+			handleAdd,
+			handleEdit,
+			handleDelete,
+			image,
+			index,
+			isAdmin,
+			name,
+			updateaction,
+			updateVotes
+		} = this.props;
         if (action === 'display') {
             return (
                 <div className="robot-card">
@@ -55,3 +65,5 @@ export class RobotCard extends React.Component {
         }
     }
 }
+
+export default RobotCard;

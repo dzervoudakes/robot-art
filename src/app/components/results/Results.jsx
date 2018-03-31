@@ -1,7 +1,7 @@
 import React from 'react';
-import { Result } from './modules/Result.jsx';
+import Result from './Result';
 
-export class Results extends React.Component {
+class Results extends React.Component {
     render() {
         const { errors, robots, winner } = this.props;
         const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-secondary.jpg" />
@@ -17,9 +17,10 @@ export class Results extends React.Component {
                     winner={winner}
                 />
             );
-        }
-        return (
-            <div className="results-container">{errors.get || errors.noRobots ? errImg : results}</div>
-        );
+		}
+		const markup = errors.get || errors.noRobots ? errImg : results;
+        return <div className="results-container">{markup}</div>;
     }
 }
+
+export default Results;

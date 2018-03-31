@@ -1,9 +1,9 @@
 import React from 'react';
-import { RobotCard } from './modules/RobotCard.jsx';
+import { RobotCard } from '@/components';
 
 const axios = require('axios');
 
-export class Robots extends React.Component {
+class Robots extends React.PureComponent {
     constructor() {
         super();
         this.updateVotes = this.updateVotes.bind(this);
@@ -55,9 +55,10 @@ export class Robots extends React.Component {
                     image={bot.image}
                 />
             );
-        }
-        return (
-            <div className="robots-container">{errors.get || errors.noRobots ? errImg : bots}</div>
-        );
+		}
+		const markup = errors.get || errors.noRobots ? errImg : bots;
+        return <div className="robots-container">{markup}</div>;
     }
 }
+
+export default Robots;

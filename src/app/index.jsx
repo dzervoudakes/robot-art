@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { Admin, CreateAccount, Header, Login, Modal, Robots, Results } from './components';
-import '../sass/style.scss';
+import '../sass/style';
 
 const axios = require('axios');
 
-class RobotArt extends React.Component {
+class Main extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -193,6 +193,6 @@ class RobotArt extends React.Component {
 }
 
 ReactDOM.render(
-    <RobotArt />,
+    <Main />,
     document.getElementById('app')
 );

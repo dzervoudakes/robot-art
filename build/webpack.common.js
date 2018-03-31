@@ -17,5 +17,9 @@ module.exports = {
 				loader: ExtractTextPlugin.extract('css-loader!sass-loader')
 			}
 		]
+	},
+	resolve: {
+		extensions: ['.js', '.jsx', '.scss'],
+		alias: { '@': APP_DIR }
 	}
 };

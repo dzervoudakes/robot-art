@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form } from './modules/Form.jsx';
+import { Form } from '@/components';
 
 const axios = require('axios');
 
-export class CreateAccount extends React.Component {
+class CreateAccount extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false, users: [] };
@@ -93,3 +93,5 @@ export class CreateAccount extends React.Component {
         );
     }
 }
+
+export default CreateAccount;

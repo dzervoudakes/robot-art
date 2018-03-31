@@ -1,17 +1,19 @@
-import { Admin } from './Admin.jsx';
-import { CreateAccount } from './CreateAccount.jsx';
-import { Header } from './Header.jsx';
-import { Login } from './Login.jsx';
-import { Modal } from './Modal.jsx';
-import { Results } from './Results.jsx';
-import { Robots } from './Robots.jsx';
+import Admin from './admin';
+import CreateAccount from './createAccount';
+import Header from './header';
+import Login from './login';
+import Results from './results';
+import Robots from './robots';
+import Modal, { Form, RobotCard } from './common';
 
 export {
     Admin,
     CreateAccount,
     Header,
     Login,
-    Modal,
     Results,
-    Robots
+	Robots,
+	Modal,
+	Form,
+	RobotCard
 };

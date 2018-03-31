@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class RobotCardForm extends React.Component {
+class RobotCardForm extends React.PureComponent {
     render() {
         const { cancel, formId, index, name = '', onClick, text, updateAction } = this.props;
         return (
@@ -24,3 +24,5 @@ export class RobotCardForm extends React.Component {
         );
     }
 }
+
+export default RobotCardForm;

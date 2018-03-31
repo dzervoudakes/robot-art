@@ -1,9 +1,9 @@
 import React from 'react';
-import { RobotCard } from './modules/RobotCard.jsx';
+import { RobotCard } from '@/components';
 
 const axios = require('axios');
 
-export class Admin extends React.Component {
+class Admin extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false };
@@ -180,3 +180,5 @@ export class Admin extends React.Component {
         );
     }
 }
+
+export default Admin;
