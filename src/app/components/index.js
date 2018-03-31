@@ -4,7 +4,7 @@ import Header from './header';
 import Login from './login';
 import Results from './results';
 import Robots from './robots';
-import Modal, { Form, RobotCard } from './common';
+import Routes, { Form, Modal, RobotCard } from './common';
 
 export {
     Admin,
@@ -13,7 +13,8 @@ export {
     Login,
     Results,
 	Robots,
-	Modal,
+	Routes,
 	Form,
+	Modal,
 	RobotCard
 };

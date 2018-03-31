@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import { Admin, CreateAccount, Header, Login, Modal, Robots, Results } from './components';
+import { Header, Modal, Routes } from './components';
 import '../sass/style';
 
 const axios = require('axios');
@@ -142,43 +142,14 @@ class Main extends React.Component {
                         userLoggedIn={userLoggedIn}
                     />
                     <main className="main-content">
-                        <Switch>
-                            <Route path="/admin">
-                                <Admin
-                                    errors={errors}
-                                    openModal={this.openModal}
-                                    robots={robots}
-                                    updateRobots={this.updateRobotState}
-                                />
-                            </Route>
-                            <Route path="/create-account">
-                                <CreateAccount
-                                    getAllUsers={this.getAllUsers}
-                                    openModal={this.openModal}
-                                />
-                            </Route>
-                            <Route exact path="/">
-                                <Login
-                                    getAllUsers={this.getAllUsers}
-                                    openModal={this.openModal}
-                                />
-                            </Route>
-                            <Route path="/results">
-                                <Results
-                                    errors={errors}
-                                    robots={robots}
-                                    winner={winner}
-                                />
-                            </Route>
-                            <Route path="/robots">
-                                <Robots
-                                    errors={errors}
-                                    openModal={this.openModal}
-                                    robots={robots}
-                                    updateRobots={this.updateRobotState}
-                                />
-                            </Route>
-                        </Switch>
+                        <Routes
+							errors={errors}
+							getAllUsers={this.getAllUsers}
+							openModal={this.openModal}
+							robots={robots}
+							updateRobotState={this.updateRobotState}
+							winner={winner}
+						/>
                     </main>
                     <Modal
                         onClick={this.closeModal}
