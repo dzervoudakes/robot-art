@@ -1,7 +1,7 @@
 import React from 'react';
 import Result from './Result';
 
-class Results extends React.Component {
+class Results extends React.PureComponent {
     render() {
         const { errors, robots, winner } = this.props;
         const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-secondary.jpg" />

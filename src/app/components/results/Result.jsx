@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Result extends React.Component {
+class Result extends React.PureComponent {
     render() {
         const { image, votes, winner } = this.props;
         const width = votes > 0 ? `${(votes / winner) * 100}%` : '1px';
