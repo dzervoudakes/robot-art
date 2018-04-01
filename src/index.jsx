@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { Header, Modal, Routes } from './components';
-import '../sass/style';
+import './sass/style';
 
 const axios = require('axios');
 
