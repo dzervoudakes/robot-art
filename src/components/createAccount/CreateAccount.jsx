@@ -1,7 +1,6 @@
 import React from 'react';
+import axios from 'axios';
 import { Form } from '@/components';
-
-const axios = require('axios');
 
 class CreateAccount extends React.Component {
     constructor() {

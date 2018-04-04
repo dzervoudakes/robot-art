@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { Header, Modal, Routes } from './components';
 import './sass/style';
-
-const axios = require('axios');
 
 class Main extends React.Component {
     constructor() {

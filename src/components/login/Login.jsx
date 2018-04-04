@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 import { Form } from '@/components';
-
-const axios = require('axios');
 
 class Login extends React.Component {
     constructor() {

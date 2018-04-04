@@ -1,7 +1,6 @@
 import React from 'react';
+import axios from 'axios';
 import { RobotCard } from '@/components';
-
-const axios = require('axios');
 
 class Admin extends React.Component {
     constructor() {
