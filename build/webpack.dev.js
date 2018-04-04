@@ -19,6 +19,9 @@ module.exports = merge(common, {
 			title: 'Robot Art'
 		})
 	],
+	watchOptions: {
+		ignored: [BUILD_DIR]
+	},
 	output: {
 		path: BUILD_DIR,
 		filename: 'js/app.js'
