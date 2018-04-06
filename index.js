@@ -16,7 +16,7 @@ app.use(session({
 	secret: 'robot-art-secret-token',
 }));
 
-app.get(/vendor\.(.*)\.min.js/, (req, res, next) => {
+app.get(/vendor\.(.*)\.min\.js/, (req, res, next) => {
 	req.url = `${req.url}.gz`;
 	res.set('Content-Encoding', 'gzip');
 	res.set('Content-Type', 'text/javascript');

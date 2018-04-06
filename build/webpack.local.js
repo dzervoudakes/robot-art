@@ -4,7 +4,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const path = require('path');
 
-const BUILD_DIR = path.join(__dirname, '../public');
+const BUILD_DIR = path.resolve(__dirname, '../public');
 const ROOT_DIR = path.resolve(__dirname, '../');
 
 module.exports = merge(common, {
@@ -24,6 +24,6 @@ module.exports = merge(common, {
 	},
 	output: {
 		path: BUILD_DIR,
-		filename: 'js/app.js'
+		filename: 'js/[name].js'
 	}
 });
