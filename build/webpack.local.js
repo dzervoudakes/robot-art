@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
@@ -9,6 +10,9 @@ const ROOT_DIR = path.resolve(__dirname, '../');
 
 module.exports = merge(common, {
 	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('development')
+		}),
 		new ExtractTextPlugin('css/styles.css', {
 			allChunks: true
 		}),

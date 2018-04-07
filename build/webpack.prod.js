@@ -17,11 +17,11 @@ const ROOT_DIR = path.resolve(__dirname, '../');
 module.exports = merge(common, {
 	devtool: 'source-map',
 	plugins: [
-		new CleanWebpackPlugin(['dist'], {
-			root: ROOT_DIR
-		}),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production')
+		}),
+		new CleanWebpackPlugin(['dist'], {
+			root: ROOT_DIR
 		}),
 		new ExtractTextPlugin('css/styles.min.css', {
 			allChunks: true
