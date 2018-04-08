@@ -23,7 +23,7 @@ module.exports = merge(common, {
 		new CleanWebpackPlugin(['dist'], {
 			root: ROOT_DIR
 		}),
-		new ExtractTextPlugin('css/styles.min.css', {
+		new ExtractTextPlugin('css/styles.[hash:8].min.css', {
 			allChunks: true
 		}),
 		new OptimizeCssAssetsPlugin({
