@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { Admin, CreateAccount, Login, Results, Robots } from '@/components';
 
@@ -41,5 +42,14 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 		</Route>
 	</Switch>
 );
+
+Routes.propTypes = {
+	errors: PropTypes.object.isRequired,
+	getAllUsers: PropTypes.func.isRequired,
+	openModal: PropTypes.func.isRequired,
+	robots: PropTypes.array.isRequired,
+	updateRobotState: PropTypes.func.isRequired,
+	winner: PropTypes.number.isRequired
+};
 
 export default Routes;

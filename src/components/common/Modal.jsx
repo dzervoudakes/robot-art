@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Modal = ({ onClick, open, message, title }) => (
 	<div className={`modal-container clickable${open ? ' open' : ''}`} onClick={onClick}>
@@ -9,5 +10,12 @@ const Modal = ({ onClick, open, message, title }) => (
 		</div>
 	</div>
 );
+
+Modal.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	open: PropTypes.bool.isRequired,
+	message: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired
+};
 
 export default Modal;

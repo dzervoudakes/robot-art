@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Result = ({ image, votes, winner }) => {
 	const width = votes > 0 ? `${(votes / winner) * 100}%` : '1px';
@@ -20,6 +21,12 @@ const Result = ({ image, votes, winner }) => {
 			</tbody>
 		</table>
 	);
+};
+
+Result.propTypes = {
+	image: PropTypes.string.isRequired,
+	votes: PropTypes.number.isRequired,
+	winner: PropTypes.number.isRequired
 };
 
 export default Result;

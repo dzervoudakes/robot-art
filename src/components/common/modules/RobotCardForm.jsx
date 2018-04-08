@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RobotCardForm = ({ cancel, formId, index, name = '', onClick, text, updateAction }) => (
 	<div className="robot-card">
@@ -19,5 +20,15 @@ const RobotCardForm = ({ cancel, formId, index, name = '', onClick, text, update
 		</form>
 	</div>
 );
+
+RobotCardForm.propTypes = {
+	formId: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
+	text: PropTypes.string.isRequired,
+	cancel: PropTypes.func,
+	index: PropTypes.number,
+	updateAction: PropTypes.func,
+	name: PropTypes.string
+};
 
 export default RobotCardForm;

@@ -29,12 +29,12 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.get(['/', '/admin', '/create-account', '/results', '/robots'], (req, res) => {
 	const sessData = req.session;
-	if (sessData.userLoggedIn !== true && req.url !== '/create-account') return res.redirect('/');
+	if (sessData.isUserLoggedIn !== true && req.url !== '/create-account') return res.redirect('/');
 	res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 app.get('/account/logout', (req, res) => {
-	req.session.userLoggedIn = false;
+	req.session.isUserLoggedIn = false;
 	res.redirect('/');
 });
 

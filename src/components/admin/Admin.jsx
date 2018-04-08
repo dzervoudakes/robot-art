@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { RobotCard } from '@/components';
 
@@ -16,7 +17,8 @@ class Admin extends React.Component {
     }
 
     postRobotData() {
-        const opts = { robots: this.props.robots };
+		const { robots } = this.props;
+        const opts = { robots: robots };
         return axios.post('/api/robots', opts);
     }
 
@@ -179,5 +181,12 @@ class Admin extends React.Component {
         );
     }
 }
+
+Admin.propTypes = {
+	robots: PropTypes.array.isRequired,
+	updateRobots: PropTypes.func.isRequired,
+	openModal: PropTypes.func.isRequired,
+	errors: PropTypes.object.isRequired
+};
 
 export default Admin;

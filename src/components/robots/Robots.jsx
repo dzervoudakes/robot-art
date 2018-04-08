@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { RobotCard } from '@/components';
 
@@ -9,7 +10,8 @@ class Robots extends React.PureComponent {
     }
 
     postRobotData() {
-        const opts = { robots: this.props.robots };
+		const { robots } = this.props;
+        const opts = { robots: robots };
         return axios.post('/api/robots', opts);
     }
 
@@ -59,5 +61,12 @@ class Robots extends React.PureComponent {
         return <div className="robots-container">{markup}</div>;
     }
 }
+
+Robots.propTypes = {
+	robots: PropTypes.array.isRequired,
+	updateRobots: PropTypes.func.isRequired,
+	openModal: PropTypes.func.isRequired,
+	errors: PropTypes.object.isRequired
+};
 
 export default Robots;

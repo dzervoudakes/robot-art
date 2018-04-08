@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RobotCardForm from './modules';
 
 class RobotCard extends React.Component {
@@ -65,5 +66,18 @@ class RobotCard extends React.Component {
         }
     }
 }
+
+RobotCard.propTypes = {
+	action: PropTypes.string.isRequired,
+	image: PropTypes.string,
+	index: PropTypes.number,
+	isAdmin: PropTypes.bool,
+	name: PropTypes.string,
+	updateVotes: PropTypes.func,
+	handleAdd: PropTypes.func,
+	handleEdit: PropTypes.func,
+	handleDelete: PropTypes.func,
+	updateAction: PropTypes.func
+};
 
 export default RobotCard;

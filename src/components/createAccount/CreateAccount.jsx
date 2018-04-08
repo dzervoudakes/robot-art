@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Form } from '@/components';
 
@@ -92,5 +93,10 @@ class CreateAccount extends React.Component {
         );
     }
 }
+
+CreateAccount.propTypes = {
+	openModal: PropTypes.func.isRequired,
+	getAllUsers: PropTypes.func.isRequired
+};
 
 export default CreateAccount;

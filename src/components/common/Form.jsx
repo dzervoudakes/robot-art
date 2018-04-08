@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Form = ({ formId, includeName, loginAttempts, submitForm }) => (
+const Form = ({ formId, includeName = false, loginAttempts = 0, submitForm }) => (
 	<form id={formId} className="form">
 		{includeName && 
 			<div className="form-row">
@@ -21,5 +22,12 @@ const Form = ({ formId, includeName, loginAttempts, submitForm }) => (
 		</div>
 	</form>
 );
+
+Form.propTypes = {
+	formId: PropTypes.string.isRequired,
+	submitForm: PropTypes.func.isRequired,
+	loginAttempts: PropTypes.number,
+	includeName: PropTypes.bool
+};
 
 export default Form;

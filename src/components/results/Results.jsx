@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Result from './Result';
 
 const Results = ({ errors, robots, winner }) => {
@@ -18,6 +19,12 @@ const Results = ({ errors, robots, winner }) => {
 	}
 	const markup = errors.get || errors.noRobots ? errImg : results;
 	return <div className="results-container">{markup}</div>;
+};
+
+Results.propTypes = {
+	errors: PropTypes.object.isRequired,
+	robots: PropTypes.array.isRequired,
+	winner: PropTypes.number.isRequired
 };
 
 export default Results;

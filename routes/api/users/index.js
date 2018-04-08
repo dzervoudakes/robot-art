@@ -14,19 +14,19 @@ router.get('/', (req, res) => {
 			}
 		});
 	} else {
-		res.send({ userLoggedIn: req.session.userLoggedIn });
+		res.send({ isUserLoggedIn: req.session.isUserLoggedIn });
 	}
 });
 
 router.post('/', (req, res) => {
 	const file = `${global.__dirname}/public/data/users.json`;
 	if (req.body.action === 'login') {
-		req.session.userLoggedIn = req.body.loggedIn;
+		req.session.isUserLoggedIn = req.body.loggedIn;
 		res.sendStatus(200);
 	} else if (req.body.action === 'create_account') {
 		jsonfile.writeFile(file, req.body.users, err => {
 			if (!err) {
-				req.session.userLoggedIn = true;
+				req.session.isUserLoggedIn = true;
 				res.sendStatus(200);
 			} else {
 				console.log(err);

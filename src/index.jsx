@@ -21,7 +21,7 @@ class Main extends React.Component {
             },
             overlayOpen: false,
             robots: [],
-            userLoggedIn: false,
+            isUserLoggedIn: false,
             voteCounts: [0]
         };
         this.closeModal = this.closeModal.bind(this);
@@ -116,9 +116,9 @@ class Main extends React.Component {
     componentWillMount() {
         return this.getUserSession()
             .then(resp => {
-                const userLoggedIn = resp.data.userLoggedIn;
-                this.setState({ userLoggedIn: userLoggedIn });
-                if (userLoggedIn) return this.getRobotData();
+				const { isUserLoggedIn = false } = resp.data;
+                this.setState({ isUserLoggedIn: isUserLoggedIn });
+                if (isUserLoggedIn) return this.getRobotData();
             }).catch(err => {
                 const opts = {
                     errors: { get: true },
@@ -130,7 +130,7 @@ class Main extends React.Component {
     }
 
     render() {
-        const { errors, overlayOpen, robots, userLoggedIn, voteCounts } = this.state;
+        const { errors, overlayOpen, robots, isUserLoggedIn, voteCounts } = this.state;
         const { message, open, title } = this.state.modal;
         const winner = voteCounts.length > 0 ? voteCounts.reduce((prev, curr) => Math.max(prev, curr)) : 0;
         return (
@@ -138,7 +138,7 @@ class Main extends React.Component {
                 <div className={`robot-art${overlayOpen ? ' overlay-open' : ''}`}>
                     <Header
                         toggleOverlay={this.toggleOverlay}
-                        userLoggedIn={userLoggedIn}
+                        isUserLoggedIn={isUserLoggedIn}
                     />
                     <main className="main-content">
                         <Routes

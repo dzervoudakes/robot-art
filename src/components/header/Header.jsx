@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
@@ -14,7 +15,7 @@ class Header extends React.Component {
     }
     
     render() {
-        const { toggleOverlay, userLoggedIn } = this.props;
+        const { toggleOverlay, isUserLoggedIn } = this.props;
         const { isMobileMenuOpen:open } = this.state;
         const handleMobileMenuState = () => {
             if (window.innerWidth <= 480) {
@@ -34,13 +35,13 @@ class Header extends React.Component {
                 </a>
                 <nav className={`navigation${open ? ' open' : ''}`}>
                     <ul className="menu">
-                        {userLoggedIn && createMenuItem('primary', 'Robots')}
-                        {userLoggedIn && createMenuItem('primary', 'Results')}
+                        {isUserLoggedIn && createMenuItem('primary', 'Robots')}
+                        {isUserLoggedIn && createMenuItem('primary', 'Results')}
                         <li className="secondary-list-item-container">
                             <ul>
-                                {userLoggedIn && createMenuItem('secondary', 'Admin')}
+                                {isUserLoggedIn && createMenuItem('secondary', 'Admin')}
                                 <li className="list-item secondary">
-                                    <a href={userLoggedIn ? '/account/logout' : '/'} onClick={handleMobileMenuState}>{userLoggedIn ? 'Logout' : 'Login'}</a>
+                                    <a href={isUserLoggedIn ? '/account/logout' : '/'} onClick={handleMobileMenuState}>{isUserLoggedIn ? 'Logout' : 'Login'}</a>
                                 </li>
                             </ul>
                         </li>
@@ -55,5 +56,10 @@ class Header extends React.Component {
         );
     }
 }
+
+Header.propTypes = {
+	toggleOverlay: PropTypes.func.isRequired,
+	isUserLoggedIn: PropTypes.bool.isRequired
+};
 
 export default Header;
