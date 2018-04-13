@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { RobotCard } from '@/components';
 
+const propTypes = {
+	robots: PropTypes.array.isRequired,
+	updateRobots: PropTypes.func.isRequired,
+	openModal: PropTypes.func.isRequired,
+	errors: PropTypes.object.isRequired
+};
+
 class Admin extends React.Component {
     constructor() {
         super();
@@ -182,11 +189,6 @@ class Admin extends React.Component {
     }
 }
 
-Admin.propTypes = {
-	robots: PropTypes.array.isRequired,
-	updateRobots: PropTypes.func.isRequired,
-	openModal: PropTypes.func.isRequired,
-	errors: PropTypes.object.isRequired
-};
+Admin.propTypes = propTypes;
 
 export default Admin;

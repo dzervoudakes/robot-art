@@ -4,7 +4,8 @@ import Header from './header';
 import Login from './login';
 import Results from './results';
 import Robots from './robots';
-import Routes, { Form, Modal, RobotCard } from './common';
+import Routes from './routes';
+import { Form, Modal, RobotCard } from './common';
 
 export {
     Admin,

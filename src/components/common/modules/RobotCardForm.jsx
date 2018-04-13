@@ -1,6 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const propTypes = {
+	formId: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
+	text: PropTypes.string.isRequired,
+	cancel: PropTypes.func,
+	index: PropTypes.number,
+	updateAction: PropTypes.func,
+	name: PropTypes.string
+};
+
 const RobotCardForm = ({ cancel, formId, index, name = '', onClick, text, updateAction }) => (
 	<div className="robot-card">
 		<h3 className="card-title">{text} Robot</h3>
@@ -21,14 +31,6 @@ const RobotCardForm = ({ cancel, formId, index, name = '', onClick, text, update
 	</div>
 );
 
-RobotCardForm.propTypes = {
-	formId: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired,
-	text: PropTypes.string.isRequired,
-	cancel: PropTypes.func,
-	index: PropTypes.number,
-	updateAction: PropTypes.func,
-	name: PropTypes.string
-};
+RobotCardForm.propTypes = propTypes;
 
 export default RobotCardForm;

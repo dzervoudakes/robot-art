@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 	});
 });
 
+// @TODO: '/update' ???
 router.post('/', (req, res) => {
 	const file = `${global.__dirname}/public/data/robots.json`;
 	jsonfile.writeFile(file, req.body.robots, err => {

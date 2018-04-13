@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Form } from '@/components';
 
+const propTypes = {
+	openModal: PropTypes.func.isRequired,
+	getAllUsers: PropTypes.func.isRequired
+};
+
 class CreateAccount extends React.Component {
     constructor() {
         super();
@@ -94,9 +99,6 @@ class CreateAccount extends React.Component {
     }
 }
 
-CreateAccount.propTypes = {
-	openModal: PropTypes.func.isRequired,
-	getAllUsers: PropTypes.func.isRequired
-};
+CreateAccount.propTypes = propTypes;
 
 export default CreateAccount;

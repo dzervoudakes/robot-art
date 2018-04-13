@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { RobotCard } from '@/components';
 
+const propTypes = {
+	robots: PropTypes.array.isRequired,
+	updateRobots: PropTypes.func.isRequired,
+	openModal: PropTypes.func.isRequired,
+	errors: PropTypes.object.isRequired
+};
+
 class Robots extends React.PureComponent {
     constructor() {
         super();
@@ -62,11 +69,6 @@ class Robots extends React.PureComponent {
     }
 }
 
-Robots.propTypes = {
-	robots: PropTypes.array.isRequired,
-	updateRobots: PropTypes.func.isRequired,
-	openModal: PropTypes.func.isRequired,
-	errors: PropTypes.object.isRequired
-};
+Robots.propTypes = propTypes;
 
 export default Robots;

@@ -2,6 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Result from './Result';
 
+const propTypes = {
+	errors: PropTypes.object.isRequired,
+	robots: PropTypes.array.isRequired,
+	winner: PropTypes.number.isRequired
+};
+
 const Results = ({ errors, robots, winner }) => {
 	const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-secondary.jpg" />
 	const newRobotsArray = robots.slice(0);
@@ -21,10 +27,6 @@ const Results = ({ errors, robots, winner }) => {
 	return <div className="results-container">{markup}</div>;
 };
 
-Results.propTypes = {
-	errors: PropTypes.object.isRequired,
-	robots: PropTypes.array.isRequired,
-	winner: PropTypes.number.isRequired
-};
+Results.propTypes = propTypes;
 
 export default Results;

@@ -5,6 +5,8 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { Header, Modal, Routes } from './components';
 import './sass/style';
 
+// @TODO: WAY TOO LARGE ... MAKE THIS SMALLER!
+
 class Main extends React.Component {
     constructor() {
         super();

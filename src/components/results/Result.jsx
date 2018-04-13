@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const propTypes = {
+	image: PropTypes.string.isRequired,
+	votes: PropTypes.number.isRequired,
+	winner: PropTypes.number.isRequired
+};
+
 const Result = ({ image, votes, winner }) => {
 	const width = votes > 0 ? `${(votes / winner) * 100}%` : '1px';
 	const percentageBarStyles = { width: width };
@@ -23,10 +29,6 @@ const Result = ({ image, votes, winner }) => {
 	);
 };
 
-Result.propTypes = {
-	image: PropTypes.string.isRequired,
-	votes: PropTypes.number.isRequired,
-	winner: PropTypes.number.isRequired
-};
+Result.propTypes = propTypes;
 
 export default Result;

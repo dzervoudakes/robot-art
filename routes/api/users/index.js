@@ -3,6 +3,7 @@ const jsonfile = require('jsonfile');
 
 const router = express.Router();
 
+// @TODO: REMOVE THE CONDITIONAL SOMEHOW
 router.get('/', (req, res) => {
 	const file = `${global.__dirname}/public/data/users.json`;
 	if (req.query.full) {
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
 	}
 });
 
+// @TODO: REMOVE THE CONDITIONAL, '/login' and '/create-account' in the path
 router.post('/', (req, res) => {
 	const file = `${global.__dirname}/public/data/users.json`;
 	if (req.body.action === 'login') {

@@ -4,6 +4,11 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { Form } from '@/components';
 
+const propTypes = {
+	openModal: PropTypes.func.isRequired,
+	getAllUsers: PropTypes.func.isRequired
+};
+
 class Login extends React.Component {
     constructor() {
         super();
@@ -95,9 +100,6 @@ class Login extends React.Component {
     }
 }
 
-Login.propTypes = {
-	openModal: PropTypes.func.isRequired,
-	getAllUsers: PropTypes.func.isRequired
-};
+Login.propTypes = propTypes;
 
 export default Login;

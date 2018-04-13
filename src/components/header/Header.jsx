@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
+const propTypes = {
+	toggleOverlay: PropTypes.func.isRequired,
+	isUserLoggedIn: PropTypes.bool.isRequired
+};
+
 class Header extends React.Component {
     constructor() {
         super();
@@ -57,9 +62,6 @@ class Header extends React.Component {
     }
 }
 
-Header.propTypes = {
-	toggleOverlay: PropTypes.func.isRequired,
-	isUserLoggedIn: PropTypes.bool.isRequired
-};
+Header.propTypes = propTypes;
 
 export default Header;
