@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { RobotCard } from '@/components';
+import { RobotCard } from '../common';
 
 const propTypes = {
 	robots: PropTypes.array.isRequired,
@@ -11,18 +11,13 @@ const propTypes = {
 };
 
 class Robots extends React.PureComponent {
-    constructor() {
-        super();
-        this.updateVotes = this.updateVotes.bind(this);
-    }
-
     postRobotData() {
 		const { robots } = this.props;
         const opts = { robots: robots };
         return axios.post('/api/robots', opts);
     }
 
-    updateVotes(e) {
+    updateVotes = e => {
         const target = e.target;
         if (!target.classList.contains('disabled')) {
             const { robots, updateRobots } = this.props;

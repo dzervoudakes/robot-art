@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import { Form } from '@/components';
+import { Form } from '../common';
 
 const propTypes = {
 	openModal: PropTypes.func.isRequired,
@@ -12,11 +12,14 @@ const propTypes = {
 class Login extends React.Component {
     constructor() {
         super();
-        this.state = { formErrors: false, loginAttempts: 0, unauthorized: false, users: [] };
-        this.submitForm = this.submitForm.bind(this);
+        this.state = {
+			formErrors: false,
+			loginAttempts: 0,
+			users: []
+		};
     }
 
-    submitForm(e) {
+    submitForm = e => {
         e.preventDefault();
         const { loginAttempts } = this.state;
         if (loginAttempts < 3) {

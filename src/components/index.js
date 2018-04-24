@@ -1,21 +1,3 @@
-import Admin from './admin';
-import CreateAccount from './createAccount';
-import Header from './header';
-import Login from './login';
-import Results from './results';
-import Robots from './robots';
-import Routes from './routes';
-import { Form, Modal, RobotCard } from './common';
+import App from './App';
 
-export {
-    Admin,
-    CreateAccount,
-    Header,
-    Login,
-    Results,
-	Robots,
-	Routes,
-	Form,
-	Modal,
-	RobotCard
-};
+export default App;

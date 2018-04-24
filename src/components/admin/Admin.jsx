@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { RobotCard } from '@/components';
+import { RobotCard } from '../common';
 
 const propTypes = {
 	robots: PropTypes.array.isRequired,
@@ -14,9 +14,6 @@ class Admin extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false };
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
     }
 
     addRobot(data) {
@@ -29,7 +26,7 @@ class Admin extends React.Component {
         return axios.post('/api/robots', opts);
     }
 
-    handleAdd(e) {
+    handleAdd = e => {
         e.preventDefault();
         let hasErrors = false;
         const { name, upload } = document.forms.addRobotForm;
@@ -79,7 +76,7 @@ class Admin extends React.Component {
         }
     }
 
-    handleDelete(e) {
+    handleDelete = e => {
         e.preventDefault();
         const { robots, updateRobots } = this.props;
         const index = e.target.getAttribute('data-index');
@@ -105,7 +102,7 @@ class Admin extends React.Component {
             });
     }
 
-    handleEdit(e) {
+    handleEdit = e => {
         e.preventDefault();
         const { robots } = this.props;
         const index = e.target.getAttribute('data-index');

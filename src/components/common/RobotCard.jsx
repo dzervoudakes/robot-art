@@ -19,10 +19,9 @@ class RobotCard extends React.Component {
     constructor(props) {
         super();
         this.state = { action: props.action };
-        this.updateAction = this.updateAction.bind(this);
     }
 
-    updateAction(action) {
+    updateAction = action => {
         this.setState({ action: action });
     }
 

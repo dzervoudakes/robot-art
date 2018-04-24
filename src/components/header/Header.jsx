@@ -11,10 +11,9 @@ class Header extends React.Component {
     constructor() {
         super();
         this.state = { isMobileMenuOpen: false };
-        this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     }
 
-    toggleMobileMenu() {
+    toggleMobileMenu = () => {
         const { isMobileMenuOpen:open } = this.state;
         this.setState({ isMobileMenuOpen: open ? false : true });
     }

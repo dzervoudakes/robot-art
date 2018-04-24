@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Form } from '@/components';
+import { Form } from '../common';
 
 const propTypes = {
 	openModal: PropTypes.func.isRequired,
@@ -12,7 +12,6 @@ class CreateAccount extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false, users: [] };
-        this.submitForm = this.submitForm.bind(this);
     }
 
     createAccount(email, name, password) {
@@ -28,7 +27,7 @@ class CreateAccount extends React.Component {
         return axios.post('/api/users', opts);
     }
 
-    submitForm(e) {
+    submitForm = e => {
         e.preventDefault();
         const { email, name, password } = document.forms.createAccountForm;
         this.validateAndSend(email, name, password);

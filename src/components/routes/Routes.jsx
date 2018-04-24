@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import { Admin, CreateAccount, Login, Results, Robots } from '@/components';
+import Admin from '../admin';
+import CreateAccount from '../account';
+import Login from '../login';
+import Results from '../results';
+import Robots from '../robots';
 
 const propTypes = {
 	errors: PropTypes.object.isRequired,
