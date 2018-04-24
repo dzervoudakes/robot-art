@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import Admin from '../admin';
-import CreateAccount from '../account';
-import Login from '../login';
-import Results from '../results';
-import Robots from '../robots';
+import Admin from '@/components/admin';
+import NewAccount from '@/components/account';
+import Login from '@/components/login';
+import Results from '@/components/results';
+import Robots from '@/components/robots';
 
 const propTypes = {
 	errors: PropTypes.object.isRequired,
@@ -27,7 +27,7 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 			/>
 		</Route>
 		<Route path="/create-account">
-			<CreateAccount
+			<NewAccount
 				getAllUsers={getAllUsers}
 				openModal={openModal}
 			/>

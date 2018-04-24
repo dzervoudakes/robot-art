@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Form } from '../common';
+import { Form } from '@/components/common';
 
 const propTypes = {
 	openModal: PropTypes.func.isRequired,
 	getAllUsers: PropTypes.func.isRequired
 };
 
-class CreateAccount extends React.Component {
+class NewAccount extends React.Component {
     constructor() {
         super();
         this.state = { formErrors: false, users: [] };
@@ -98,6 +98,6 @@ class CreateAccount extends React.Component {
     }
 }
 
-CreateAccount.propTypes = propTypes;
+NewAccount.propTypes = propTypes;
 
-export default CreateAccount;
+export default NewAccount;

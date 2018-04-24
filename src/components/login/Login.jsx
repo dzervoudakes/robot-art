@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import { Form } from '../common';
+import { Form } from '@/components/common';
 
 const propTypes = {
 	openModal: PropTypes.func.isRequired,

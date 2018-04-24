@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { RobotCard } from '../common';
+import { RobotCard } from '@/components/common';
 
 const propTypes = {
 	robots: PropTypes.array.isRequired,
