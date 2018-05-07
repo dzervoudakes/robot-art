@@ -9,9 +9,10 @@ const BUILD_DIR = path.resolve(__dirname, '../public');
 const ROOT_DIR = path.resolve(__dirname, '../');
 
 module.exports = merge(common, {
+	mode: 'development',
 	plugins: [
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('development')
+		new webpack.EnvironmentPlugin({
+			NODE_ENV: 'development'
 		}),
 		new ExtractTextPlugin('css/styles.css', {
 			allChunks: true

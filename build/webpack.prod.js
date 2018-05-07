@@ -15,10 +15,14 @@ const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const ROOT_DIR = path.resolve(__dirname, '../');
 
 module.exports = merge(common, {
+	mode: 'production',
 	devtool: 'source-map',
+	performance: {
+		hints: false
+	},
 	plugins: [
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production')
+		new webpack.EnvironmentPlugin({
+			NODE_ENV: 'production'
 		}),
 		new CleanWebpackPlugin(['dist'], {
 			root: ROOT_DIR
@@ -45,22 +49,6 @@ module.exports = merge(common, {
 				}
 			}
 		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			minChunks: module => {
-				return (
-					module.resource &&
-					/\.js$/.test(module.resource) &&
-					module.resource.indexOf(
-						path.join(__dirname, '../node_modules')
-					) === 0
-				);
-			}
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'manifest',
-			chunks: ['vendor']
-		}),
 		new webpack.optimize.AggressiveMergingPlugin(),
 		new CopyWebpackPlugin([
 			{ from: `${ROOT_DIR}/index.js`, to: `${BUILD_DIR}/index.js` },
@@ -86,10 +74,24 @@ module.exports = merge(common, {
 			minRatio: 0.8
 		})
 	],
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					test: /node_modules/,
+					name: 'vendor',
+					chunks: 'all'
+				}
+			}
+		},
+		runtimeChunk: {
+			name: 'manifest'
+		}
+	},
 	output: {
 		path: `${BUILD_DIR}/public`,
 		filename: 'js/[name].[hash:8].min.js',
 		sourceMapFilename: 'js/[name].[hash:8].min.map',
-		chunkFilename: 'js/[id].[hash:8].min.js'
+		chunkFilename: 'js/[name].[hash:8].min.js'
 	}
 });

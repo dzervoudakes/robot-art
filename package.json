@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "node build/build.js",
-		"local": "webpack --config ./build/webpack.local.js -d --watch & npm start",
-		"start": "nodemon ./bin/www --ignore 'public/**/*'"
+		"local": "nodemon ./bin/www --ignore 'public/**/*'",
+		"start": "webpack --config ./build/webpack.local.js --watch & npm run local"
 	},
 	"repository": {
 		"type": "git",
@@ -26,19 +26,20 @@
 		"compression-webpack-plugin": "^1.1.11",
 		"copy-webpack-plugin": "^4.5.1",
 		"css-loader": "^0.28.7",
-		"extract-text-webpack-plugin": "^3.0.0",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
 		"html-webpack-plugin": "^3.1.0",
 		"node-sass": "^4.5.3",
-		"optimize-css-assets-webpack-plugin": "^3.2.0",
+		"optimize-css-assets-webpack-plugin": "^4.0.1",
 		"ora": "^2.0.0",
 		"prop-types": "^15.6.1",
-		"react": "^15.6.1",
-		"react-dom": "^15.6.1",
+		"react": "^16.3.2",
+		"react-dom": "^16.3.2",
 		"react-router-dom": "^4.2.2",
 		"sass-loader": "^6.0.6",
 		"style-loader": "^0.18.2",
 		"uglifyjs-webpack-plugin": "^1.2.4",
-		"webpack": "^3.11.0",
+		"webpack": "^4.7.0",
+		"webpack-cli": "^2.1.3",
 		"webpack-merge": "^4.1.2"
 	},
 	"dependencies": {
