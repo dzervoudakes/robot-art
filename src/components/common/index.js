@@ -1,5 +1,3 @@
-import Form from './Form';
-import Modal from './Modal';
-import RobotCard from './RobotCard';
-
-export { Form, Modal, RobotCard };
+export { default as Form } from './Form';
+export { default as Modal } from './Modal';
+export { default as RobotCard } from './RobotCard';
