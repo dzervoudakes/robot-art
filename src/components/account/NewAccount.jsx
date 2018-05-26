@@ -17,13 +17,13 @@ class NewAccount extends React.Component {
     createAccount(email, name, password) {
         const { users } = this.state;
         const newUser = {
-            email: email,
             id: users.length + 1,
-            name: name,
-            password: password
+			name,
+			email,
+            password
         };
         users.push(newUser);
-        const opts = { action: 'create_account', users: users };
+        const opts = { action: 'create_account', users };
         return axios.post('/api/users', opts);
     }
 

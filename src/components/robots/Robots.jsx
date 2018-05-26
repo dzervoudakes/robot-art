@@ -25,7 +25,8 @@ class Robots extends React.PureComponent {
             robots[index].votes++;
             return this.postRobotData()
                 .then(resp => {
-                    updateRobots(robots);
+					updateRobots(robots);
+					// @TODO: REPLACE THIS WITH SOMETHING STATE RELATED
                     target.classList.remove('primary');
                     target.classList.add('disabled');
                     target.innerHTML = 'Vote Cast';
@@ -44,7 +45,9 @@ class Robots extends React.PureComponent {
 
     render() {
         const { errors, robots } = this.props;
-        const errImg = <img alt="sad robot" className="error-image" src="/images/robots/errors/sad-robot-primary.jpg" />
+		const errImg = <img alt="sad robot"
+			className="error-image"
+			src="/images/robots/errors/sad-robot-primary.jpg" />
         let bots = [];
         if (robots.length > 0) {
             bots = robots.map((bot, index) =>
