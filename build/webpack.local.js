@@ -14,7 +14,7 @@ module.exports = merge(common, {
 		new webpack.EnvironmentPlugin({
 			NODE_ENV: 'development'
 		}),
-		new ExtractTextPlugin('css/styles.css', {
+		new ExtractTextPlugin('css/[name].css', {
 			allChunks: true
 		}),
 		new HtmlWebpackPlugin({

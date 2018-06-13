@@ -27,7 +27,7 @@ module.exports = merge(common, {
 		new CleanWebpackPlugin(['dist'], {
 			root: ROOT_DIR
 		}),
-		new ExtractTextPlugin('css/styles.[hash:8].min.css', {
+		new ExtractTextPlugin('css/[name].[hash:8].min.css', {
 			allChunks: true
 		}),
 		new OptimizeCssAssetsPlugin({
@@ -64,13 +64,15 @@ module.exports = merge(common, {
 			title: 'Robot Art',
 			minify: {
 				removeComments: true,
-				collapseWhitespace: true
+				collapseWhitespace: true,
+				removeAttributeQuotes: true
 			}
 		}),
 		new CompressionPlugin({
 			asset: '[path].gz[query]',
 			algorithm: 'gzip',
 			test: /vendor\.(.*)\.min\.js/,
+			threshold: 10240,
 			minRatio: 0.8
 		})
 	],
