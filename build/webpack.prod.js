@@ -78,7 +78,8 @@ module.exports = merge(common, {
 				removeComments: true,
 				collapseWhitespace: true,
 				removeAttributeQuotes: true
-			}
+			},
+			chunksSortMode: 'dependency'
 		}),
 		new CompressionPlugin({
 			asset: '[path].gz[query]',
