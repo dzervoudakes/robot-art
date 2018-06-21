@@ -46,5 +46,6 @@ app.use((req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`robot-art booted up on port ${port}`);
+	// eslint-disable-next-line
+	console.log(`robot-art booted up on port ${port}`);
 });

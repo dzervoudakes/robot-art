@@ -11,6 +11,6 @@ const Main = () => (
 );
 
 ReactDOM.render(
-    <Main />,
-    document.getElementById('app')
+	<Main />,
+	document.getElementById('app')
 );

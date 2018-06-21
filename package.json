@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "node build/build.js",
+		"lint": "eslint . --ext .js,.jsx",
 		"local": "nodemon ./bin/www --ignore 'public/**/*'",
 		"start": "webpack --config ./build/webpack.local.js --watch & npm run local"
 	},
@@ -16,6 +17,7 @@
 	"devDependencies": {
 		"axios": "^0.17.1",
 		"babel-core": "^6.26.0",
+		"babel-eslint": "^8.2.3",
 		"babel-loader": "^7.1.2",
 		"babel-plugin-transform-class-properties": "^6.24.1",
 		"babel-plugin-transform-react-remove-prop-types": "^0.4.13",
@@ -26,9 +28,11 @@
 		"compression-webpack-plugin": "^1.1.11",
 		"copy-webpack-plugin": "^4.5.1",
 		"css-loader": "^0.28.7",
+		"eslint": "^4.19.1",
+		"eslint-plugin-react": "^7.9.1",
 		"extract-text-webpack-plugin": "^4.0.0-beta.0",
 		"html-webpack-plugin": "^3.1.0",
-		"node-sass": "^4.5.3",
+		"node-sass": "^4.9.0",
 		"optimize-css-assets-webpack-plugin": "^4.0.1",
 		"ora": "^2.0.0",
 		"prop-types": "^15.6.1",
@@ -50,5 +54,9 @@
 		"http": "0.0.0",
 		"jsonfile": "^4.0.0",
 		"path": "^0.12.7"
+	},
+	"engines": {
+		"node": ">=9.0.0",
+		"npm": ">=5.6.0"
 	}
 }
