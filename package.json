@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "node build/build.js",
-		"lint": "eslint . --ext .js,.jsx",
+		"lint": "eslint . --ext js,jsx",
 		"local": "nodemon ./bin/www --ignore 'public/**/*'",
 		"start": "webpack --config ./build/webpack.local.js --watch & npm run local"
 	},
