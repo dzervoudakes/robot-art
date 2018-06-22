@@ -20,37 +20,37 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 	<Switch>
 		<Route path="/admin">
 			<Admin
-				errors={errors}
-				openModal={openModal}
-				robots={robots}
-				updateRobots={updateRobotState}
+				errors={ errors }
+				openModal={ openModal }
+				robots={ robots }
+				updateRobots={ updateRobotState }
 			/>
 		</Route>
 		<Route path="/create-account">
 			<NewAccount
-				getAllUsers={getAllUsers}
-				openModal={openModal}
+				getAllUsers={ getAllUsers }
+				openModal={ openModal }
 			/>
 		</Route>
 		<Route exact path="/">
 			<Login
-				getAllUsers={getAllUsers}
-				openModal={openModal}
+				getAllUsers={ getAllUsers }
+				openModal={ openModal }
 			/>
 		</Route>
 		<Route path="/results">
 			<Results
-				errors={errors}
-				robots={robots}
-				winner={winner}
+				errors={ errors }
+				robots={ robots }
+				winner={ winner }
 			/>
 		</Route>
 		<Route path="/robots">
 			<Robots
-				errors={errors}
-				openModal={openModal}
-				robots={robots}
-				updateRobots={updateRobotState}
+				errors={ errors }
+				openModal={ openModal }
+				robots={ robots }
+				updateRobots={ updateRobotState }
 			/>
 		</Route>
 	</Switch>

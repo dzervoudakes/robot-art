@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 const Form = ({ formId, includeName = false, loginAttempts = 0, submitForm }) => (
-	<form id={formId} className="form">
+	<form id={ formId } className="form">
 		{includeName && 
 			<div className="form-row">
 				<label className="form-label" htmlFor="name">Name</label>
@@ -25,7 +25,7 @@ const Form = ({ formId, includeName = false, loginAttempts = 0, submitForm }) =>
 			<input className="form-input" maxLength="50" name="password" type="password" />
 		</div>
 		<div className="form-row">
-			<input className={`button-standard ${loginAttempts && loginAttempts === 3 ? 'disabled' : 'primary'} submit-button`} onClick={submitForm} type="submit" value="Submit" />
+			<input className={ `button-standard ${loginAttempts && loginAttempts === 3 ? 'disabled' : 'primary'} submit-button` } onClick={ submitForm } type="submit" value="Submit" />
 		</div>
 	</form>
 );

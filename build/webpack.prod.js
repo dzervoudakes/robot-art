@@ -39,7 +39,7 @@ module.exports = merge(common, {
 		new CleanWebpackPlugin(['dist'], {
 			root: ROOT_DIR
 		}),
-		new ExtractTextPlugin('css/[name].[hash:8].min.css', {
+		new ExtractTextPlugin('css/[name].[chunkhash].min.css', {
 			allChunks: true
 		}),
 		new OptimizeCssAssetsPlugin({
@@ -105,8 +105,8 @@ module.exports = merge(common, {
 	},
 	output: {
 		path: `${BUILD_DIR}/public`,
-		filename: 'js/[name].[hash:8].min.js',
-		sourceMapFilename: 'js/[name].[hash:8].min.map',
-		chunkFilename: 'js/[name].[hash:8].min.js'
+		filename: 'js/[name].[chunkhash].min.js',
+		sourceMapFilename: 'js/[name].[chunkhash].min.map',
+		chunkFilename: 'js/[name].[chunkhash].min.js'
 	}
 });

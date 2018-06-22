@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "node build/build.js",
-		"lint": "eslint . --ext js,jsx",
+		"lint": "eslint . --ext js,jsx --fix",
 		"local": "nodemon ./bin/www --ignore 'public/**/*'",
 		"start": "webpack --config ./build/webpack.local.js --watch & npm run local"
 	},
@@ -60,8 +60,8 @@
 		"npm": ">= 5.6.0"
 	},
 	"browserslist": [
-	    "> 1%",
-	    "last 2 versions",
-	    "not ie <= 10"
+		"> 1%",
+		"last 2 versions",
+		"not ie <= 10"
 	]
 }
