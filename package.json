@@ -6,6 +6,7 @@
 	"scripts": {
 		"build": "node build/build.js",
 		"lint": "eslint . --ext js,jsx",
+		"lint:fix": "eslint . --ext js,jsx --fix",
 		"local": "nodemon ./bin/www --ignore 'public/**/*'",
 		"start": "webpack --config ./build/webpack.local.js --watch & npm run local"
 	},
