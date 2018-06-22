@@ -13,7 +13,7 @@ module.exports = {
 	],
 	rules: {
 		'arrow-parens': ['error', 'as-needed'],
-		'comma-dangle': 0,
+		'comma-dangle': ['error', 'never'],
 		'eol-last': ['error', 'always'],
 		'indent': ['error', 'tab'],
 		'linebreak-style': 0,
@@ -21,8 +21,8 @@ module.exports = {
 		'no-console': 1,
 		'no-undef': 0,
 		'no-unused-vars': ['error'],
-		'react/jsx-closing-bracket-location': [1, 'line-aligned'],
-		'react/jsx-curly-spacing': [2, {
+		'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+		'react/jsx-curly-spacing': ['error', {
 			'when': 'always',
 			'spacing': {
 				'objectLiterals': 'never'
