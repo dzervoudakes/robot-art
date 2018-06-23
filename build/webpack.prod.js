@@ -65,14 +65,12 @@ module.exports = merge(common, {
 		new CopyWebpackPlugin([
 			{ from: `${ROOT_DIR}/index.js`, to: `${BUILD_DIR}/index.js` },
 			{ from: `${ROOT_DIR}/routes/`, to: `${BUILD_DIR}/routes/` },
-			{ from: `${PUBLIC_DIR}/data/`, to: `${BUILD_DIR}/public/data/` },
-			{ from: `${PUBLIC_DIR}/images/`, to: `${BUILD_DIR}/public/images/` },
-			{ from: `${PUBLIC_DIR}/404.html`, to: `${BUILD_DIR}/public/404.html` }
+			{ from: `${ROOT_DIR}/public`, to: `${BUILD_DIR}/public`, ignore: ['.*'] }
 		]),
 		new HtmlWebpackPlugin({
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
-			template: `${ROOT_DIR}/build/templates/template.html`,
+			template: `${PUBLIC_DIR}/index.html`,
 			title: 'Robot Art',
 			minify: {
 				removeComments: true,

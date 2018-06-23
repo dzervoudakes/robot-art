@@ -5,7 +5,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const path = require('path');
 
-const BUILD_DIR = path.resolve(__dirname, '../public');
+const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const ROOT_DIR = path.resolve(__dirname, '../');
 
 module.exports = merge(common, {
@@ -18,17 +18,14 @@ module.exports = merge(common, {
 			allChunks: true
 		}),
 		new HtmlWebpackPlugin({
-			favicon: `${BUILD_DIR}/favicon.ico`,
+			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
-			template: `${ROOT_DIR}/build/templates/template.html`,
+			template: `${PUBLIC_DIR}/index.html`,
 			title: 'Robot Art'
 		})
 	],
-	watchOptions: {
-		ignored: [BUILD_DIR]
-	},
 	output: {
-		path: BUILD_DIR,
+		path: ROOT_DIR,
 		filename: 'js/[name].js'
 	}
 });
