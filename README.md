@@ -64,7 +64,7 @@
 ### Some Technologies Used
 
 * React
-* ES6 + Babel
+* ES6/7 + Babel
 * Webpack
 * React-router-dom
 * Axios
