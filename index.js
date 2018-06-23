@@ -13,7 +13,7 @@ app.use(session({
 	cookie: { maxAge: 3600000 },
 	resave: false,
 	saveUninitialized: true,
-	secret: 'robot-art-secret-token',
+	secret: 'robot-art-secret-token'
 }));
 
 app.get(/vendor\.(.*)\.min\.js/, (req, res, next) => {

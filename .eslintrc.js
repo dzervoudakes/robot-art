@@ -14,6 +14,7 @@ module.exports = {
 	rules: {
 		'arrow-parens': ['error', 'as-needed'],
 		'comma-dangle': ['error', 'never'],
+		'comma-spacing': ['error', { 'before': false, 'after': true }],
 		'eol-last': ['error', 'always'],
 		'indent': ['error', 'tab'],
 		'linebreak-style': 0,
