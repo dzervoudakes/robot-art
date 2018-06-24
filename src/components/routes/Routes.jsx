@@ -6,6 +6,7 @@ import NewAccount from '@/components/account';
 import Login from '@/components/login';
 import Results from '@/components/results';
 import Robots from '@/components/robots';
+import Missing from '@/components/missing';
 
 const propTypes = {
 	errors: PropTypes.object.isRequired,
@@ -18,7 +19,13 @@ const propTypes = {
 
 const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winner }) => (
 	<Switch>
-		<Route path="/admin">
+		<Route exact path="/">
+			<Login
+				getAllUsers={ getAllUsers }
+				openModal={ openModal }
+			/>
+		</Route>
+		<Route exact path="/admin">
 			<Admin
 				errors={ errors }
 				openModal={ openModal }
@@ -26,26 +33,20 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 				updateRobots={ updateRobotState }
 			/>
 		</Route>
-		<Route path="/create-account">
+		<Route exact path="/create-account">
 			<NewAccount
 				getAllUsers={ getAllUsers }
 				openModal={ openModal }
 			/>
 		</Route>
-		<Route exact path="/">
-			<Login
-				getAllUsers={ getAllUsers }
-				openModal={ openModal }
-			/>
-		</Route>
-		<Route path="/results">
+		<Route exact path="/results">
 			<Results
 				errors={ errors }
 				robots={ robots }
 				winner={ winner }
 			/>
 		</Route>
-		<Route path="/robots">
+		<Route exact path="/robots">
 			<Robots
 				errors={ errors }
 				openModal={ openModal }
@@ -53,6 +54,7 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 				updateRobots={ updateRobotState }
 			/>
 		</Route>
+		<Route component={ Missing } />
 	</Switch>
 );
 
