@@ -8,9 +8,7 @@ module.exports = {
 			jsx: true
 		}
 	},
-	plugins: [
-		'react'
-	],
+	plugins: ['react'],
 	rules: {
 		'arrow-parens': ['error', 'as-needed'],
 		'comma-dangle': ['error', 'never'],
@@ -22,6 +20,7 @@ module.exports = {
 		'no-console': 1,
 		'no-undef': 0,
 		'no-unused-vars': ['error'],
+		'object-curly-spacing': ['error', 'always'],
 		'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
 		'react/jsx-curly-spacing': ['error', {
 			'when': 'always',
@@ -32,6 +31,7 @@ module.exports = {
 		'react/jsx-uses-react': 1,
 		'react/jsx-uses-vars': 1,
 		'react/no-unused-prop-types': 2,
-		'react/prefer-stateless-function': 2
+		'react/prefer-stateless-function': 2,
+		'quotes': ['error', 'single']
 	}
 };
