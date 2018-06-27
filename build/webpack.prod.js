@@ -20,7 +20,6 @@ module.exports = merge(common, {
 	performance: {
 		hints: false
 	},
-	module: {
 	plugins: [
 		new webpack.EnvironmentPlugin({
 			BABEL_ENV: 'production',
