@@ -32,6 +32,7 @@ module.exports = {
 		'react/jsx-uses-vars': 1,
 		'react/no-unused-prop-types': 2,
 		'react/prefer-stateless-function': 2,
+		'semi': ['error', 'always'],
 		'quotes': ['error', 'single']
 	}
 };

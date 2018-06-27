@@ -24,7 +24,7 @@ app.use(session({
 
 if (process.env.NODE_ENV === 'development') {
 	const webpack = require('webpack');
-	const webpackConfig = require('./build/webpack.local');
+	const webpackConfig = require('./build/webpack.dev');
 	const webpackDev = require('webpack-dev-middleware');
 
 	const compiler = webpack(webpackConfig);
@@ -37,15 +37,15 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-	app.use((req, res) => {
-		res.sendFile(path.join(__dirname, '/public/index.html'));
-	});
-
 	app.get(/vendor\.(.*)\.min\.js/, (req, res, next) => {
 		req.url = `${req.url}.gz`;
 		res.set('Content-Encoding', 'gzip');
 		res.set('Content-Type', 'text/javascript');
 		next();
+	});
+
+	app.get('/', (req, res) => {
+		res.sendFile(path.join(__dirname, '/public/index.html'));
 	});
 }
 
@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // @TODO: API ROUTE WITH REDIRECT
-app.get('/account/logout', (req, res) => {
+app.use('/account/logout', (req, res) => {
 	req.session.isUserLoggedIn = false;
 	res.redirect('/');
 });

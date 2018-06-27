@@ -12,6 +12,7 @@ module.exports = merge(common, {
 	mode: 'development',
 	plugins: [
 		new webpack.EnvironmentPlugin({
+			BABEL_ENV: 'development',
 			NODE_ENV: 'development'
 		}),
 		new ExtractTextPlugin('css/[name].css', {
