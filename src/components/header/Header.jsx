@@ -35,7 +35,7 @@ class Header extends React.Component {
 		return (
 			<header className="header">
 				<a href="/robots">
-					<img alt="Mondo Robot" className="logo" src="images/logo.svg" />
+					<img alt="Mondo Robot" className="logo" src="img/logo.svg" />
 				</a>
 				<nav className={ `navigation${open ? ' open' : ''}` }>
 					<ul className="menu">

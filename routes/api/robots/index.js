@@ -35,7 +35,7 @@ router.post('/add', (req, res) => {
 	const { robots } = req.fields;
 	jsonfile.writeFile(file, JSON.parse(robots), () => {
 		const { name, path } = req.files.uploadFile;
-		const newPath = `${global.__dirname}/public/images/robots/contenders/${name}`;
+		const newPath = `${global.__dirname}/public/img/robots/contenders/${name}`;
 		fs.copyFile(path, newPath, err => {
 			if (!err) res.sendFile(newPath);
 			if (err) {

@@ -41,7 +41,7 @@ class Admin extends React.Component {
 		if (!hasErrors) {
 			const { robots, updateRobots } = this.props;
 			const newRobot = {
-				image: `/images/robots/contenders/${upload.files[0].name}`,
+				image: `/img/robots/contenders/${upload.files[0].name}`,
 				name: name.value,
 				votes: 0
 			};
@@ -120,7 +120,7 @@ class Admin extends React.Component {
 			const { robots, updateRobots } = this.props;
 			const newRobotsArray = robots.slice(0);
 			newRobotsArray[index] = {
-				image: `/images/robots/contenders/${upload.files[0].name}`,
+				image: `/img/robots/contenders/${upload.files[0].name}`,
 				name: name.value,
 				votes: newRobotsArray[index].votes
 			};
@@ -156,7 +156,7 @@ class Admin extends React.Component {
 		const { errors, robots } = this.props;
 		const errImg = <img alt="sad robot"
 			className="error-image"
-			src="/images/robots/errors/sad-robot-tertiary.jpg"
+			src="/img/robots/errors/sad-robot-tertiary.jpg"
 		/>
 		let bots = [];
 		if (robots.length !== 0) {
