@@ -73,7 +73,7 @@ module.exports = merge(common, {
 		new webpack.optimize.AggressiveMergingPlugin(),
 		new CopyWebpackPlugin([
 			{ from: `${ROOT_DIR}/index.js`, to: `${BUILD_DIR}/index.js` },
-			{ from: `${ROOT_DIR}/routes/`, to: `${BUILD_DIR}/routes/` },
+			{ from: `${ROOT_DIR}/routes`, to: `${BUILD_DIR}/routes` },
 			{ from: `${ROOT_DIR}/public`, to: `${BUILD_DIR}/public`, ignore: ['.*'] }
 		]),
 		new HtmlWebpackPlugin({
