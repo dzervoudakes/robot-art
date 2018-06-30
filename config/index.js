@@ -4,6 +4,11 @@ const resolve = (dir = '') => (
 	path.resolve(__dirname, '../', dir)
 );
 
+const setProcessVars = env => ({
+	BABEL_ENV: env,
+	NODE_ENV: env
+});
+
 module.exports = {
 	directories: {
 		APP_DIR: resolve('src'),
@@ -12,13 +17,7 @@ module.exports = {
 		ROOT_DIR: resolve()
 	},
 	env: {
-		development: {
-			BABEL_ENV: 'development',
-			NODE_ENV: 'development'
-		},
-		production: {
-			BABEL_ENV: 'production',
-			NODE_ENV: 'production'
-		}
+		development: setProcessVars('development'),
+		production: setProcessVars('production')
 	}
 };
