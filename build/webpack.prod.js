@@ -20,6 +20,29 @@ module.exports = merge(common, {
 	performance: {
 		hints: false
 	},
+	module: {
+		rules: [{
+			test: /\.css$/,
+			include: /node_modules/,
+			use: ExtractTextPlugin.extract({
+				fallback: {
+					loader: 'style-loader',
+					options: {
+						hmr: false
+					}
+				},
+				use: [{
+					loader: 'css-loader',
+					options: {
+						importLoaders: 1,
+						modules: false,
+						localIdentName: '[name].[local].[hash:base64:5]',
+						minimize: true
+					}
+				}]
+			})
+		}]
+	},
 	plugins: [
 		new webpack.EnvironmentPlugin({
 			BABEL_ENV: 'production',
