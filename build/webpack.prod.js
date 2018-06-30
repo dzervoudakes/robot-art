@@ -8,11 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
-const path = require('path');
+const config = require('../config');
 
-const BUILD_DIR = path.resolve(__dirname, '../dist');
-const PUBLIC_DIR = path.resolve(__dirname, '../public');
-const ROOT_DIR = path.resolve(__dirname, '../');
+const { BUILD_DIR, PUBLIC_DIR, ROOT_DIR } = config.directories;
 
 module.exports = merge(common, {
 	mode: 'production',
@@ -44,10 +42,9 @@ module.exports = merge(common, {
 		}]
 	},
 	plugins: [
-		new webpack.EnvironmentPlugin({
-			BABEL_ENV: 'production',
-			NODE_ENV: 'production'
-		}),
+		new webpack.EnvironmentPlugin(
+			config.env.production
+		),
 		new CleanWebpackPlugin(['dist'], {
 			root: ROOT_DIR
 		}),
