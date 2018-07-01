@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import logo from '@/img/logo.svg';
 
 const propTypes = {
 	toggleOverlay: PropTypes.func.isRequired,
@@ -35,7 +36,7 @@ class Header extends React.Component {
 		return (
 			<header className="header">
 				<a href="/robots">
-					<img alt="Mondo Robot" className="logo" src="img/logo.svg" />
+					<img alt="Mondo Robot" className="logo" src={ logo } />
 				</a>
 				<nav className={ `navigation${open ? ' open' : ''}` }>
 					<ul className="menu">

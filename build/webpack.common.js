@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = require('../config');
 
-const { APP_DIR, PUBLIC_DIR } = config.directories;
+const { APP_DIR } = config.directories;
 
 module.exports = {
 	entry: {
@@ -31,9 +31,6 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.scss'],
-		alias: {
-			'@': APP_DIR,
-			'@public': PUBLIC_DIR
-		}
+		alias: { '@': APP_DIR }
 	}
 };
