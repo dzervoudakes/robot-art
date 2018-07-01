@@ -68,7 +68,7 @@
 * Webpack
 * React-router-dom
 * Axios
-* SASS
+* Sass
 * Node + Express
 
 - - - -
