@@ -90,8 +90,8 @@ class Login extends React.Component {
 		return (
 			<div className="login-container">
 				<h2 className="page-title">Login</h2>
-				{loginAttempts === 3 && <p className="t-form-error-message">You hackin'? You've attempted to login too many times.</p>}
-				{formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p>}
+				{ loginAttempts === 3 && <p className="t-form-error-message">You hackin'? You've attempted to login too many times.</p> }
+				{ formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p> }
 				<Form
 					formId="loginForm"
 					loginAttempts={ loginAttempts }

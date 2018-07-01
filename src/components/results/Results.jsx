@@ -27,7 +27,7 @@ const Results = ({ errors, robots, winner }) => {
 		);
 	}
 	const markup = errors.get || errors.noRobots ? errImg : results;
-	return <div className="results-container">{markup}</div>;
+	return <div className="results-container">{ markup }</div>;
 };
 
 Results.propTypes = propTypes;

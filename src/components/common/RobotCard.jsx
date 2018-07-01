@@ -11,8 +11,7 @@ const propTypes = {
 	updateVotes: PropTypes.func,
 	handleAdd: PropTypes.func,
 	handleEdit: PropTypes.func,
-	handleDelete: PropTypes.func,
-	updateAction: PropTypes.func
+	handleDelete: PropTypes.func
 };
 
 class RobotCard extends React.Component {
@@ -35,14 +34,13 @@ class RobotCard extends React.Component {
 			index,
 			isAdmin,
 			name,
-			updateaction,
 			updateVotes
 		} = this.props;
 		if (action === 'display') {
 			return (
 				<div className="robot-card">
 					<img alt={ name } className="robot-avatar" src={ image } />
-					<p className="robot-name">{name}</p>
+					<p className="robot-name">{ name }</p>
 					{!isAdmin &&
 						<button className="button-standard primary" data-index={ index } onClick={ updateVotes }>Vote</button>
 					}

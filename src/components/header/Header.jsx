@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import logo from '@/img/logo.svg';
+import './scss/Header';
 
 const propTypes = {
 	toggleOverlay: PropTypes.func.isRequired,
@@ -30,7 +31,7 @@ class Header extends React.Component {
 		};
 		const createMenuItem = (liClass, label) => (
 			<li className={ `list-item ${liClass}` }>
-				<NavLink activeClassName="active" onClick={ handleMobileMenuState } to={ `/${label.toLowerCase()}` }>{label}</NavLink>
+				<NavLink activeClassName="active" onClick={ handleMobileMenuState } to={ `/${label.toLowerCase()}` }>{ label }</NavLink>
 			</li>
 		);
 		return (
@@ -40,13 +41,13 @@ class Header extends React.Component {
 				</a>
 				<nav className={ `navigation${open ? ' open' : ''}` }>
 					<ul className="menu">
-						{isUserLoggedIn && createMenuItem('primary', 'Robots')}
-						{isUserLoggedIn && createMenuItem('primary', 'Results')}
+						{ isUserLoggedIn && createMenuItem('primary', 'Robots') }
+						{ isUserLoggedIn && createMenuItem('primary', 'Results') }
 						<li className="secondary-list-item-container">
 							<ul>
 								{isUserLoggedIn && createMenuItem('secondary', 'Admin')}
 								<li className="list-item secondary">
-									<a href={ isUserLoggedIn ? '/account/logout' : '/' } onClick={ handleMobileMenuState }>{isUserLoggedIn ? 'Logout' : 'Login'}</a>
+									<a href={ isUserLoggedIn ? '/account/logout' : '/' } onClick={ handleMobileMenuState }>{ isUserLoggedIn ? 'Logout' : 'Login' }</a>
 								</li>
 							</ul>
 						</li>

@@ -13,7 +13,7 @@ const propTypes = {
 
 const RobotCardForm = ({ cancel, formId, index, name = '', onClick, text, updateAction }) => (
 	<div className="robot-card">
-		<h3 className="card-title">{text} Robot</h3>
+		<h3 className="card-title">{ text } Robot</h3>
 		<form id={ formId } className="add-robot-form form">
 			<div className="form-row">
 				<label className="form-label" htmlFor="name">Robot Name</label>

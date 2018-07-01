@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './scss/Result';
 
 const propTypes = {
 	image: PropTypes.string.isRequired,
@@ -18,7 +19,7 @@ const Result = ({ image, votes, winner }) => {
 						<div className="avatar-container">
 							<img alt={ name } className="robot-avatar" src={ image } />
 						</div>
-						<p className="vote-count">{votes}</p>
+						<p className="vote-count">{ votes }</p>
 					</td>
 					<td className="right-col">
 						<div className="vote-percentage-bar" style={ percentageBarStyles }></div>

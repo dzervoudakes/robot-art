@@ -87,7 +87,7 @@ class NewAccount extends React.Component {
 		return (
 			<div className="login-container">
 				<h2 className="page-title">Create Account</h2>
-				{formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p>}
+				{ formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p> }
 				<Form
 					formId="createAccountForm"
 					includeName={ true }

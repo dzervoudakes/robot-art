@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { RobotCard } from '@/components/common';
+import './scss/Robots';
 
 const propTypes = {
 	robots: PropTypes.array.isRequired,
@@ -64,7 +65,7 @@ class Robots extends React.PureComponent {
 			);
 		}
 		const markup = errors.get || errors.noRobots ? errImg : bots;
-		return <div className="robots-container">{markup}</div>;
+		return <div className="robots-container">{ markup }</div>;
 	}
 }
 

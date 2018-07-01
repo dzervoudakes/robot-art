@@ -182,8 +182,8 @@ class Admin extends React.Component {
 		);
 		return (
 			<div className="admin-container">
-				{!errors.get && <h2 className="page-title">Admin</h2>}
-				{errors.get ? errImg : bots}
+				{ !errors.get && <h2 className="page-title">Admin</h2> }
+				{ errors.get ? errImg : bots }
 			</div>
 		);
 	}
