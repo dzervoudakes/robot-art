@@ -5,9 +5,16 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { PUBLIC_DIR, ROOT_DIR } = config.directories;
+const {
+	APP_DIR,
+	PUBLIC_DIR,
+	ROOT_DIR
+} = config.directories;
 
 module.exports = merge(common, {
+	entry: {
+		app: ['./build/hot-client.js', `${APP_DIR}/index.jsx`]
+	},
 	mode: 'development',
 	plugins: [
 		new webpack.EnvironmentPlugin(
@@ -22,6 +29,7 @@ module.exports = merge(common, {
 			template: `${PUBLIC_DIR}/index.html`,
 			title: 'Robot Art'
 		}),
+		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin()
 	],
 	output: {

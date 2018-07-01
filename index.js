@@ -23,17 +23,11 @@ app.use(session({
 }));
 
 if (process.env.NODE_ENV === 'development') {
-	const webpack = require('webpack');
-	const webpackConfig = require('./build/webpack.dev');
-	const webpackDev = require('webpack-dev-middleware');
-
-	const compiler = webpack(webpackConfig);
-	const devMiddleware = webpackDev(compiler, {
-		publicPath: '/',
-		quiet: true
-	});
+	const server = require('./build/local-server')();
+	const { devMiddleware, hotMiddleware } = server;
 
 	app.use(devMiddleware);
+	app.use(hotMiddleware);
 }
 
 if (process.env.NODE_ENV === 'production') {

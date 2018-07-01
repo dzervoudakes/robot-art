@@ -4,9 +4,6 @@ const config = require('../config');
 const { APP_DIR } = config.directories;
 
 module.exports = {
-	entry: {
-		app: `${APP_DIR}/index.jsx`
-	},
 	module: {
 		rules: [{
 			test: /\.jsx?/,
