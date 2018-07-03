@@ -23,8 +23,8 @@ app.use(session({
 }));
 
 if (process.env.NODE_ENV === 'development') {
-	const server = require('./build/local-server')();
-	const { devMiddleware, hotMiddleware } = server;
+	const middleware = require('./build/dev-middleware')();
+	const { devMiddleware, hotMiddleware } = middleware;
 
 	app.use(devMiddleware);
 	app.use(hotMiddleware);
