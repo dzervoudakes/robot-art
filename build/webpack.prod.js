@@ -17,7 +17,7 @@ const {
 	ROOT_DIR
 } = config.directories;
 
-module.exports = merge(common, {
+const webpackConfig = merge(common, {
 	entry: {
 		app: `${APP_DIR}/index.jsx`
 	},
@@ -125,3 +125,10 @@ module.exports = merge(common, {
 		chunkFilename: 'js/[name].[chunkhash].min.js'
 	}
 });
+
+if (process.env.npm_config_report) {
+	const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+	webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+}
+
+module.exports = webpackConfig;
