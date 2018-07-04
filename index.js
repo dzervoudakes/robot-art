@@ -31,12 +31,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-	app.get(/vendor\.(.*)\.min\.js/, (req, res, next) => {
-		req.url = `${req.url}.gz`;
-		res.set('Content-Encoding', 'gzip');
-		res.set('Content-Type', 'text/javascript');
-		next();
-	});
+	const connect = require('connect');
+	const gzipStatic = require('connect-gzip-static');
+
+	connect().use(gzipStatic(`${__dirname}/public`));
 
 	app.get('/', (req, res) => {
 		res.sendFile(path.join(__dirname, '/public/index.html'));

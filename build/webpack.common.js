@@ -11,6 +11,25 @@ module.exports = {
 			loader: 'babel-loader'
 		},
 		{
+			test: /\.css$/,
+			include: /node_modules/,
+			use: ExtractTextPlugin.extract({
+				fallback: {
+					loader: 'style-loader',
+					options: {
+						hmr: false
+					}
+				},
+				use: [{
+					loader: 'css-loader',
+					options: {
+						modules: false,
+						minimize: true
+					}
+				}]
+			})
+		},
+		{
 			test: /\.(sass|scss)$/,
 			include: APP_DIR,
 			loader: ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
