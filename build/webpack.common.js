@@ -60,7 +60,7 @@ module.exports = {
 		}]
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.scss'],
+		extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
 		alias: { '@': APP_DIR }
 	}
 };
