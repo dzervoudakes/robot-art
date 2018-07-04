@@ -104,7 +104,7 @@ const webpackConfig = merge(common, {
 });
 
 if (process.env.npm_config_report) {
-	const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+	const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 	webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
