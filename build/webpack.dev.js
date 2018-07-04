@@ -9,7 +9,7 @@ const {
 	APP_DIR,
 	PUBLIC_DIR,
 	ROOT_DIR
-} = config.directories;
+} = config.paths;
 
 module.exports = merge(common, {
 	entry: {

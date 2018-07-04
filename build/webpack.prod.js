@@ -15,7 +15,7 @@ const {
 	BUILD_DIR,
 	PUBLIC_DIR,
 	ROOT_DIR
-} = config.directories;
+} = config.paths;
 
 const webpackConfig = merge(common, {
 	entry: {
