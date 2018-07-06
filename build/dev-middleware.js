@@ -17,12 +17,6 @@ const hotMiddleware = webpackHot(compiler, {
 	heartbeat: 2000
 });
 
-compiler.plugin('compilation', compilation => {
-	compilation.plugin('html-webpack-plugin-after-emit', () => {
-		hotMiddleware.publish({ action: 'reload' });
-	});
-});
-
 devMiddleware.waitUntilValid(() => {
 	const url = `http://localhost:${port}`;
 	opn(url);
