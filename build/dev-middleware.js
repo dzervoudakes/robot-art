@@ -8,8 +8,8 @@ const compiler = webpack(webpackConfig);
 const port = process.env.port || 8080;
 
 const devMiddleware = webpackDev(compiler, {
-	publicPath: '/',
-	quiet: true
+	logLevel: 'warn',
+	publicPath: '/'
 });
 
 const hotMiddleware = webpackHot(compiler, {

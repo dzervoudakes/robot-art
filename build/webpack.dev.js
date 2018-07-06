@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
@@ -30,9 +31,12 @@ module.exports = merge(common, {
 			title: 'Robot Art'
 		}),
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin(),
-		new webpack.NamedModulesPlugin()
+		new FriendlyErrorsPlugin()
 	],
+	optimization: {
+		noEmitOnErrors: true,
+		namedModules: true
+	},
 	output: {
 		path: ROOT_DIR,
 		filename: 'js/[name].js'
