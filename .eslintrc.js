@@ -8,12 +8,13 @@ module.exports = {
 			jsx: true
 		}
 	},
-	plugins: ['react'],
+	plugins: ['react', 'import'],
 	rules: {
 		'arrow-parens': ['error', 'as-needed'],
 		'comma-dangle': ['error', 'never'],
 		'comma-spacing': ['error', { 'before': false, 'after': true }],
 		'eol-last': ['error', 'always'],
+		'import/imports-first': ['error', 'absolute-first'],
 		'indent': ['error', 'tab'],
 		'linebreak-style': 0,
 		'max-len': ['error', { code: 100 }],
