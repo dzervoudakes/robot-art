@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
@@ -21,9 +20,6 @@ module.exports = merge(common, {
 		new webpack.EnvironmentPlugin(
 			config.env.development
 		),
-		new ExtractTextPlugin('css/[name].css', {
-			allChunks: true
-		}),
 		new HtmlWebpackPlugin({
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',

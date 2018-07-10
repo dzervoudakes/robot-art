@@ -32,7 +32,9 @@ module.exports = {
 		{
 			test: /\.(sass|scss)$/,
 			include: APP_DIR,
-			loader: ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
+			loader: process.env.NODE_ENV === 'development' ?
+				'style-loader!postcss-loader!sass-loader' :
+				ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
 		},
 		{
 			test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
