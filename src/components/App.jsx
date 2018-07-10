@@ -134,7 +134,7 @@ class App extends React.Component {
 					toggleOverlay={ this.toggleOverlay }
 					isUserLoggedIn={ isUserLoggedIn }
 				/>
-				<main className="main-content">
+				<div className="main-content">
 					<Routes
 						errors={ errors }
 						getAllUsers={ this.getAllUsers }
@@ -143,7 +143,7 @@ class App extends React.Component {
 						updateRobotState={ this.updateRobotState }
 						winner={ winner }
 					/>
-				</main>
+				</div>
 				<Modal
 					onClick={ this.closeModal }
 					open={ open }
