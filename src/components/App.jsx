@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { hot } from 'react-hot-loader';
 import Header from './header';
 import Routes from './routes';
 import { Modal } from './common';
@@ -154,4 +155,4 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+export default hot(module)(App);
