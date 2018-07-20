@@ -9,7 +9,7 @@ const { APP_DIR, PUBLIC_DIR, ROOT_DIR } = config.paths;
 
 module.exports = merge(common, {
 	entry: {
-		app: ['./build/hot-client', `${APP_DIR}/index.jsx`]
+		app: ['./build/dev-client', `${APP_DIR}/index.jsx`]
 	},
 	mode: 'development',
 	plugins: [

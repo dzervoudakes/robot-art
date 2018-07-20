@@ -11,25 +11,6 @@ module.exports = {
 			loader: 'babel-loader'
 		},
 		{
-			test: /\.css$/,
-			include: /node_modules/,
-			use: ExtractTextPlugin.extract({
-				fallback: {
-					loader: 'style-loader',
-					options: {
-						hmr: false
-					}
-				},
-				use: [{
-					loader: 'css-loader',
-					options: {
-						modules: false,
-						minimize: true
-					}
-				}]
-			})
-		},
-		{
 			test: /\.(sass|scss)$/,
 			include: APP_DIR,
 			loader: process.env.NODE_ENV === 'development' ?
@@ -62,7 +43,7 @@ module.exports = {
 		}]
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
+		extensions: ['.js', '.jsx', '.json', '.scss'],
 		alias: { '@': APP_DIR }
 	}
 };
