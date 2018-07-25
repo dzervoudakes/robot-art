@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RobotCardForm from './modules';
+import RobotCardForm from './RobotCardForm';
 
 const propTypes = {
 	action: PropTypes.string.isRequired,

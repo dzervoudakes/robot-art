@@ -1,3 +1,3 @@
-export { default as Form } from './Form';
-export { default as Modal } from './Modal';
-export { default as RobotCard } from './RobotCard';
+export { default as Form } from './form';
+export { default as Modal } from './modal';
+export { default as RobotCard } from './card';

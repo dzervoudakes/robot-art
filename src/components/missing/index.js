@@ -1,3 +1,1 @@
-import Missing from './Missing';
-
-export default Missing;
+export { default } from './Missing';

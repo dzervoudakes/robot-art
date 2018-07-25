@@ -1,3 +1,1 @@
-import Robots from './Robots';
-
-export default Robots;
+export { default } from './Robots';
