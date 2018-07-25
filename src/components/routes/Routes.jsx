@@ -8,6 +8,8 @@ import Results from '@/components/results';
 import Robots from '@/components/robots';
 import Missing from '@/components/missing';
 
+// @TODO: REFACTOR ME PER THE OTHER APPS
+
 const propTypes = {
 	errors: PropTypes.object.isRequired,
 	getAllUsers: PropTypes.func.isRequired,
