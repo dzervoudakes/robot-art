@@ -1,3 +1,7 @@
+const OFF = 0;
+const WARN = 1;
+const ERROR = 2;
+
 module.exports = {
 	extends: 'eslint:recommended',
 	parser: 'babel-eslint',
@@ -16,10 +20,10 @@ module.exports = {
 		'eol-last': ['error', 'always'],
 		'import/imports-first': ['error', 'absolute-first'],
 		'indent': ['error', 'tab'],
-		'linebreak-style': 0,
+		'linebreak-style': OFF,
 		'max-len': ['error', { code: 100 }],
-		'no-console': 1,
-		'no-undef': 0,
+		'no-console': WARN,
+		'no-undef': OFF,
 		'no-unused-vars': ['error'],
 		'object-curly-spacing': ['error', 'always'],
 		'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
@@ -29,10 +33,10 @@ module.exports = {
 				'objectLiterals': 'never'
 			}
 		}],
-		'react/jsx-uses-react': 1,
-		'react/jsx-uses-vars': 1,
-		'react/no-unused-prop-types': 2,
-		'react/prefer-stateless-function': 2,
+		'react/jsx-uses-react': WARN,
+		'react/jsx-uses-vars': WARN,
+		'react/no-unused-prop-types': ERROR,
+		'react/prefer-stateless-function': ERROR,
 		'semi': ['error', 'always'],
 		'quotes': ['error', 'single']
 	}
