@@ -5,12 +5,13 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { APP_DIR, PUBLIC_DIR, ROOT_DIR } = config.paths;
+const { PUBLIC_DIR, ROOT_DIR } = config.paths;
+
+Object.keys(common.entry).forEach(name => {
+	common.entry[name] = ['./build/dev-client'].concat(common.entry[name]);
+});
 
 module.exports = merge(common, {
-	entry: {
-		app: ['./build/dev-client', `${APP_DIR}/index.jsx`]
-	},
 	mode: 'development',
 	plugins: [
 		new webpack.EnvironmentPlugin(

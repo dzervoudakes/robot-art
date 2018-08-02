@@ -10,12 +10,9 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { APP_DIR, BUILD_DIR, PUBLIC_DIR, ROOT_DIR } = config.paths;
+const { BUILD_DIR, PUBLIC_DIR, ROOT_DIR } = config.paths;
 
 const webpackConfig = merge(common, {
-	entry: {
-		app: `${APP_DIR}/index.jsx`
-	},
 	mode: 'production',
 	devtool: 'source-map',
 	performance: {
