@@ -5,7 +5,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { PUBLIC_DIR, ROOT_DIR } = config.paths;
+const { PUBLIC_DIR, ROOT_DIR } = config.directories;
 
 Object.keys(common.entry).forEach(name => {
 	common.entry[name] = ['./build/dev-client'].concat(common.entry[name]);

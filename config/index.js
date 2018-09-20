@@ -10,7 +10,7 @@ const setProcessVars = env => ({
 });
 
 module.exports = {
-	paths: {
+	directories: {
 		APP_DIR: resolve('src'),
 		BUILD_DIR: resolve('dist'),
 		PUBLIC_DIR: resolve('public'),

@@ -10,7 +10,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { BUILD_DIR, PUBLIC_DIR, ROOT_DIR } = config.paths;
+const { BUILD_DIR, PUBLIC_DIR, ROOT_DIR } = config.directories;
 
 const webpackConfig = merge(common, {
 	mode: 'production',
