@@ -12,7 +12,7 @@ const Results = ({ errors, robots, winner }) => {
 	const errImg = <img alt="sad robot"
 		className="error-image"
 		src="/img/robots/errors/sad-robot-secondary.jpg"
-	/>
+	/>;
 	const newRobotsArray = robots.slice(0);
 	newRobotsArray.sort((a, b) => b.votes - a.votes);
 	let results = [];

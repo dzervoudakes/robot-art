@@ -20,7 +20,7 @@ module.exports = {
 		'eol-last': ['error', 'always'],
 		'import/imports-first': ['error', 'absolute-first'],
 		'indent': ['error', 'tab'],
-		'linebreak-style': OFF,
+		'linebreak-style': [ERROR, 'unix'],
 		'max-len': ['error', { code: 100 }],
 		'no-console': WARN,
 		'no-undef': OFF,

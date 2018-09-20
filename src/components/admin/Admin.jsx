@@ -157,7 +157,7 @@ class Admin extends React.Component {
 		const errImg = <img alt="sad robot"
 			className="error-image"
 			src="/img/robots/errors/sad-robot-tertiary.jpg"
-		/>
+		/>;
 		let bots = [];
 		if (robots.length !== 0) {
 			bots = robots.map((bot, index) =>
