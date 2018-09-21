@@ -14,10 +14,10 @@ module.exports = {
 			loader: 'babel-loader'
 		},
 		{
-			test: /\.(sass|scss)$/,
+			test: /\.(sa|sc|c)ss$/,
 			include: APP_DIR,
 			loader: process.env.NODE_ENV === 'development' ?
-				'style-loader!postcss-loader!sass-loader' :
+				'style-loader!css-loader!postcss-loader!sass-loader' :
 				ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
 		},
 		{

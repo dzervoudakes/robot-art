@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const fallback = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 const apiRoutes = require('./routes/api');
 
 const app = express();
@@ -10,7 +10,7 @@ const port = process.env.port || 8080;
 
 global.__dirname = __dirname;
 
-app.use(fallback());
+app.use(history());
 
 // @TODO: AFTER RESTARTING SERVER, REFRESHING A PAGE
 // STILL SHOWS THE ROUTE WITHOUT REDIRECT FOR LOGIN
@@ -31,11 +31,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-	const connect = require('connect');
-	const gzipStatic = require('connect-gzip-static');
-
-	connect().use(gzipStatic(`${__dirname}/public`));
-
 	app.get('/', (req, res) => {
 		res.sendFile(path.join(__dirname, '/public/index.html'));
 	});
