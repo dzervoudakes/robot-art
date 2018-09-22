@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -24,8 +24,8 @@ const webpackConfig = merge(common, {
 		new CleanWebpackPlugin(['dist'], {
 			root: ROOT_DIR
 		}),
-		new ExtractTextPlugin('css/[name].[chunkhash].min.css', {
-			allChunks: true
+		new MiniCssExtractPlugin({
+			filename: 'css/[name].[chunkhash].min.css'
 		}),
 		new OptimizeCssAssetsPlugin({
 			assetNameRegExp: /\.min\.css$/,

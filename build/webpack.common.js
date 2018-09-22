@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('../config');
 
 const { APP_DIR } = config.directories;
@@ -16,9 +16,9 @@ module.exports = {
 		{
 			test: /\.(sa|sc|c)ss$/,
 			include: APP_DIR,
-			loader: process.env.NODE_ENV === 'development' ?
-				'style-loader!css-loader!postcss-loader!sass-loader' :
-				ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
+			use: process.env.NODE_ENV === 'development' ?
+				['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'] :
+				[MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
 		},
 		{
 			test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
