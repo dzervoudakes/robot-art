@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const eslintFormatter = require('eslint-friendly-formatter');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
@@ -19,7 +20,10 @@ module.exports = merge(common, {
 			test: /\.jsx?$/,
 			loader: 'eslint-loader',
 			enforce: 'pre',
-			include: path.resolve(__dirname, '..', 'src')
+			include: path.resolve(__dirname, '..', 'src'),
+			options: {
+				formatter: eslintFormatter
+			}
 		}]
 	},
 	plugins: [
