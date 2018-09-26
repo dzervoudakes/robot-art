@@ -4,11 +4,17 @@ const ERROR = 2;
 
 module.exports = {
 	extends: 'eslint:recommended',
+	overrides: [{
+		files: ['build/*.js'],
+		rules: {
+			'no-console': OFF
+		}
+	}],
 	parser: 'babel-eslint',
 	parserOptions: {
+		ecmaVersion: 9,
 		sourceType: 'module',
 		ecmaFeatures: {
-			ecmascript: 7,
 			jsx: true
 		}
 	},
@@ -20,17 +26,17 @@ module.exports = {
 		'eol-last': ['error', 'always'],
 		'import/imports-first': ['error', 'absolute-first'],
 		'indent': ['error', 'tab'],
-		'linebreak-style': [ERROR, 'unix'],
+		'linebreak-style': OFF,
 		'max-len': ['error', { code: 100 }],
 		'no-console': WARN,
 		'no-undef': OFF,
-		'no-unused-vars': ['error'],
+		'no-unused-vars': ERROR,
 		'object-curly-spacing': ['error', 'always'],
 		'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
 		'react/jsx-curly-spacing': ['error', {
-			'when': 'always',
-			'spacing': {
-				'objectLiterals': 'never'
+			when: 'always',
+			spacing: {
+				objectLiterals: 'never'
 			}
 		}],
 		'react/jsx-uses-react': WARN,
