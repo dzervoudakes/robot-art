@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'production') {
 	app.get('/', (req, res) => {
-		res.sendFile(path.join(__dirname, '/public/index.html'));
+		res.sendFile(path.join(__dirname, 'public', 'index.html'));
 	});
 }
 
@@ -46,7 +46,7 @@ app.use('/account/logout', (req, res) => {
 });
 
 app.use('/api', apiRoutes);
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port, () => {
 	// eslint-disable-next-line
