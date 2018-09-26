@@ -27,24 +27,9 @@ const webpackConfig = merge(common, {
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[chunkhash].min.css'
 		}),
-		new OptimizeCssAssetsPlugin({
-			assetNameRegExp: /\.min\.css$/,
-			cssProcessorOptions: {
-				discardComments: {
-					removeAll: true
-				}
-			}
-		}),
+		new OptimizeCssAssetsPlugin(),
 		new UglifyJsPlugin({
-			sourceMap: true,
-			uglifyOptions: {
-				compress: {
-					warnings: false
-				},
-				output: {
-					comments: false
-				}
-			}
+			sourceMap: true
 		}),
 		new webpack.optimize.AggressiveMergingPlugin(),
 		new CopyWebpackPlugin([
