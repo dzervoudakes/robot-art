@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
@@ -13,6 +14,14 @@ Object.keys(common.entry).forEach(name => {
 
 module.exports = merge(common, {
 	mode: 'development',
+	module: {
+		rules: [{
+			test: /\.jsx?$/,
+			loader: 'eslint-loader',
+			enforce: 'pre',
+			include: path.join(__dirname, '../src')
+		}]
+	},
 	plugins: [
 		new webpack.EnvironmentPlugin(
 			config.env.development
