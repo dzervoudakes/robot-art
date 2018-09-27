@@ -1,8 +1,6 @@
 const webpack = require('webpack');
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const eslintFormatter = require('eslint-friendly-formatter');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
@@ -15,17 +13,6 @@ Object.keys(common.entry).forEach(name => {
 
 module.exports = merge(common, {
 	mode: 'development',
-	// module: {
-	// 	rules: [{
-	// 		test: /\.jsx?$/,
-	// 		loader: 'eslint-loader',
-	// 		enforce: 'pre',
-	// 		include: path.resolve(__dirname, '..', 'src'),
-	// 		options: {
-	// 			formatter: eslintFormatter
-	// 		}
-	// 	}]
-	// },
 	plugins: [
 		new webpack.EnvironmentPlugin(
 			config.env.development
