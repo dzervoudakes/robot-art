@@ -5,7 +5,7 @@ const { APP_DIR } = config.directories;
 
 module.exports = {
 	entry: {
-		app: `${APP_DIR}/index.jsx`
+		app: ['babel-polyfill', `${APP_DIR}/index.jsx`]
 	},
 	module: {
 		rules: [{
