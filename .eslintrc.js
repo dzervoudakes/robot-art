@@ -29,6 +29,7 @@ module.exports = {
 		'comma-dangle': [ERROR, 'never'],
 		'comma-spacing': [ERROR, { 'before': false, 'after': true }],
 		'eol-last': [ERROR, 'always'],
+		'import/dynamic-import-chunkname': ERROR,
 		'import/imports-first': [ERROR, 'absolute-first'],
 		'import/no-unresolved': ERROR,
 		'indent': [ERROR, 'tab'],
