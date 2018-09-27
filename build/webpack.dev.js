@@ -7,7 +7,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { PUBLIC_DIR, ROOT_DIR } = config.directories;
+const { PUBLIC_DIR } = config.directories;
 
 Object.keys(common.entry).forEach(name => {
 	common.entry[name] = ['./build/dev-client'].concat(common.entry[name]);
@@ -15,17 +15,17 @@ Object.keys(common.entry).forEach(name => {
 
 module.exports = merge(common, {
 	mode: 'development',
-	module: {
-		rules: [{
-			test: /\.jsx?$/,
-			loader: 'eslint-loader',
-			enforce: 'pre',
-			include: path.resolve(__dirname, '..', 'src'),
-			options: {
-				formatter: eslintFormatter
-			}
-		}]
-	},
+	// module: {
+	// 	rules: [{
+	// 		test: /\.jsx?$/,
+	// 		loader: 'eslint-loader',
+	// 		enforce: 'pre',
+	// 		include: path.resolve(__dirname, '..', 'src'),
+	// 		options: {
+	// 			formatter: eslintFormatter
+	// 		}
+	// 	}]
+	// },
 	plugins: [
 		new webpack.EnvironmentPlugin(
 			config.env.development
@@ -44,7 +44,7 @@ module.exports = merge(common, {
 		namedModules: true
 	},
 	output: {
-		path: ROOT_DIR,
+		path: PUBLIC_DIR,
 		filename: 'js/[name].js'
 	}
 });
