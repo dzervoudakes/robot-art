@@ -14,7 +14,7 @@ module.exports = {
 			loader: 'babel-loader'
 		},
 		{
-			test: /\.(sa|sc|c)ss$/,
+			test: /\.s?css$/,
 			include: APP_DIR,
 			use: process.env.NODE_ENV === 'development' ?
 				['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'] :
