@@ -13,6 +13,7 @@ Object.keys(common.entry).forEach(name => {
 
 module.exports = merge(common, {
 	mode: 'development',
+	devtool: 'cheap-module-eval-source-map',
 	plugins: [
 		new webpack.EnvironmentPlugin(
 			config.env.development
