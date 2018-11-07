@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('../config');
 
-const { APP_DIR } = config.directories;
+const { app: APP_DIR } = config.directories;
 
 module.exports = {
 	entry: {

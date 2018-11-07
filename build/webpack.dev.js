@@ -5,7 +5,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { PUBLIC_DIR } = config.directories;
+const { public: PUBLIC_DIR } = config.directories;
 
 Object.keys(common.entry).forEach(name => {
 	common.entry[name] = ['./build/dev-client'].concat(common.entry[name]);
@@ -22,7 +22,7 @@ module.exports = merge(common, {
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
 			template: `${PUBLIC_DIR}/index.html`,
-			title: 'Robot Art'
+			title: config.title
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new FriendlyErrorsPlugin()

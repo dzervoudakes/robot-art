@@ -11,13 +11,14 @@ const setProcessVars = env => ({
 
 module.exports = {
 	directories: {
-		APP_DIR: resolve('src'),
-		BUILD_DIR: resolve('dist'),
-		PUBLIC_DIR: resolve('public'),
-		ROOT_DIR: resolve('')
+		app: resolve('src'),
+		build: resolve('dist'),
+		public: resolve('public'),
+		root: resolve('')
 	},
 	env: {
 		development: setProcessVars('development'),
 		production: setProcessVars('production')
-	}
+	},
+	title: 'Robot Art'
 };

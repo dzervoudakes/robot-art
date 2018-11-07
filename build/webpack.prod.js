@@ -9,7 +9,11 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const config = require('../config');
 
-const { BUILD_DIR, PUBLIC_DIR, ROOT_DIR } = config.directories;
+const {
+	build: BUILD_DIR,
+	public: PUBLIC_DIR,
+	root: ROOT_DIR
+} = config.directories;
 
 const webpackConfig = merge(common, {
 	mode: 'production',
@@ -41,7 +45,7 @@ const webpackConfig = merge(common, {
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
 			template: `${PUBLIC_DIR}/index.html`,
-			title: 'Robot Art',
+			title: config.title,
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true,
