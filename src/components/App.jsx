@@ -129,26 +129,26 @@ class App extends React.Component {
 		const { message, open, title } = this.state.modal;
 		const winner = voteCounts.length > 0 ? voteCounts.reduce((prev, curr) => Math.max(prev, curr)) : 0;
 		return (
-			<div className={ `robot-art${overlayOpen ? ' overlay-open' : ''}` }>
+			<div className={`robot-art${overlayOpen ? ' overlay-open' : ''}`}>
 				<Header
-					toggleOverlay={ this.toggleOverlay }
-					isUserLoggedIn={ isUserLoggedIn }
+					toggleOverlay={this.toggleOverlay}
+					isUserLoggedIn={isUserLoggedIn}
 				/>
 				<div className="main-content">
 					<Routes
-						errors={ errors }
-						getAllUsers={ this.getAllUsers }
-						openModal={ this.openModal }
-						robots={ robots }
-						updateRobotState={ this.updateRobotState }
-						winner={ winner }
+						errors={errors}
+						getAllUsers={this.getAllUsers}
+						openModal={this.openModal}
+						robots={robots}
+						updateRobotState={this.updateRobotState}
+						winner={winner}
 					/>
 				</div>
 				<Modal
-					onClick={ this.closeModal }
-					open={ open }
-					message={ message }
-					title={ title }
+					onClick={this.closeModal}
+					open={open}
+					message={message}
+					title={title}
 				/>
 			</div>
 		);

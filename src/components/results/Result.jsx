@@ -17,12 +17,12 @@ const Result = ({ image, votes, winner }) => {
 				<tr>
 					<td className="left-col">
 						<div className="avatar-container">
-							<img alt={ name } className="robot-avatar" src={ image } />
+							<img alt={name} className="robot-avatar" src={image} />
 						</div>
-						<p className="vote-count">{ votes }</p>
+						<p className="vote-count">{votes}</p>
 					</td>
 					<td className="right-col">
-						<div className="vote-percentage-bar" style={ percentageBarStyles }></div>
+						<div className="vote-percentage-bar" style={percentageBarStyles}></div>
 					</td>
 				</tr>
 			</tbody>
@@ -31,5 +31,4 @@ const Result = ({ image, votes, winner }) => {
 };
 
 Result.propTypes = propTypes;
-
 export default Result;

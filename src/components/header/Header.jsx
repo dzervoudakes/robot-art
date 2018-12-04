@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 import logo from '@/img/logo.svg';
 import './scss/Header';
 
-const propTypes = {
-	toggleOverlay: PropTypes.func.isRequired,
-	isUserLoggedIn: PropTypes.bool.isRequired
-};
-
 class Header extends React.Component {
+	static propTypes = {
+		toggleOverlay: PropTypes.func.isRequired,
+		isUserLoggedIn: PropTypes.bool.isRequired
+	};
+
 	constructor() {
 		super();
 		this.state = { isMobileMenuOpen: false };
@@ -30,30 +30,30 @@ class Header extends React.Component {
 			}
 		};
 		const createMenuItem = (liClass, label) => (
-			<li className={ `list-item ${liClass}` }>
-				<NavLink activeClassName="active" onClick={ handleMobileMenuState } to={ `/${label.toLowerCase()}` }>{ label }</NavLink>
+			<li className={`list-item ${liClass}`}>
+				<NavLink activeClassName="active" onClick={handleMobileMenuState} to={`/${label.toLowerCase()}`}>{label}</NavLink>
 			</li>
 		);
 		return (
 			<header className="header">
 				<a href="/robots">
-					<img alt="Mondo Robot" className="logo" src={ logo } />
+					<img alt="Mondo Robot" className="logo" src={logo} />
 				</a>
-				<nav className={ `navigation${open ? ' open' : ''}` }>
+				<nav className={`navigation${open ? ' open' : ''}`}>
 					<ul className="menu">
-						{ isUserLoggedIn && createMenuItem('primary', 'Robots') }
-						{ isUserLoggedIn && createMenuItem('primary', 'Results') }
+						{isUserLoggedIn && createMenuItem('primary', 'Robots')}
+						{isUserLoggedIn && createMenuItem('primary', 'Results')}
 						<li className="secondary-list-item-container">
 							<ul>
 								{isUserLoggedIn && createMenuItem('secondary', 'Admin')}
 								<li className="list-item secondary">
-									<a href={ isUserLoggedIn ? '/account/logout' : '/' } onClick={ handleMobileMenuState }>{ isUserLoggedIn ? 'Logout' : 'Login' }</a>
+									<a href={isUserLoggedIn ? '/account/logout' : '/'} onClick={handleMobileMenuState}>{isUserLoggedIn ? 'Logout' : 'Login'}</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
 				</nav>
-				<button className={ `responsive-menu-button ${open ? 'selected' : ''}` } onClick={ handleMobileMenuState }>
+				<button className={`responsive-menu-button ${open ? 'selected' : ''}`} onClick={handleMobileMenuState}>
 					<span className="bar"></span>
 					<span className="bar"></span>
 					<span className="bar"></span>
@@ -62,7 +62,5 @@ class Header extends React.Component {
 		);
 	}
 }
-
-Header.propTypes = propTypes;
 
 export default Header;

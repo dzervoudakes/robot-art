@@ -23,43 +23,42 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 	<Switch>
 		<Route exact path="/">
 			<Login
-				getAllUsers={ getAllUsers }
-				openModal={ openModal }
+				getAllUsers={getAllUsers}
+				openModal={openModal}
 			/>
 		</Route>
 		<Route exact path="/admin">
 			<Admin
-				errors={ errors }
-				openModal={ openModal }
-				robots={ robots }
-				updateRobots={ updateRobotState }
+				errors={errors}
+				openModal={openModal}
+				robots={robots}
+				updateRobots={updateRobotState}
 			/>
 		</Route>
 		<Route exact path="/create-account">
 			<NewAccount
-				getAllUsers={ getAllUsers }
-				openModal={ openModal }
+				getAllUsers={getAllUsers}
+				openModal={openModal}
 			/>
 		</Route>
 		<Route exact path="/results">
 			<Results
-				errors={ errors }
-				robots={ robots }
-				winner={ winner }
+				errors={errors}
+				robots={robots}
+				winner={winner}
 			/>
 		</Route>
 		<Route exact path="/robots">
 			<Robots
-				errors={ errors }
-				openModal={ openModal }
-				robots={ robots }
-				updateRobots={ updateRobotState }
+				errors={errors}
+				openModal={openModal}
+				robots={robots}
+				updateRobots={updateRobotState}
 			/>
 		</Route>
-		<Route component={ Missing } />
+		<Route component={Missing} />
 	</Switch>
 );
 
 Routes.propTypes = propTypes;
-
 export default Routes;

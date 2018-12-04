@@ -4,12 +4,12 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { Form } from '@/components/common';
 
-const propTypes = {
-	openModal: PropTypes.func.isRequired,
-	getAllUsers: PropTypes.func.isRequired
-};
-
 class Login extends React.Component {
+	static propTypes = {
+		openModal: PropTypes.func.isRequired,
+		getAllUsers: PropTypes.func.isRequired
+	};
+
 	constructor() {
 		super();
 		this.state = {
@@ -90,19 +90,17 @@ class Login extends React.Component {
 		return (
 			<div className="login-container">
 				<h2 className="page-title">Login</h2>
-				{ loginAttempts === 3 && <p className="t-form-error-message">You hackin'? You've attempted to login too many times.</p> }
-				{ formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p> }
+				{loginAttempts === 3 && <p className="t-form-error-message">You hackin'? You've attempted to login too many times.</p>}
+				{formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p>}
 				<Form
 					formId="loginForm"
-					loginAttempts={ loginAttempts }
-					submitForm={ this.submitForm }
+					loginAttempts={loginAttempts}
+					submitForm={this.submitForm}
 				/>
 				<p className="t-signup">Need an account? <NavLink className="t-signup-link" to="/create-account">Sign Up</NavLink>.</p>
 			</div>
 		);
 	}
 }
-
-Login.propTypes = propTypes;
 
 export default Login;

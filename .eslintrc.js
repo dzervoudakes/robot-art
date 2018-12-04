@@ -40,12 +40,7 @@ module.exports = {
 		'no-unused-vars': ERROR,
 		'object-curly-spacing': [ERROR, 'always'],
 		'react/jsx-closing-bracket-location': [ERROR, 'line-aligned'],
-		'react/jsx-curly-spacing': [ERROR, {
-			when: 'always',
-			spacing: {
-				objectLiterals: 'never'
-			}
-		}],
+		'react/jsx-curly-spacing': [ERROR, { when: 'never', children: true }],
 		'react/jsx-uses-react': WARN,
 		'react/jsx-uses-vars': WARN,
 		'react/no-array-index-key': OFF,

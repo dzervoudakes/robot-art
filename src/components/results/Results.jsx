@@ -19,17 +19,16 @@ const Results = ({ errors, robots, winner }) => {
 	if (robots.length > 0) {
 		results = newRobotsArray.map((bot, index) =>
 			<Result
-				key={ index }
-				image={ bot.image }
-				votes={ bot.votes }
-				winner={ winner }
+				key={index}
+				image={bot.image}
+				votes={bot.votes}
+				winner={winner}
 			/>
 		);
 	}
 	const markup = errors.get || errors.noRobots ? errImg : results;
-	return <div className="results-container">{ markup }</div>;
+	return <div className="results-container">{markup}</div>;
 };
 
 Results.propTypes = propTypes;
-
 export default Results;

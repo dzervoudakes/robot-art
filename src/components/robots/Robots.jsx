@@ -4,14 +4,14 @@ import axios from 'axios';
 import { RobotCard } from '@/components/common';
 import './scss/Robots';
 
-const propTypes = {
-	robots: PropTypes.array.isRequired,
-	updateRobots: PropTypes.func.isRequired,
-	openModal: PropTypes.func.isRequired,
-	errors: PropTypes.object.isRequired
-};
-
 class Robots extends React.PureComponent {
+	static propTypes = {
+		robots: PropTypes.array.isRequired,
+		updateRobots: PropTypes.func.isRequired,
+		openModal: PropTypes.func.isRequired,
+		errors: PropTypes.object.isRequired
+	};
+
 	postRobotData() {
 		const { robots } = this.props;
 		const opts = { robots: robots };
@@ -55,20 +55,18 @@ class Robots extends React.PureComponent {
 			bots = robots.map((bot, index) =>
 				<RobotCard
 					action="display"
-					index={ index }
-					isAdmin={ false }
-					key={ index }
-					name={ bot.name }
-					updateVotes={ this.updateVotes }
-					image={ bot.image }
+					index={index}
+					isAdmin={false}
+					key={index}
+					name={bot.name}
+					updateVotes={this.updateVotes}
+					image={bot.image}
 				/>
 			);
 		}
 		const markup = errors.get || errors.noRobots ? errImg : bots;
-		return <div className="robots-container">{ markup }</div>;
+		return <div className="robots-container">{markup}</div>;
 	}
 }
-
-Robots.propTypes = propTypes;
 
 export default Robots;

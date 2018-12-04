@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { RobotCard } from '@/components/common';
 
-const propTypes = {
-	robots: PropTypes.array.isRequired,
-	updateRobots: PropTypes.func.isRequired,
-	openModal: PropTypes.func.isRequired,
-	errors: PropTypes.object.isRequired
-};
-
 class Admin extends React.Component {
+	static propTypes = {
+		robots: PropTypes.array.isRequired,
+		updateRobots: PropTypes.func.isRequired,
+		openModal: PropTypes.func.isRequired,
+		errors: PropTypes.object.isRequired
+	};
+
 	constructor() {
 		super();
 		this.state = { formErrors: false };
@@ -163,32 +163,30 @@ class Admin extends React.Component {
 			bots = robots.map((bot, index) =>
 				<RobotCard
 					action="display"
-					handleDelete={ this.handleDelete }
-					handleEdit={ this.handleEdit }
-					index={ index }
-					isAdmin={ true }
-					key={ index }
-					name={ bot.name }
-					image={ bot.image }
+					handleDelete={this.handleDelete}
+					handleEdit={this.handleEdit}
+					index={index}
+					isAdmin={true}
+					key={index}
+					name={bot.name}
+					image={bot.image}
 				/>
 			);
 		}
 		bots.push(
 			<RobotCard
 				action="add"
-				handleAdd={ this.handleAdd }
+				handleAdd={this.handleAdd}
 				key="add-robot"
 			/>
 		);
 		return (
 			<div className="admin-container">
-				{ !errors.get && <h2 className="page-title">Admin</h2> }
-				{ errors.get ? errImg : bots }
+				{!errors.get && <h2 className="page-title">Admin</h2>}
+				{errors.get ? errImg : bots}
 			</div>
 		);
 	}
 }
-
-Admin.propTypes = propTypes;
 
 export default Admin;

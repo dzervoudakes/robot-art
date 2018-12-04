@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Form } from '@/components/common';
 
-const propTypes = {
-	openModal: PropTypes.func.isRequired,
-	getAllUsers: PropTypes.func.isRequired
-};
-
 class NewAccount extends React.Component {
+	static propTypes = {
+		openModal: PropTypes.func.isRequired,
+		getAllUsers: PropTypes.func.isRequired
+	};
+
 	constructor() {
 		super();
 		this.state = { formErrors: false, users: [] };
@@ -87,17 +87,15 @@ class NewAccount extends React.Component {
 		return (
 			<div className="login-container">
 				<h2 className="page-title">Create Account</h2>
-				{ formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p> }
+				{formErrors && <p className="t-form-error-message">Please correct the highlighted errors below.</p>}
 				<Form
 					formId="createAccountForm"
-					includeName={ true }
-					submitForm={ this.submitForm }
+					includeName={true}
+					submitForm={this.submitForm}
 				/>
 			</div>
 		);
 	}
 }
-
-NewAccount.propTypes = propTypes;
 
 export default NewAccount;
