@@ -4,17 +4,17 @@ import axios from 'axios';
 import { RobotCard } from '@/components/common';
 
 class Admin extends React.Component {
+	constructor() {
+		super();
+		this.state = { formErrors: false };
+	}
+
 	static propTypes = {
 		robots: PropTypes.array.isRequired,
 		updateRobots: PropTypes.func.isRequired,
 		openModal: PropTypes.func.isRequired,
 		errors: PropTypes.object.isRequired
 	};
-
-	constructor() {
-		super();
-		this.state = { formErrors: false };
-	}
 
 	addRobot(data) {
 		return axios.post('/api/robots/add', data);

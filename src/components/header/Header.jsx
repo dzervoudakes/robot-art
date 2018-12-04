@@ -5,15 +5,15 @@ import logo from '@/img/logo.svg';
 import './scss/Header';
 
 class Header extends React.Component {
-	static propTypes = {
-		toggleOverlay: PropTypes.func.isRequired,
-		isUserLoggedIn: PropTypes.bool.isRequired
-	};
-
 	constructor() {
 		super();
 		this.state = { isMobileMenuOpen: false };
 	}
+
+	static propTypes = {
+		toggleOverlay: PropTypes.func.isRequired,
+		isUserLoggedIn: PropTypes.bool.isRequired
+	};
 
 	toggleMobileMenu = () => {
 		const { isMobileMenuOpen: open } = this.state;

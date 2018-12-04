@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import RobotCardForm from './RobotCardForm';
 
 class RobotCard extends React.Component {
+	constructor(props) {
+		super();
+		this.state = { action: props.action };
+	}
+
 	static propTypes = {
 		action: PropTypes.string.isRequired,
 		image: PropTypes.string,
@@ -14,11 +19,6 @@ class RobotCard extends React.Component {
 		handleEdit: PropTypes.func,
 		handleDelete: PropTypes.func
 	};
-
-	constructor(props) {
-		super();
-		this.state = { action: props.action };
-	}
 
 	updateAction = action => {
 		this.setState({ action: action });

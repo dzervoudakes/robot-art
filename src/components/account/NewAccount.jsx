@@ -4,15 +4,15 @@ import axios from 'axios';
 import { Form } from '@/components/common';
 
 class NewAccount extends React.Component {
-	static propTypes = {
-		openModal: PropTypes.func.isRequired,
-		getAllUsers: PropTypes.func.isRequired
-	};
-
 	constructor() {
 		super();
 		this.state = { formErrors: false, users: [] };
 	}
+
+	static propTypes = {
+		openModal: PropTypes.func.isRequired,
+		getAllUsers: PropTypes.func.isRequired
+	};
 
 	createAccount(email, name, password) {
 		const { users } = this.state;
