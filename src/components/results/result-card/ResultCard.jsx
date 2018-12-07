@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './scss/Result';
+import './ResultCard.scss';
 
 const propTypes = {
 	image: PropTypes.string.isRequired,
@@ -8,9 +8,9 @@ const propTypes = {
 	winner: PropTypes.number.isRequired
 };
 
-const Result = ({ image, votes, winner }) => {
+const ResultCard = ({ image, votes, winner }) => {
 	const width = votes > 0 ? `${(votes / winner) * 100}%` : '1px';
-	const percentageBarStyles = { width: width };
+	const percentageBarStyles = { width };
 	return (
 		<table cellSpacing="0" className="result">
 			<tbody>
@@ -30,5 +30,5 @@ const Result = ({ image, votes, winner }) => {
 	);
 };
 
-Result.propTypes = propTypes;
-export default Result;
+ResultCard.propTypes = propTypes;
+export default ResultCard;

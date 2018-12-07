@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Form } from '@/components/common';
+import Form from 'common/form';
 
 class NewAccount extends React.Component {
 	constructor() {

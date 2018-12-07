@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { RobotCard } from '@/components/common';
+import RobotCard from 'common/robot-card';
 
 class Admin extends React.Component {
 	constructor() {

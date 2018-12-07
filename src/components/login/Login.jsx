@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import { Form } from '@/components/common';
+import Form from 'common/form';
 
 class Login extends React.Component {
 	static propTypes = {

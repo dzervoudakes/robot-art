@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// @TODO: SHOULD THIS REALLY BE COMMON? IF SO, NAME IT SOMETHING MORE SEMANTIC/LESS GENERIC
+
 const propTypes = {
 	formId: PropTypes.string.isRequired,
 	submitForm: PropTypes.func.isRequired,

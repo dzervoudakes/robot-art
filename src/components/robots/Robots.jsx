@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { RobotCard } from '@/components/common';
-import './scss/Robots';
+import RobotCard from 'common/robot-card';
+import './Robots.scss';
 
 class Robots extends React.PureComponent {
 	static propTypes = {

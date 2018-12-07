@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Result from './Result';
+import ResultCard from './result-card';
 
 const propTypes = {
 	errors: PropTypes.object.isRequired,
@@ -18,7 +18,7 @@ const Results = ({ errors, robots, winner }) => {
 	let results = [];
 	if (robots.length > 0) {
 		results = newRobotsArray.map((bot, index) =>
-			<Result
+			<ResultCard
 				key={index}
 				image={bot.image}
 				votes={bot.votes}

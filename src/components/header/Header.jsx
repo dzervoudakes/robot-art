@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import logo from '@/img/logo.svg';
-import './scss/Header';
+import './Header.scss';
 
 class Header extends React.Component {
 	constructor() {
