@@ -31,4 +31,5 @@ const ResultCard = ({ image, votes, winner }) => {
 };
 
 ResultCard.propTypes = propTypes;
+
 export default ResultCard;

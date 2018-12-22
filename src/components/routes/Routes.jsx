@@ -61,4 +61,5 @@ const Routes = ({ errors, getAllUsers, openModal, robots, updateRobotState, winn
 );
 
 Routes.propTypes = propTypes;
+
 export default Routes;

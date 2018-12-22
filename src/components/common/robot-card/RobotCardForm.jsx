@@ -32,4 +32,5 @@ const RobotCardForm = ({ cancel, formId, index, name = '', onClick, text, update
 );
 
 RobotCardForm.propTypes = propTypes;
+
 export default RobotCardForm;

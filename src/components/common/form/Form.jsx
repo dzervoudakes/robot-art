@@ -33,4 +33,5 @@ const Form = ({ formId, includeName = false, loginAttempts = 0, submitForm }) =>
 );
 
 Form.propTypes = propTypes;
+
 export default Form;

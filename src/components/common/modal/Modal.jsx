@@ -20,4 +20,5 @@ const Modal = ({ onClick, open, message, title }) => (
 );
 
 Modal.propTypes = propTypes;
+
 export default Modal;

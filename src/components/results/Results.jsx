@@ -31,4 +31,5 @@ const Results = ({ errors, robots, winner }) => {
 };
 
 Results.propTypes = propTypes;
+
 export default Results;
