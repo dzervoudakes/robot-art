@@ -32,7 +32,11 @@ module.exports = {
 		'import/dynamic-import-chunkname': ERROR,
 		'import/imports-first': [ERROR, 'absolute-first'],
 		'import/no-unresolved': ERROR,
-		'indent': [ERROR, 'tab'],
+		'import/order': [ERROR, {
+	  	groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'index'],
+	  	'newlines-between': 'never'
+		}],
+		indent: [ERROR, 'tab'],
 		'linebreak-style': OFF,
 		'max-len': [ERROR, { code: 100 }],
 		'no-console': WARN,
@@ -46,8 +50,8 @@ module.exports = {
 		'react/no-array-index-key': OFF,
 		'react/no-unused-prop-types': ERROR,
 		'react/prefer-stateless-function': ERROR,
-		'semi': [ERROR, 'always'],
-		'quotes': [ERROR, 'single']
+		semi: [ERROR, 'always'],
+		quotes: [ERROR, 'single']
 	},
 	settings: {
 		'import/resolver': {

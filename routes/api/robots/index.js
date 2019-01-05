@@ -1,7 +1,7 @@
+const fs = require('fs');
 const express = require('express');
 const jsonfile = require('jsonfile');
 const formidable = require('express-formidable');
-const fs = require('fs');
 
 const router = express.Router();
 

@@ -1,8 +1,8 @@
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.dev');
 const webpackDev = require('webpack-dev-middleware');
 const webpackHot = require('webpack-hot-middleware');
 const opn = require('opn');
+const webpackConfig = require('./webpack.dev');
 
 const compiler = webpack(webpackConfig);
 const port = process.env.port || 8080;

@@ -1,5 +1,5 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const history = require('connect-history-api-fallback');
