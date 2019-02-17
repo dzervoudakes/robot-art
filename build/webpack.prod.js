@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
@@ -10,6 +10,7 @@ const common = require('./webpack.common');
 const config = require('../config');
 
 const {
+	app: APP_DIR,
 	build: BUILD_DIR,
 	public: PUBLIC_DIR,
 	root: ROOT_DIR
@@ -20,6 +21,17 @@ const webpackConfig = merge(common, {
 	devtool: 'source-map',
 	performance: {
 		hints: false
+	},
+	module: {
+		rules: [{
+			test: /\.jsx?$/,
+			loader: 'eslint-loader',
+			enforce: 'pre',
+			include: APP_DIR,
+			options: {
+				formatter: require('eslint-friendly-formatter')
+			}
+		}]
 	},
 	plugins: [
 		new webpack.EnvironmentPlugin(
@@ -32,10 +44,6 @@ const webpackConfig = merge(common, {
 			filename: 'css/[name].[chunkhash].min.css'
 		}),
 		new OptimizeCssAssetsPlugin(),
-		new UglifyJsPlugin({
-			extractComments: true,
-			sourceMap: true
-		}),
 		new webpack.optimize.AggressiveMergingPlugin(),
 		new CopyWebpackPlugin([
 			{ from: `${ROOT_DIR}/index.js`, to: `${BUILD_DIR}/index.js` },
@@ -56,6 +64,12 @@ const webpackConfig = merge(common, {
 		})
 	],
 	optimization: {
+		minimizer: [
+			new TerserPlugin({
+				extractComments: true,
+				sourceMap: true
+			})
+		],
 		splitChunks: {
 			cacheGroups: {
 				commons: {
