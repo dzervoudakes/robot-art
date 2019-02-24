@@ -66,7 +66,9 @@ const webpackConfig = merge(common, {
 	optimization: {
 		minimizer: [
 			new TerserPlugin({
+				cache: true,
 				extractComments: true,
+				parallel: true,
 				sourceMap: true
 			})
 		],
