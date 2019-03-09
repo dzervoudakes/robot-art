@@ -6,7 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
-const common = require('./webpack.common');
+const baseWebpackConfig = require('./webpack.base');
 const config = require('../config');
 
 const {
@@ -16,7 +16,7 @@ const {
 	root: ROOT_DIR
 } = config.directories;
 
-const webpackConfig = merge(common, {
+const webpackConfig = merge(baseWebpackConfig, {
 	mode: 'production',
 	devtool: 'source-map',
 	performance: {

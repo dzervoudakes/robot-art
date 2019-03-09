@@ -2,16 +2,16 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
-const common = require('./webpack.common');
+const baseWebpackConfig = require('./webpack.base');
 const config = require('../config');
 
 const { public: PUBLIC_DIR } = config.directories;
 
-Object.keys(common.entry).forEach(name => {
-	common.entry[name] = ['./build/dev-client'].concat(common.entry[name]);
+Object.keys(baseWebpackConfig.entry).forEach(name => {
+	baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name]);
 });
 
-module.exports = merge(common, {
+module.exports = merge(baseWebpackConfig, {
 	mode: 'development',
 	devtool: 'cheap-module-eval-source-map',
 	plugins: [
