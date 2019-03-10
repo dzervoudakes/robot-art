@@ -20,5 +20,6 @@ module.exports = {
 		development: setProcessVars('development'),
 		production: setProcessVars('production')
 	},
+	isDevelopment: process.argv.indexOf('--development') !== -1,
 	title: 'Robot Art'
 };

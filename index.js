@@ -3,7 +3,9 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const history = require('connect-history-api-fallback');
+const chalk = require('chalk');
 const apiRoutes = require('./routes/api');
+const config = require('./config');
 
 const app = express();
 const port = process.env.port || 8080;
@@ -22,15 +24,13 @@ app.use(session({
 	secret: 'robot-art-secret-token'
 }));
 
-if (process.env.NODE_ENV === 'development') {
+if (config.isDevelopment) {
 	const middleware = require('./build/dev-middleware');
 	const { devMiddleware, hotMiddleware } = middleware;
 
 	app.use(devMiddleware);
 	app.use(hotMiddleware);
-}
-
-if (process.env.NODE_ENV === 'production') {
+} else {
 	app.get('/', (req, res) => {
 		res.sendFile(path.join(__dirname, 'public', 'index.html'));
 	});
@@ -49,5 +49,5 @@ app.use('/api', apiRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port, () => {
-	console.log(`robot-art booted up on port ${port}`);
+	console.log(chalk.cyan(`robot-art server booted up on port ${port}`));
 });

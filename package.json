@@ -7,7 +7,7 @@
 		"build": "node scripts/build.js",
 		"lint": "node scripts/eslint.js",
 		"lint:fix": "node scripts/eslint.js --fix",
-		"start": "cross-env NODE_ENV=development node index.js",
+		"start": "node index.js --development",
 		"stylelint": "node scripts/stylelint.js",
 		"stylelint:fix": "node scripts/stylelint.js --fix"
 	},
@@ -32,7 +32,6 @@
 		"chalk": "^2.4.1",
 		"clean-webpack-plugin": "^0.1.19",
 		"copy-webpack-plugin": "^4.5.2",
-		"cross-env": "^5.2.0",
 		"css-loader": "^1.0.0",
 		"eslint": "^5.15.1",
 		"eslint-friendly-formatter": "^4.0.1",

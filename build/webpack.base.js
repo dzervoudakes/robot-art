@@ -16,7 +16,7 @@ module.exports = {
 		{
 			test: /\.s?css$/,
 			include: APP_DIR,
-			use: process.env.NODE_ENV === 'development' ?
+			use: config.isDevelopment ?
 				['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'] :
 				[MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
 		},
