@@ -33,8 +33,14 @@ module.exports = {
 		'import/imports-first': [ERROR, 'absolute-first'],
 		'import/no-unresolved': ERROR,
 		'import/order': [ERROR, {
-	  	groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'index'],
-	  	'newlines-between': 'never'
+			groups: [
+				'builtin',
+				'external',
+				'internal',
+				['parent', 'sibling'],
+				'index'
+			],
+			'newlines-between': 'never'
 		}],
 		indent: [ERROR, 'tab'],
 		'linebreak-style': OFF,
@@ -50,6 +56,47 @@ module.exports = {
 		'react/no-array-index-key': OFF,
 		'react/no-unused-prop-types': ERROR,
 		'react/prefer-stateless-function': ERROR,
+		'react/sort-comp': [ERROR, {
+			order: [
+				'props',
+				'static-methods',
+				'lifecycle',
+				'everything-else',
+				'handlers',
+				'rendering',
+			],
+			groups: {
+				props: [
+					'propTypes',
+					'defaultProps',
+				],
+				lifecycle: [
+					'statics',
+					'constructor',
+					'getDerivedStateFromProps',
+					'componentWillMount',
+					'UNSAFE_componentWillMount',
+					'componentDidMount',
+					'componentWillReceiveProps',
+					'UNSAFE_componentWillReceiveProps',
+					'shouldComponentUpdate',
+					'componentWillUpdate',
+					'UNSAFE_componentWillUpdate',
+					'getSnapshotBeforeUpdate',
+					'componentDidUpdate',
+					'componentDidCatch',
+					'componentWillUnmount',
+				],
+				'handlers': [
+					'/^on.+$/',
+					'/^handle.+$/',
+				],
+				'rendering': [
+					'/^render.+$/',
+					'render',
+				],
+			}
+		}],
 		semi: [ERROR, 'always'],
 		quotes: [ERROR, 'single']
 	},

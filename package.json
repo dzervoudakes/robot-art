@@ -4,9 +4,9 @@
 	"description": "Character voting React + Express application.",
 	"main": "index.js",
 	"scripts": {
-		"build": "node build/build.js",
-		"lint": "node build/eslint.js",
-		"lint:fix": "node build/eslint.js --fix",
+		"build": "node scripts/build.js",
+		"lint": "node scripts/eslint.js",
+		"lint:fix": "node scripts/eslint.js --fix",
 		"start": "cross-env NODE_ENV=development node index.js",
 		"stylelint": "stylelint \"**/*.scss\" !\"./node_modules/**\"",
 		"stylelint:fix": "stylelint \"**/*.scss\" !\"./node_modules/**\" --fix"

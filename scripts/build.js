@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const ora = require('ora');
-const config = require('./webpack.prod');
+const config = require('../build/webpack.prod');
 
 const spinner = ora('Building for production...');
 spinner.start();
