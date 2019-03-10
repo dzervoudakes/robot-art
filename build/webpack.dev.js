@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base');
@@ -18,7 +18,7 @@ module.exports = merge(baseWebpackConfig, {
 		new webpack.EnvironmentPlugin(
 			config.env.development
 		),
-		new HtmlWebpackPlugin({
+		new HtmlPlugin({
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
 			template: `${PUBLIC_DIR}/index.html`,

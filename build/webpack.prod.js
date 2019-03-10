@@ -1,10 +1,11 @@
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base');
 const config = require('../config');
@@ -37,20 +38,23 @@ const webpackConfig = merge(baseWebpackConfig, {
 		new webpack.EnvironmentPlugin(
 			config.env.production
 		),
-		new CleanWebpackPlugin(['dist'], {
+		new CleanPlugin(['dist'], {
 			root: ROOT_DIR
+		}),
+		new StyleLintPlugin({
+			failOnError: true
 		}),
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[chunkhash].min.css'
 		}),
 		new OptimizeCssAssetsPlugin(),
 		new webpack.optimize.AggressiveMergingPlugin(),
-		new CopyWebpackPlugin([
+		new CopyPlugin([
 			{ from: `${ROOT_DIR}/index.js`, to: `${BUILD_DIR}/index.js` },
 			{ from: `${ROOT_DIR}/routes`, to: `${BUILD_DIR}/routes` },
 			{ from: `${ROOT_DIR}/public`, to: `${BUILD_DIR}/public`, ignore: ['.*'] }
 		]),
-		new HtmlWebpackPlugin({
+		new HtmlPlugin({
 			favicon: `${PUBLIC_DIR}/favicon.ico`,
 			filename: 'index.html',
 			template: `${PUBLIC_DIR}/index.html`,
