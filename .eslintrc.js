@@ -10,7 +10,7 @@ module.exports = {
 	},
 	extends: 'eslint:recommended',
 	overrides: [{
-		files: ['index.js', 'build/*.js'],
+		files: ['index.js', 'scripts/*.js'],
 		rules: {
 			'no-console': OFF
 		}
