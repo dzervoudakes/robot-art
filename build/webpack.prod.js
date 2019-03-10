@@ -24,7 +24,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 	},
 	module: {
 		rules: [{
-			test: /\.jsx?$/,
+			test: /\.jsx?/,
 			loader: 'eslint-loader',
 			enforce: 'pre',
 			include: APP_DIR,

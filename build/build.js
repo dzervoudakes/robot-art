@@ -8,7 +8,9 @@ spinner.start();
 
 webpack(config, (err, stats) => {
 	spinner.stop();
-	if (err) throw err;
+	if (err) {
+		throw err;
+	}
 
 	process.stdout.write(stats.toString({
 		colors: true,
