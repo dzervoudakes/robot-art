@@ -8,6 +8,7 @@ const apiRoutes = require('./routes/api');
 
 const app = express();
 const port = process.env.port || 8080;
+const isDevelopment = process.argv.indexOf('--development') !== -1;
 
 global.__dirname = __dirname;
 
@@ -22,8 +23,6 @@ app.use(session({
 	saveUninitialized: true,
 	secret: 'robot-art-secret-token'
 }));
-
-const isDevelopment = process.argv.indexOf('--development') !== -1;
 
 if (isDevelopment) {
 	const middleware = require('./build/dev-middleware');

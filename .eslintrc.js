@@ -105,6 +105,9 @@ module.exports = {
 			webpack: {
 				config: 'build/webpack.base.js'
 			}
+		},
+		react: {
+			version: 'detect'
 		}
 	}
 };
