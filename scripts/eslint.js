@@ -19,6 +19,7 @@ spinner.stop();
 console.log(formatter(report.results));
 
 const { errorCount, warningCount } = report;
+
 if (errorCount === 0) {
 	if (warningCount === 0) {
 		console.log(chalk.green('Linting complete: no warnings or errors found.\n'));
