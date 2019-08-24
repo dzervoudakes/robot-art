@@ -1,6 +1,6 @@
 {
 	"name": "robot-art",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "Character voting React + Express application.",
 	"main": "index.js",
 	"scripts": {
